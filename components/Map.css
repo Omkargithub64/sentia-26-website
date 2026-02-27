@@ -1,0 +1,549 @@
+* {
+  padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  background: #4986FF;
+}
+
+/* ===============================
+   MAP WRAPPER (NO TRANSFORM!)
+   =============================== */
+
+.map-wrapper {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  animation: none !important;
+  transform: none !important;
+  background: #41dffb44;
+  top: 0;
+
+}
+
+.navback{
+  width: 100%;
+  height: 5rem;
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 20;
+  transition: height 0.5s;
+  background: linear-gradient(to top, #4986ff00, #4986ffb3, #4986FF);
+}
+
+
+/* ===============================
+   DEPTH FOG
+   =============================== */
+
+.map-wrapper::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 120, 180, 0.18),
+    rgba(0, 60, 100, 0.35),
+    rgba(0, 20, 40, 0.65)
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* ===============================
+   LIGHT SCATTER
+   =============================== */
+
+.map-wrapper::after {
+  content: "";
+  position: absolute;
+  inset: -50%;
+  background:
+    radial-gradient(circle at 30% 20%, rgba(120, 200, 255, 0.18), transparent 45%),
+    radial-gradient(circle at 70% 30%, rgba(90, 170, 220, 0.15), transparent 50%),
+    radial-gradient(circle at 50% 60%, rgba(70, 140, 200, 0.12), transparent 55%);
+  animation: slowDrift 28s ease-in-out infinite;
+  z-index: 2;
+  pointer-events: none;
+}
+
+
+/* ===============================
+   SVG LAYER (CRITICAL)
+   =============================== */
+
+.mapsvg {
+  position: relative;
+  z-index: 0;          
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+  user-select: none;
+  cursor: grab;
+  animation: sway 3s ease-in-out infinite;
+}
+
+@keyframes sway {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
+
+/* ===============================
+   BUBBLES
+   =============================== */
+
+.bubble-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 5;
+  overflow: hidden;
+}
+
+.bubble {
+  position: absolute;
+  border-radius: 50%;
+
+  background: radial-gradient(
+    circle at 30% 30%,
+    rgb(255, 255, 255),
+    rgba(255, 255, 255, 0.414),
+    transparent 65%
+  );
+
+  opacity: 0.5;
+
+  will-change: transform;
+}
+
+
+@keyframes bubbleRise {
+  from {
+    transform: translate3d(0, 0, 0) scale(0.9);
+    opacity: 0;
+  }
+  10% { opacity: 0.5; }
+  to {
+    transform: translate3d(0, -120vh, 0) scale(1.1);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .underwater-particles {
+    opacity: 0.3;
+    animation-duration: 60s;
+  }
+
+  .map-wrapper::after {
+    display: none; 
+  }
+}
+
+
+.fixedbubble{
+  position: fixed;
+}
+
+/* ===============================
+   REGIONS
+   =============================== */
+
+.region {
+  stroke-width: 5;
+  transition: fill 0.3s, stroke 0.3s;
+}
+
+.region:hover,
+.region.active {
+  fill: #ffd54f !important;
+  stroke: #00e1ff;
+  stroke-width: 10;
+}
+
+
+
+
+.event-list {
+  overflow-y: auto;
+
+  
+  scrollbar-width: none;
+
+  
+  -ms-overflow-style: none;
+}
+
+
+.event-list::-webkit-scrollbar {
+  display: none;
+}
+
+
+
+
+
+
+/* ===============================
+   UI
+   =============================== */
+
+/* ===============================
+   TOOLTIP (DESKTOP ONLY)
+   =============================== */
+
+#tooltip {
+  position: fixed;
+  z-index: 2000;
+  pointer-events: none;
+
+  min-width: 140px;
+  max-width: 260px;
+
+  padding: 10px 14px;
+  border-radius: 10px;
+
+  background: rgba(10, 18, 32, 0.85);
+  backdrop-filter: blur(10px);
+
+  color: #ffffff;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 13px;
+  line-height: 1.45;
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.45),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+
+  opacity: 0;
+  transform: translateY(4px) scale(0.96);
+  transition:
+    opacity 0.15s ease,
+    transform 0.15s ease;
+}
+
+
+#tooltip {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+
+#tooltip strong {
+  display: block;
+  margin-bottom: 4px;
+
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+
+  color: #7dd3fc; 
+}
+
+
+#tooltip br + * {
+  opacity: 0.85;
+}
+
+/* ===============================
+   OPTIONAL: CARET ARROW
+   =============================== */
+
+#tooltip::after {
+  content: "";
+  position: absolute;
+  top: 12px;
+  left: -6px;
+
+  width: 10px;
+  height: 10px;
+
+  background: rgba(10, 18, 32, 0.85);
+  transform: rotate(45deg);
+
+  box-shadow:
+    -1px -1px 0 rgba(255, 255, 255, 0.06);
+}
+
+
+/* ===============================
+   EVENT LIST PANEL
+   =============================== */
+
+.event-list {
+  position: fixed;
+  top: 80px;
+  right: 20px;
+
+  width: 220px;
+  background: #4986FF;
+  backdrop-filter: blur(10px);
+
+  border-radius: 14px;
+  padding: 14px 16px;
+
+  color: #fff;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+  z-index: 1000;
+
+  max-width: 420px;
+  max-height: 250px;
+  overflow-y: auto;
+}
+
+/* ===============================
+   EVENT SEARCH
+   =============================== */
+
+.event-search {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 8px 10px;
+
+  border-radius: 10px;
+  border: none;
+  outline: none;
+
+  background: #0055ff40;
+  color: white;
+
+  font-size: 14px;
+  font-family: inherit;
+
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12);
+  position: sticky;
+  top: 0;
+  backdrop-filter: blur(10px);
+  z-index: 3;
+}
+
+.event-search::placeholder {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.event-search:focus {
+  box-shadow:
+    inset 0 0 0 1px rgba(120, 180, 255, 0.6),
+    0 0 0 2px rgba(120, 180, 255, 0.15);
+}
+
+
+.event-list .no-results {
+  text-align: center;
+  font-size: 13px;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+
+.event-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.event-list .tag {
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 6px;
+  opacity: 1;
+  color: black;
+}
+
+.event-list .Place {
+  background: rgba(204, 109, 255, 0.817);
+}
+.event-list .Event {
+  background: rgba(85, 255, 170, 0.825);
+}
+
+
+
+.event-list h3 {
+  margin: 0 0 10px;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  opacity: 0.9;
+}
+
+
+.event-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+
+.event-list li {
+  color: white;
+  padding: 10px 12px;
+  margin-bottom: 6px;
+
+  background: rgba(64, 55, 237, 0.5);
+  border-radius: 10px;
+
+  cursor: pointer;
+  user-select: none;
+
+  font-size: 14px;
+  font-weight: 500;
+
+  transition:
+    background 0.25s ease,
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+
+.event-list li:hover {
+  background: rgba(255, 255, 255, 0.16);
+  transform: translateY(-1px);
+}
+
+
+.event-list li.active {
+  background: linear-gradient(135deg, #ffffff, #7afdff);
+  color: #0b1020;
+  box-shadow: 0 6px 16px rgba(79, 124, 255, 0.45);
+}
+
+
+@media (max-width: 768px) {
+  .event-list {
+    right: 50%;
+    transform: translateX(50%);
+    top: auto;
+    bottom: 10px;
+
+    width: calc(100% - 50px);
+    max-width: 420px;
+    max-height: 170px;
+    overflow-y: auto;
+  }
+
+  .event-list h3 {
+    text-align: center;
+  }
+
+  .event-list li {
+    text-align: center;
+    font-size: 15px;
+  }
+}
+
+/* ===============================
+   MODAL
+   =============================== */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 71, 91, 0);
+
+  display: none;                
+  align-items: center;
+  justify-content: center;
+
+  z-index: 99;
+}
+
+.modal-overlay.show {
+  display: flex;                
+}
+
+.modal-box {
+  background: #4986FF;
+  color: white;
+
+  padding: 25px;
+  border-radius: 12px;
+
+  
+  width: min(90vw, 420px);
+  max-width: 520px;
+
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+}
+
+
+.modal-box h2 {
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.modal-box p {
+  font-size: 14px;
+  line-height: 1.5;
+  opacity: 0.9;
+}
+
+.modal-box button {
+  margin-top: 15px;
+  padding: 8px 14px;
+
+  background: #1f326a;
+  color: white;
+
+  border: none;
+  border-radius: 8px;
+
+  cursor: pointer;
+}
+
+.modal-box button:hover {
+  background: #c7ecff;
+  color: #1f326a;
+}
+
+.test{
+  color: #c7ecff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+
+
+
+.page-overlay {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 10000;
+  pointer-events: none;
+
+  transform: translateY(100%);
+
+  
+  transform-origin: center center;
+}
+
+
+/* .page {
+  min-height: 100vh;
+  padding: 4rem;
+  width: 100svw;
+} */
+
+
+.water-transition {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 999;
+  pointer-events: none;
+}
+
