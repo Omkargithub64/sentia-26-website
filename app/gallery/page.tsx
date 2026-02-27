@@ -36,18 +36,18 @@ function YearBlock({ entry, index }: { entry: typeof timeline[0]; index: number 
       transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
       className="border-t border-zinc-100 pt-8 pb-10"
     >
-      {/* Year row */}
+      {}
       <div className="flex items-baseline gap-4 mb-1">
         <span className="text-3xl font-black tracking-tighter text-black">{entry.year}</span>
         <span className="text-xs font-medium text-zinc-400 uppercase tracking-widest">—&nbsp;{entry.theme}</span>
       </div>
 
-      {/* Edition label */}
+      {}
       <p className="text-[10px] font-semibold tracking-[0.3em] text-zinc-300 uppercase mb-5">
         Sentia Edition {String(index + 1).padStart(2, '0')}
       </p>
 
-      {/* 4 square images in a single horizontal row */}
+      {}
       <div className="grid grid-cols-4 gap-3">
         {entry.images.map((src, i) => (
           <motion.div
@@ -72,26 +72,13 @@ function YearBlock({ entry, index }: { entry: typeof timeline[0]; index: number 
 export default function GalleryPage() {
   return (
     <main className="min-h-screen bg-white text-black">
-
-      {/* Sticky top bar */}
-      <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-zinc-100">
-        <div className="max-w-5xl mx-auto px-6 h-12 flex items-center justify-between">
-          <Link
-            href="/"
-            className="text-xs font-semibold text-zinc-400 hover:text-black transition-colors uppercase tracking-widest"
-          >
-            ← Back
-          </Link>
-          <span className="text-xs font-bold tracking-[0.3em] text-zinc-300 uppercase">
-            Sentia Gallery
-          </span>
-          <span className="text-xs text-zinc-300 font-medium tracking-widest">2012 – 2025</span>
-        </div>
-      </header>
+      <br />
+      <br />
+      <br />
 
       <div className="max-w-5xl mx-auto px-6">
 
-        {/* Page header */}
+        {}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
@@ -110,14 +97,14 @@ export default function GalleryPage() {
           </p>
         </motion.div>
 
-        {/* Timeline list */}
+        {}
         <div>
           {timeline.map((entry, i) => (
             <YearBlock key={entry.year} entry={entry} index={i} />
           ))}
         </div>
 
-        {/* End cap */}
+        {}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}

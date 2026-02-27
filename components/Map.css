@@ -278,12 +278,12 @@ body {
 
 .event-list {
   position: fixed;
-  top: 80px;
+  top: 120px;
   right: 20px;
 
   width: 220px;
-  background: #4986FF;
-  backdrop-filter: blur(10px);
+  background: #4986ff8a;
+  backdrop-filter: blur(40px);
 
   border-radius: 14px;
   padding: 14px 16px;
@@ -461,9 +461,9 @@ body {
 }
 
 .modal-box {
-  background: #4986FF;
+  background: #4986ff8a;
   color: white;
-
+  backdrop-filter: blur(40px);
   padding: 25px;
   border-radius: 12px;
 
