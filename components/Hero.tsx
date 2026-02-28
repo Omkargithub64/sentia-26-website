@@ -1,25 +1,52 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import Image from "next/image";
+import Parallax from "parallax-js";
 import "./Hero.css";
 
 export default function Hero() {
+  const sceneRef = useRef(null);
+
+  useEffect(() => {
+    if (sceneRef.current) {
+      const parallaxInstance = new Parallax(sceneRef.current);
+      return () => parallaxInstance.disable();
+    }
+  }, []);
+
   return (
     <section className="hero">
       <div className="hero-wrapper">
         <div className="hero-container">
 
-          {}
-          <img
-            src="https://cjlpsqzjtchvpckpyllb.supabase.co/storage/v1/object/public/sentia/poseidon.jpeg"
-            alt="Sentia Hero"
-            className="hero-bg"
-          />
+          {/* Parallax Scene */}
+          <div ref={sceneRef} className="parallax-scene">
 
-          {}
+            {/* Background Layer */}
+            <div data-depth="0.2" className="parallax-layer">
+              <img
+                src="/images/herobg.png"
+                alt="Background"
+                className="hero-bg"
+              />
+            </div>
+
+            {/* Foreground Layer */}
+            <div data-depth="0.6" className="parallax-layer">
+              <img
+                src="/images/herofg.png"
+                alt="Foreground"
+                className="hero-fg"
+              />
+            </div>
+
+          </div>
+
+          {/* Overlay */}
           <div className="hero-overlay" />
 
-          {}
+          {/* Description */}
           <div className="hero-description">
             <p>
               Experience the ultimate fusion of talent and creativity at Sentia
@@ -28,7 +55,7 @@ export default function Hero() {
             </p>
           </div>
 
-          {}
+          {/* Logo */}
           <div className="hero-title">
             <Image
               alt="logo"

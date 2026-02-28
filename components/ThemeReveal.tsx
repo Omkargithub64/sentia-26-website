@@ -2,12 +2,12 @@
 
 import styles from './styles.module.scss'
 import Picture1 from '../public/images/1.jpeg'
-import Picture2 from '../public/images/2.jpeg'
-import Picture3 from '../public/images/3.jpg'
-import Picture4 from '../public/images/4.jpg'
-import Picture5 from '../public/images/5.jpg'
-import Picture6 from '../public/images/6.jpg'
-import Picture7 from '../public/images/7.jpeg'
+// import Picture2 from '../public/images/2.jpeg'
+// import Picture3 from '../public/images/3.jpg'
+// import Picture4 from '../public/images/4.jpg'
+// import Picture5 from '../public/images/5.jpg'
+// import Picture6 from '../public/images/6.jpg'
+// import Picture7 from '../public/images/7.jpeg'
 import Image from 'next/image'
 import { useScroll, useTransform, motion } from 'framer-motion'
 import { useRef } from 'react'
@@ -27,12 +27,12 @@ export default function ThemeReveal() {
 
   const pictures = [
     { src: Picture1, scale: scale4 },
-    { src: Picture2, scale: scale5 },
-    { src: Picture3, scale: scale6 },
-    { src: Picture4, scale: scale5 },
-    { src: Picture5, scale: scale6 },
-    { src: Picture6, scale: scale8 },
-    { src: Picture7, scale: scale9 },
+    { src: Picture1, scale: scale5 },
+    { src: Picture1, scale: scale6 },
+    { src: Picture1, scale: scale5 },
+    { src: Picture1, scale: scale6 },
+    { src: Picture1, scale: scale8 },
+    { src: Picture1, scale: scale9 },
   ]
 
   return (

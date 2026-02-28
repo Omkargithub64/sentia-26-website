@@ -40,9 +40,9 @@
   inset: 0;
   background: linear-gradient(
     to bottom,
-    rgba(0, 0, 0, 0.7),
+    #0a1538b3,
     rgba(0, 0, 0, 0.3),
-    rgba(0, 0, 0, 0.5)
+    #00074480
   );
 }
 
@@ -87,3 +87,39 @@
     right: 40px;
   }
 }
+
+.hero {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.hero-wrapper,
+.hero-container {
+  height: 100%;
+  position: relative;
+}
+
+.parallax-scene {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.parallax-layer {
+  position: absolute;
+  width: 110%;
+  height: 110%;
+  top: -5%;
+  left: -5%;
+}
+
+.hero-bg,
+.hero-fg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
