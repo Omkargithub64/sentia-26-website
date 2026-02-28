@@ -12,7 +12,7 @@ export default function Events() {
   const filteredEvents = events.filter(event => event.category === activeCategory)
 
   return (
-    <section className="py-24 bg-white text-slate-900 md:px-8 relative overflow-hidden">
+    <section className="py-24 bg-white text-slate-900 md:px-8 relative overflow-hidden p-1">
        
       <div className="max-w-[1400px] mx-auto relative z-10 w-full">
         {/* Header Section */}
@@ -60,7 +60,7 @@ export default function Events() {
                      />
                      <div className="absolute inset-0 " />
                      {/* Category Tag */}
-                     <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm py-1 rounded-full text-[10px] font-bold text-slate-800 shadow-sm">
+                     <div className="p-2 absolute top-3 right-3 bg-white/90 backdrop-blur-sm py-1 rounded-full text-[10px] font-bold text-slate-800 shadow-sm">
                         {event.category}
                      </div>
                 </div>

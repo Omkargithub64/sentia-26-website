@@ -40,8 +40,8 @@
   inset: 0;
   background: linear-gradient(
     to bottom,
-    #0a1538b3,
-    rgba(0, 0, 0, 0.3),
+    #0a15386b,
+    rgba(0, 0, 0, 0.13),
     #00074480
   );
 }

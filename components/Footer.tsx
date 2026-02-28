@@ -46,13 +46,13 @@ export default function Footer() {
                     <h4 className="text-white/60 mb-4 text-xs font-medium uppercase tracking-wide">Follow us</h4>
                     <ul className="space-y-3 text-white text-base">
                         <li>
-                            <a href="#" className="flex items-center gap-3 hover:text-blue-400 transition-colors font-medium">
+                            <a target='_blank' href="https://www.instagram.com/sentia.mite/?hl=en" className="flex items-center gap-3 hover:text-blue-400 transition-colors font-medium">
                                 <div className="p-1.5 bg-white/10 backdrop-blur-sm rounded-full text-white"><Instagram className="w-3.5 h-3.5" /></div> 
                                 <span>Instagram</span>
                             </a>
                         </li>
                          <li>
-                            <a href="#" className="flex items-center gap-3 hover:text-blue-400 transition-colors font-medium">
+                            <a target='_blank' href="https://www.linkedin.com/company/miteedu/" className="flex items-center gap-3 hover:text-blue-400 transition-colors font-medium">
                                 <div className="p-1.5 bg-white/10 backdrop-blur-sm rounded-full text-white"><Linkedin className="w-3.5 h-3.5" /></div> 
                                 <span>LinkedIn</span>
                             </a>
