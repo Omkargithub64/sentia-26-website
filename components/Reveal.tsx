@@ -126,7 +126,7 @@ export default function Reveal({ spotifyData }: RevealProps) {
             {/* RIGHT: Artist Photo */}
             <div className="lg:col-span-7 rounded-2xl overflow-hidden border border-white/10 relative min-h-[320px]">
               <img
-                src="/images/2.jpg"
+                src="/images/2.jpeg"
                 alt={artist.name}
                 className="w-full h-full object-cover object-top absolute inset-0"
               />
