@@ -35,7 +35,7 @@ const ARTIST_ID = '19LIHDDSHBD5NyYHI3gpzB'
 const fallbackData: SpotifyData = {
   artist: {
     name: 'Shilpa Rao',
-    image: 'https://cjlpsqzjtchvpckpyllb.supabase.co/storage/v1/object/public/sentia/cel.jpg',
+    image: '/images/2.jpeg',
     followers: 4100000,
     genres: ['bollywood'],
     spotifyUrl: `https://open.spotify.com/artist/${ARTIST_ID}`,
