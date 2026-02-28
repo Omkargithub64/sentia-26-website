@@ -1,17 +1,3 @@
-* {
-  padding: 0;
-  box-sizing: border-box;
-  margin: 0;
-}
-
-body {
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  background: #4986FF;
-}
-
-/* ===============================
-   MAP WRAPPER (NO TRANSFORM!)
-   =============================== */
 
 .map-wrapper {
   position: fixed;
@@ -37,9 +23,7 @@ body {
 }
 
 
-/* ===============================
-   DEPTH FOG
-   =============================== */
+
 
 .map-wrapper::before {
   content: "";
@@ -55,9 +39,7 @@ body {
   pointer-events: none;
 }
 
-/* ===============================
-   LIGHT SCATTER
-   =============================== */
+
 
 .map-wrapper::after {
   content: "";
@@ -73,9 +55,6 @@ body {
 }
 
 
-/* ===============================
-   SVG LAYER (CRITICAL)
-   =============================== */
 
 .mapsvg {
   position: relative;
@@ -94,9 +73,7 @@ body {
   100% { transform: translateY(0); }
 }
 
-/* ===============================
-   BUBBLES
-   =============================== */
+
 
 .bubble-layer {
   position: absolute;
@@ -151,9 +128,7 @@ body {
   position: fixed;
 }
 
-/* ===============================
-   REGIONS
-   =============================== */
+
 
 .region {
   stroke-width: 5;
@@ -190,13 +165,6 @@ body {
 
 
 
-/* ===============================
-   UI
-   =============================== */
-
-/* ===============================
-   TOOLTIP (DESKTOP ONLY)
-   =============================== */
 
 #tooltip {
   position: fixed;
@@ -251,9 +219,6 @@ body {
   opacity: 0.85;
 }
 
-/* ===============================
-   OPTIONAL: CARET ARROW
-   =============================== */
 
 #tooltip::after {
   content: "";
@@ -272,9 +237,7 @@ body {
 }
 
 
-/* ===============================
-   EVENT LIST PANEL
-   =============================== */
+
 
 .event-list {
   position: fixed;
@@ -299,9 +262,7 @@ body {
   overflow-y: auto;
 }
 
-/* ===============================
-   EVENT SEARCH
-   =============================== */
+
 
 .event-search {
   width: 100%;
@@ -440,9 +401,7 @@ body {
   }
 }
 
-/* ===============================
-   MODAL
-   =============================== */
+
 
 .modal-overlay {
   position: fixed;
@@ -530,12 +489,6 @@ body {
   transform-origin: center center;
 }
 
-
-/* .page {
-  min-height: 100vh;
-  padding: 4rem;
-  width: 100svw;
-} */
 
 
 .water-transition {

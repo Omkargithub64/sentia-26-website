@@ -384,10 +384,13 @@ const SVGMap = forwardRef<MapHandle, MapProps>(function SVGMap(
 
     apply();
   };
-
-  useGSAP(() => {
+useGSAP(() => {
+  const ctx = gsap.context(() => {
     apply();
   });
+
+  return () => ctx.revert();
+});
 
   useEffect(() => {
     updateSvgScale();

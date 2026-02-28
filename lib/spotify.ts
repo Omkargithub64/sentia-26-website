@@ -51,7 +51,7 @@ export const getArtistTopTracks = async (artistId: string) => {
       headers: { Authorization: `Bearer ${access_token}` },
       next: { revalidate: 3600 },
     } as RequestInit),
-    5000
+    15000
   );
   if (!response.ok) throw new Error(`getArtistTopTracks failed: ${response.status}`);
   return response.json();

@@ -5,7 +5,7 @@ import Events from '@/components/Events'
 import About from '@/components/About'
 import Footer from '@/components/Footer'
 import { getArtist, getArtistTopTracks } from '@/lib/spotify'
-import Nav from '@/components/Nav'
+
 
 const ARTIST_ID = '19LIHDDSHBD5NyYHI3gpzB' // Shilpa Rao
 

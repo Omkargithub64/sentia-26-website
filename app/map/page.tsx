@@ -1,10 +1,10 @@
 "use client";
 
 import { useRef, useState } from "react";
-import SVGMap, { type MapHandle, type TooltipState } from "../../components/Map";
-import RegionSearch from "../../components/EventList";
-import Modal from "../../components/Modal";
-import Tooltip from "../../components/Tooltip";
+import SVGMap, { type MapHandle, type TooltipState } from "@/components/Map";
+import RegionSearch from "@/components/EventList";
+import Modal from "@/components/Modal";
+import Tooltip from "@/components/Tooltip";
 
 export default function Map() {
     const mapRef = useRef<MapHandle | null>(null);
@@ -26,6 +26,7 @@ export default function Map() {
     return (
         <>
             <Tooltip {...tooltip} />
+            <div className="map-scope">
             <SVGMap
                 ref={mapRef}
                 onRegionSelect={(title, text) =>
@@ -33,6 +34,7 @@ export default function Map() {
                 }
                 onTooltip={setTooltip}
             />
+            </div>
 
             <RegionSearch mapRef={mapRef} />
 
