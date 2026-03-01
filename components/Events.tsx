@@ -7,12 +7,12 @@ import Link from 'next/link'
 import { events } from '@/lib/eventsData'
 
 export default function Events() {
-  const [activeCategory, setActiveCategory] = useState<'UG' | 'PG'>('UG')
+  const [activeCategory, setActiveCategory] = useState<'General'|'UG' | 'PG'>('General')
   
   const filteredEvents = events.filter(event => event.category === activeCategory)
 
   return (
-    <section className="py-24 bg-white text-slate-900 md:px-8 relative overflow-hidden p-1">
+    <section className="py-24 bg-white text-slate-900 md:px-8 relative overflow-hidden p-5">
        
       <div className="max-w-[1400px] mx-auto relative z-10 w-full">
         {/* Header Section */}
@@ -25,8 +25,14 @@ export default function Events() {
                   Flagship Events
                 </h2>
             </div>
-            <div className="flex items-center gap-2 mb-2 md:mb-0">
-                <div className="grid grid-cols-2 bg-slate-100 rounded-full p-1 border border-slate-200 shadow-sm">
+            <div className="flex items-center gap-3 mb-3 md:mb-0">
+                <div className="grid grid-cols-3 bg-slate-100 rounded-full p-1 border border-slate-200 shadow-sm">
+                    <button 
+                        onClick={() => setActiveCategory('General')}
+                        className={`px-6 py-1.5 rounded-full text-xs font-bold tracking-wide transition-all duration-300 ${activeCategory === 'General' ? 'bg-black text-white shadow-md' : 'text-slate-500 hover:text-slate-900'}`}
+                    >
+                        General
+                    </button>
                     <button 
                         onClick={() => setActiveCategory('UG')}
                         className={`px-6 py-1.5 rounded-full text-xs font-bold tracking-wide transition-all duration-300 ${activeCategory === 'UG' ? 'bg-black text-white shadow-md' : 'text-slate-500 hover:text-slate-900'}`}

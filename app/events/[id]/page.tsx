@@ -88,6 +88,8 @@ export default async function EventPage({ params }: PageProps) {
                     Prepare yourself for an exhilarating experience as you compete against the best. 
                     Showcase your skills, push your limits, and claim your glory at {event.title}. 
                     This event is designed to test your abilities in the most creative and challenging ways possible.
+
+                    {event.general}
                  </p>
             </div>
 
@@ -97,20 +99,69 @@ export default async function EventPage({ params }: PageProps) {
                     <Trophy className="w-5 h-5 text-slate-900" />
                     Rules & Regulations
                 </h2>
-                <div className="bg-zinc-50 p-5 rounded-xl border border-zinc-100">
-                    <ul className="space-y-2">
-                        {event.rules?.map((rule: string, idx: number) => (
-                            <li key={idx} className="flex items-start gap-3 text-slate-700 text-sm">
-                                <span className="flex-shrink-0 w-5 h-5 rounded-full bg-white border border-zinc-200 flex items-center justify-center text-[10px] font-bold text-slate-900 mt-0.5 shadow-sm">
-                                    {idx + 1}
-                                </span>
-                                <span className="flex-1 leading-relaxed">{rule}</span>
-                            </li>
-                        )) || (
-                            <p className="text-slate-500 italic">No specific rules listed.</p>
-                        )}
-                    </ul>
-                </div>
+<div className="bg-zinc-50 p-6 rounded-xl border border-zinc-100 space-y-6">
+  {(() => {
+    if (!event.rules) {
+      return <p className="text-slate-500 italic">No specific rules listed.</p>;
+    }
+
+    const lines = event.rules
+      .split("\n")
+      .map(l => l.trim())
+      .filter(Boolean);
+
+    const hasHeadings = lines.some(line => line.endsWith(":"));
+
+    // 🟢 Case 1: No Headings → Simple Bullet List
+    if (!hasHeadings) {
+      return (
+        <ul className="space-y-3">
+          {lines.map((line, idx) => (
+            <li key={idx} className="flex items-start gap-3 text-sm text-slate-700">
+              <span className="mt-1 w-1.5 h-1.5 rounded-full bg-slate-500" />
+              <span>{line}</span>
+            </li>
+          ))}
+        </ul>
+      );
+    }
+
+    // 🟣 Case 2: Structured Sections
+    let currentSection: any = null;
+    const sections: any[] = [];
+
+    lines.forEach(line => {
+      if (line.endsWith(":")) {
+        currentSection = { title: line, items: [] };
+        sections.push(currentSection);
+      } else {
+        if (!currentSection) {
+          currentSection = { title: null, items: [] };
+          sections.push(currentSection);
+        }
+        currentSection.items.push(line);
+      }
+    });
+
+    return sections.map((section, idx) => (
+      <div key={idx} className="space-y-3">
+        {section.title && (
+          <h3 className="text-sm font-bold text-slate-900 uppercase tracking-wide">
+            {section.title}
+          </h3>
+        )}
+        <ul className="space-y-2">
+          {section.items.map((item: string, i: number) => (
+            <li key={i} className="flex items-start gap-3 text-sm text-slate-700">
+              <span className="mt-1 w-1.5 h-1.5 rounded-full bg-slate-500" />
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    ));
+  })()}
+</div>
             </div>
 
             {/* Coordinator & Action */}
