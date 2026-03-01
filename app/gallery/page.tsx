@@ -1,30 +1,104 @@
 'use client'
 
-import { useRef } from 'react'
-import { motion, useInView } from 'framer-motion'
-import Link from 'next/link'
-
-const img = (seed: number) =>
-  `https://picsum.photos/seed/${seed}/400/400`
+import { useRef, useState, useEffect } from 'react'
+import { motion, useInView, AnimatePresence } from 'framer-motion'
+import Image from "next/image"
 
 const timeline = [
-  { year: '2012', theme: 'The Beginning',  images: [img(10), img(11), img(12), img(13)] },
-  { year: '2013', theme: 'Rising Stars',   images: [img(20), img(21), img(22), img(23)] },
-  { year: '2014', theme: 'New Horizons',   images: [img(30), img(31), img(32), img(33)] },
-  { year: '2015', theme: 'Breakthrough',   images: [img(40), img(41), img(42), img(43)] },
-  { year: '2016', theme: 'Ignite',         images: [img(50), img(51), img(52), img(53)] },
-  { year: '2017', theme: 'Momentum',       images: [img(60), img(61), img(62), img(63)] },
-  { year: '2018', theme: 'Ascend',         images: [img(70), img(71), img(72), img(73)] },
-  { year: '2019', theme: 'Euphoria',       images: [img(80), img(81), img(82), img(83)] },
-  { year: '2020', theme: 'Resilience',     images: [img(90), img(91), img(92), img(93)] },
-  { year: '2021', theme: 'Reborn',         images: [img(100), img(101), img(102), img(103)] },
-  { year: '2022', theme: 'Surge',          images: [img(110), img(111), img(112), img(113)] },
-  { year: '2023', theme: 'Illuminate',     images: [img(120), img(121), img(122), img(123)] },
-  { year: '2024', theme: 'Zenith',         images: [img(130), img(131), img(132), img(133)] },
-  { year: '2025', theme: 'Legacy',         images: [img(140), img(141), img(142), img(143)] },
+  {
+    year: '2024 - 2023',
+    images: [
+      '/gallary/2023/1.webp',
+      '/gallary/2023/2.webp',
+      '/gallary/2023/3.webp',
+      '/gallary/2023/4.webp',
+      '/gallary/2023/5.webp',
+      '/gallary/2023/6.webp',
+      '/gallary/2023/7.webp',
+    ],
+  },
+  {
+    year: '2022',
+    images: [
+      '/gallary/2022/3.webp',
+      '/gallary/2022/1.webp',
+      '/gallary/2022/2.webp',
+      '/gallary/2022/4.webp',
+      '/gallary/2022/5.webp'
+    ],
+  },
+  {
+    year: '2019',
+    images: [
+      '/gallary/2019/1.webp',
+      '/gallary/2019/2.webp',
+      '/gallary/2019/3.webp',
+      '/gallary/2019/4.webp'
+    ],
+  },
+    {
+    year: '2016',
+    images: [
+      '/gallary/2016/1.webp',
+      '/gallary/2016/2.webp',
+      '/gallary/2016/3.webp',
+      '/gallary/2016/4.webp',
+      '/gallary/2016/5.webp'
+    ],
+  },
+    {
+    year: '2015',
+    images: [
+      '/gallary/2015/1.webp',
+      '/gallary/2015/2.webp',
+      '/gallary/2015/3.webp',
+      '/gallary/2015/4.webp',
+      '/gallary/2015/5.webp',
+      '/gallary/2015/6.webp'
+    ],
+  },
+    {
+    year: '2014',
+    images: [
+      '/gallary/2014/1.webp',
+      '/gallary/2014/2.webp',
+      '/gallary/2014/3.webp',
+      '/gallary/2014/4.webp',
+      '/gallary/2014/5.webp'
+    ],
+  },
+    {
+    year: '2013',
+    images: [
+      '/gallary/2013/1.webp',
+      '/gallary/2013/2.webp',
+      '/gallary/2013/3.webp',
+      '/gallary/2013/4.webp',
+      '/gallary/2013/5.webp',
+      '/gallary/2013/6.webp',
+      '/gallary/2013/7.webp',
+    ],
+  },
+    {
+    year: '2011',
+    images: [
+      '/gallary/2011/1.webp',
+      '/gallary/2011/2.webp',
+      '/gallary/2011/3.webp',
+      '/gallary/2011/4.webp'
+    ],
+  },
 ]
 
-function YearBlock({ entry, index }: { entry: typeof timeline[0]; index: number }) {
+function YearBlock({
+  entry,
+  index,
+  onImageClick,
+}: {
+  entry: typeof timeline[0]
+  index: number
+  onImageClick: (src: string) => void
+}) {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-40px' })
 
@@ -36,32 +110,40 @@ function YearBlock({ entry, index }: { entry: typeof timeline[0]; index: number 
       transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
       className="border-t border-zinc-100 pt-8 pb-10"
     >
-      {}
       <div className="flex items-baseline gap-4 mb-1">
-        <span className="text-3xl font-black tracking-tighter text-black">{entry.year}</span>
-        <span className="text-xs font-medium text-zinc-400 uppercase tracking-widest">—&nbsp;{entry.theme}</span>
+        <span className="text-3xl font-black tracking-tighter text-black">
+          {entry.year}
+        </span>
       </div>
 
-      {}
       <p className="text-[10px] font-semibold tracking-[0.3em] text-zinc-300 uppercase mb-5">
         Sentia Edition {String(index + 1).padStart(2, '0')}
       </p>
 
-      {}
-      <div className="grid grid-cols-4 gap-3">
+      {/* Responsive grid with auto height support */}
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
         {entry.images.map((src, i) => (
           <motion.div
             key={i}
             initial={{ opacity: 0, scale: 0.96 }}
             animate={inView ? { opacity: 1, scale: 1 } : {}}
-            transition={{ duration: 0.5, delay: 0.1 + i * 0.07, ease: [0.22, 1, 0.36, 1] }}
-            className="aspect-square overflow-hidden rounded-xl group cursor-pointer bg-zinc-100"
+            transition={{
+              duration: 0.5,
+              delay: 0.1 + i * 0.07,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+            className="relative overflow-hidden rounded-xl group cursor-pointer bg-zinc-100"
+            onClick={() => onImageClick(src)}
           >
-            <img
-              src={src}
-              alt={`Sentia ${entry.year} photo ${i + 1}`}
-              className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
-            />
+            <div className="relative w-full h-60 md:h-56">
+              <Image
+                src={src}
+                alt={`Sentia ${entry.year} photo ${i + 1}`}
+                fill
+                sizes="(max-width: 768px) 50vw, 25vw"
+                className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+              />
+            </div>
           </motion.div>
         ))}
       </div>
@@ -70,56 +152,99 @@ function YearBlock({ entry, index }: { entry: typeof timeline[0]; index: number 
 }
 
 export default function GalleryPage() {
+  const [activeImage, setActiveImage] = useState<string | null>(null)
+
+  // Lock scroll when lightbox is open
+  useEffect(() => {
+    document.body.style.overflow = activeImage ? "hidden" : "auto"
+  }, [activeImage])
+
+  // ESC to close
+  useEffect(() => {
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setActiveImage(null)
+    }
+    window.addEventListener("keydown", handleKey)
+    return () => window.removeEventListener("keydown", handleKey)
+  }, [])
+
   return (
     <main className="min-h-screen bg-white text-black">
-      <br />
-      <br />
-      <br />
 
-      <div className="max-w-5xl mx-auto px-6">
+      <div className="max-w-5xl mx-auto px-6 pt-32">
 
-        {}
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          className="pt-14 pb-10"
+          className="pb-10"
         >
           <p className="text-[10px] font-bold tracking-[0.35em] text-zinc-400 uppercase mb-4">
-            Mangalore Institute of Technology &amp; Engineering
+            Mangalore Institute of Technology & Engineering
           </p>
           <h1 className="text-4xl md:text-5xl font-black tracking-tighter leading-tight text-black mb-3">
             A Decade of Memories
           </h1>
           <p className="text-sm text-zinc-400 font-light max-w-lg leading-relaxed">
             Every edition of Sentia — from its humble beginnings to its grandest stages.
-            Fourteen years of talent, culture, and unforgettable moments.
+            Years of talent, culture, and unforgettable moments.
           </p>
         </motion.div>
-
-        {}
-        <div>
-          {timeline.map((entry, i) => (
-            <YearBlock key={entry.year} entry={entry} index={i} />
-          ))}
-        </div>
-
-        {}
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
           className="border-t border-zinc-100 py-16 text-left"
         >
-          <p className="text-[10px] font-bold tracking-[0.35em] text-zinc-300 uppercase mb-3">
-            The story continues
+          <p className="text-3xl font-black tracking-tighter text-black">
+            Sentia 2026
           </p>
-          <p className="text-3xl font-black tracking-tighter text-black">Sentia 2026</p>
-          <p className="text-xs text-zinc-400 mt-1 tracking-wide">Coming soon — stay tuned.</p>
-        </motion.div>
+          <p className="text-xs text-zinc-400 mt-1 tracking-wide">
+            Coming soon — stay tuned.
+          </p>
+        </motion.div> */}
+
+        {/* Timeline */}
+        <div>
+          {timeline.map((entry, i) => (
+            <YearBlock
+              key={entry.year}
+              entry={entry}
+              index={i}
+              onImageClick={setActiveImage}
+            />
+          ))}
+        </div>
+
+        {/* Ending Section */}
 
       </div>
+
+      {/* Fullscreen Lightbox */}
+      <AnimatePresence>
+        {activeImage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-50 bg-black/90 backdrop-blur-sm flex items-center justify-center p-6"
+            onClick={() => setActiveImage(null)}
+          >
+            <motion.img
+              src={activeImage}
+              initial={{ scale: 0.9 }}
+              animate={{ scale: 1 }}
+              exit={{ scale: 0.9 }}
+              transition={{ duration: 0.3 }}
+              className="max-w-full max-h-full object-contain rounded-xl"
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
+
     </main>
   )
 }
