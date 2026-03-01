@@ -1,38 +1,145 @@
 export const EVENTS = [
   {
-    name: "Spiderman",
-    regionId: "basketballcourt"
-  },
-  {
-    name: "Battle of Bands",
+    name: "RHYTHMIC REVERENCE",
     regionId: "mitegreens"
   },
   {
-    name: "Battle of Bands",
+    name: "Rhythm Rumble",
     regionId: "mitegreens"
   },
   {
-    name: "Battle of Bands",
+    name: "TALES OF TAAL",
     regionId: "mitegreens"
   },
   {
-    name: "Battle of Bands",
+    name: "NADA SAGARA",
     regionId: "mitegreens"
   },
   {
-    name: "Battle of Bands",
+    name: "POSEIDON’S PLAYBACK DUETS",
     regionId: "mitegreens"
   },
   {
-    name: "Battle of Bands",
+    name: "DRISHYAM",
+    regionId: "pgblock"
+  },
+  {
+    name: "LENSCRAFT",
     regionId: "mitegreens"
   },
   {
-    name: "Battle of Bands",
+    name: "RANGA VIMARSHA",
     regionId: "mitegreens"
   },
   {
-    name: "Pallet",
+    name: "BINDAAS BRANDS",
     regionId: "mainblock"
+  }
+  ,
+  {
+    name: "SPELL",
+    regionId: "mainblock"
+  },
+  {
+    name: "MOCK PRESS",
+    regionId: "mainblock"
+  },
+  {
+    name: "JAM (Flip Master)",
+    regionId: "mainblock"
+  },
+  {
+    name: "LIVING CANVAS",
+    regionId: "mainblock"
+  },
+  {
+    name: "CHROMAFATE",
+    regionId: "mainblock"
+  },
+  {
+    name: "CTF",
+    regionId: "mainblock"
+  },
+  {
+    name: "Code Chef",
+    regionId: "mainblock"
+  },
+  {
+    name: "Drone Edge",
+    regionId: "mainblock"
+  },
+  {
+    name: "WebCraft Design",
+    regionId: "mainblock"
+  },
+  {
+    name: "Mind2Circuit",
+    regionId: "mainblock"
+  },
+  {
+    name: "Yudhastra",
+    regionId: "mainblock"
+  },
+  {
+    name: "VISION X",
+    regionId: "mainblock"
+  },
+  {
+    name: "Gen AI Prompt Engg. Battle",
+    regionId: "mainblock"
+  },
+  {
+    name: "Robo Soccer",
+    regionId: "mainblock"
+  },
+  {
+    name: "TIDAL-CLASH",
+    regionId: "pgblock"
+  },
+  {
+    name: "THE TITANS",
+    regionId: "pgblock"
+  },
+  {
+    name: "AQUA IMPERIUM",
+    regionId: "pgblock"
+  },
+  {
+    name: "TIDE OF TALENTS",
+    regionId: "pgblock"
+  },
+  {
+    name: "IT MANAGER CHALLENGE",
+    regionId: "pgblock"
+  },
+  {
+    name: "CODE RED",
+    regionId: "pgblock"
+  }
+  ,
+  {
+    name: "NEXT NODE",
+    regionId: "pgblock"
+  }
+  ,
+  {
+    name: "General Quiz",
+    regionId: "mainblock"
+  },
+  {
+    name: "TECH DUMB CHARADES (TDC)",
+    regionId: "mainblock"
+  },
+  {
+    name: "Battle of the Bands",
+    regionId: "mitegreens"
+  },
+  {
+    name: "Fashion Walk",
+    regionId: "mitegreens"
+  },
+  {
+    name: "Celebrity Nite",
+    regionId: "mitegreens"
   }
 ];

@@ -1,14 +1,14 @@
 "use client";
 
 import {
-  forwardRef,
-  useEffect,
-  useImperativeHandle,
-  useRef,
-  type Dispatch,
-  type PointerEvent as ReactPointerEvent,
-  type SetStateAction,
-  type WheelEvent as ReactWheelEvent,
+    forwardRef,
+    useEffect,
+    useImperativeHandle,
+    useRef,
+    type Dispatch,
+    type PointerEvent as ReactPointerEvent,
+    type SetStateAction,
+    type WheelEvent as ReactWheelEvent,
 } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -24,495 +24,495 @@ const MIN_SCALE = 0.6;
 const MAX_SCALE = 4;
 
 type RegionRecord = {
-  id: string;
-  name: string;
+    id: string;
+    name: string;
 };
 
 export type MapHandle = {
-  zoomTo: (regionId: string) => void;
-  getRegions: () => RegionRecord[];
+    zoomTo: (regionId: string) => void;
+    getRegions: () => RegionRecord[];
 };
 
 export type TooltipState = {
-  visible: boolean;
-  x: number;
-  y: number;
-  title: string;
-  info: string;
+    visible: boolean;
+    x: number;
+    y: number;
+    title: string;
+    info: string;
 };
 
 type MapProps = {
-  onRegionSelect?: (title: string, info: string) => void;
-  onTooltip?: Dispatch<SetStateAction<TooltipState>>;
+    onRegionSelect?: (title: string, info: string) => void;
+    onTooltip?: Dispatch<SetStateAction<TooltipState>>;
 };
 
 type PointerData = {
-  clientX: number;
-  clientY: number;
+    clientX: number;
+    clientY: number;
 };
 
 type PanZoomState = {
-  scale: number;
-  rotation: number;
-  x: number;
-  y: number;
-  dragging: boolean;
-  isPinching: boolean;
-  dragDistance: number;
-  lastX: number;
-  lastY: number;
-  svgScale: number;
-  pointerDownTarget: EventTarget | null;
-  pointers: Map<number, PointerData>;
-  initialPinchDistance: number | null;
-  initialScale: number;
-  pinchMidpoint: { x: number; y: number } | null;
-  initialRotation: number;
-  initialPinchAngle: number;
+    scale: number;
+    rotation: number;
+    x: number;
+    y: number;
+    dragging: boolean;
+    isPinching: boolean;
+    dragDistance: number;
+    lastX: number;
+    lastY: number;
+    svgScale: number;
+    pointerDownTarget: EventTarget | null;
+    pointers: Map<number, PointerData>;
+    initialPinchDistance: number | null;
+    initialScale: number;
+    pinchMidpoint: { x: number; y: number } | null;
+    initialRotation: number;
+    initialPinchAngle: number;
 };
 
 const SVGMap = forwardRef<MapHandle, MapProps>(function SVGMap(
-  { onRegionSelect, onTooltip },
-  ref,
+    { onRegionSelect, onTooltip },
+    ref,
 ) {
-  const svgRef = useRef<SVGSVGElement | null>(null);
-  const mapRef = useRef<SVGGElement | null>(null);
-  const bubbleLayerRef = useRef<HTMLDivElement | null>(null);
+    const svgRef = useRef<SVGSVGElement | null>(null);
+    const mapRef = useRef<SVGGElement | null>(null);
+    const bubbleLayerRef = useRef<HTMLDivElement | null>(null);
 
-  const state = useRef<PanZoomState>({
-    scale: 1,
-    rotation: 0,
-    x: 0,
-    y: 0,
-    dragging: false,
-    isPinching: false,
-    dragDistance: 0,
-    lastX: 0,
-    lastY: 0,
-    svgScale: 1,
-    pointerDownTarget: null,
-    pointers: new Map(),
-    initialPinchDistance: null,
-    initialScale: 1,
-    pinchMidpoint: null,
-    initialRotation: 0,
-    initialPinchAngle: 0,
-  });
-
-  const updateSvgScale = () => {
-    const svg = svgRef.current;
-    if (!svg) return;
-
-    const vb = svg.viewBox.baseVal;
-    const rect = svg.getBoundingClientRect();
-    if (!vb.width) return;
-
-    state.current.svgScale = rect.width / vb.width;
-  };
-
-  const apply = () => {
-    const target = mapRef.current;
-    if (!target) return;
-
-    const s = state.current;
-
-    gsap.set(target, {
-      x: s.x * s.scale,
-      y: s.y * s.scale,
-      scale: s.scale,
-      rotation: s.rotation,
-      transformOrigin: "0 0",
-      force3D: true,
+    const state = useRef<PanZoomState>({
+        scale: 1,
+        rotation: 0,
+        x: 0,
+        y: 0,
+        dragging: false,
+        isPinching: false,
+        dragDistance: 0,
+        lastX: 0,
+        lastY: 0,
+        svgScale: 1,
+        pointerDownTarget: null,
+        pointers: new Map(),
+        initialPinchDistance: null,
+        initialScale: 1,
+        pinchMidpoint: null,
+        initialRotation: 0,
+        initialPinchAngle: 0,
     });
-  };
 
-  const setActiveRegion = (id: string) => {
-    const map = mapRef.current;
-    if (!map) return;
+    const updateSvgScale = () => {
+        const svg = svgRef.current;
+        if (!svg) return;
 
-    map
-      .querySelectorAll<SVGElement>(".region.active")
-      .forEach((r) => r.classList.remove("active"));
+        const vb = svg.viewBox.baseVal;
+        const rect = svg.getBoundingClientRect();
+        if (!vb.width) return;
 
-    const region = map.querySelector<SVGElement>(`[data-region="${id}"]`);
-    if (!region) return;
+        state.current.svgScale = rect.width / vb.width;
+    };
 
-    region.classList.add("active");
-  };
+    const apply = () => {
+        const target = mapRef.current;
+        if (!target) return;
 
-  const zoomTo = (id: string) => {
-    const map = mapRef.current;
-    const svg = svgRef.current;
-    if (!map || !svg) return;
+        const s = state.current;
 
-    const region = map.querySelector<SVGGraphicsElement>(`[data-region="${id}"]`);
-    if (!region) return;
+        gsap.set(target, {
+            x: s.x * s.scale,
+            y: s.y * s.scale,
+            scale: s.scale,
+            rotation: s.rotation,
+            transformOrigin: "0 0",
+            force3D: true,
+        });
+    };
 
-    const s = state.current;
-    const vb = svg.viewBox.baseVal;
-    const box = region.getBBox();
-    const pad = 0.7;
+    const setActiveRegion = (id: string) => {
+        const map = mapRef.current;
+        if (!map) return;
 
-    const nextScale = Math.min(
-      MAX_SCALE,
-      Math.max(
-        MIN_SCALE,
-        Math.min(vb.width / box.width, vb.height / box.height) * pad,
-      ),
-    );
+        map
+            .querySelectorAll<SVGElement>(".region.active")
+            .forEach((r) => r.classList.remove("active"));
 
-    const cx = box.x + box.width / 2;
-    const cy = box.y + box.height / 2;
+        const region = map.querySelector<SVGElement>(`[data-region="${id}"]`);
+        if (!region) return;
 
-    s.rotation = 0;
-    s.scale = nextScale;
-    s.x = vb.width / 2 / nextScale - cx;
-    s.y = vb.height / 2 / nextScale - cy;
+        region.classList.add("active");
+    };
 
-    gsap.to(map, {
-      x: s.x * s.scale,
-      y: s.y * s.scale,
-      scale: s.scale,
-      rotation: 0,
-      duration: 0.8,
-      ease: "power2.inOut",
-    });
-  };
+    const zoomTo = (id: string) => {
+        const map = mapRef.current;
+        const svg = svgRef.current;
+        if (!map || !svg) return;
 
-  const down = (e: ReactPointerEvent<SVGSVGElement>) => {
-    const svg = svgRef.current;
-    if (!svg) return;
+        const region = map.querySelector<SVGGraphicsElement>(`[data-region="${id}"]`);
+        if (!region) return;
 
-    svg.setPointerCapture(e.pointerId);
+        const s = state.current;
+        const vb = svg.viewBox.baseVal;
+        const box = region.getBBox();
+        const pad = 0.7;
 
-    const s = state.current;
-    s.pointers.set(e.pointerId, { clientX: e.clientX, clientY: e.clientY });
+        const nextScale = Math.min(
+            MAX_SCALE,
+            Math.max(
+                MIN_SCALE,
+                Math.min(vb.width / box.width, vb.height / box.height) * pad,
+            ),
+        );
 
-    if (s.pointers.size === 2) {
-      s.isPinching = true;
-      s.dragging = false;
+        const cx = box.x + box.width / 2;
+        const cy = box.y + box.height / 2;
 
-      const [p1, p2] = [...s.pointers.values()];
-      const dx = p1.clientX - p2.clientX;
-      const dy = p1.clientY - p2.clientY;
-
-      s.initialPinchDistance = Math.hypot(dx, dy);
-      s.initialScale = s.scale;
-
-      const angle = Math.atan2(p2.clientY - p1.clientY, p2.clientX - p1.clientX);
-
-      s.initialPinchAngle = angle;
-      s.initialRotation = s.rotation;
-
-      const rect = svg.getBoundingClientRect();
-      const vb = svg.viewBox.baseVal;
-
-      const mx = (p1.clientX + p2.clientX) / 2;
-      const my = (p1.clientY + p2.clientY) / 2;
-
-      s.pinchMidpoint = {
-        x: ((mx - rect.left) / rect.width) * vb.width,
-        y: ((my - rect.top) / rect.height) * vb.height,
-      };
-
-      return;
-    }
-
-    if (s.pointers.size === 1) {
-      s.dragging = true;
-      s.dragDistance = 0;
-      s.lastX = e.clientX;
-      s.lastY = e.clientY;
-      s.pointerDownTarget = e.target;
-    }
-  };
-
-  const move = (e: ReactPointerEvent<SVGSVGElement>) => {
-    const svg = svgRef.current;
-    if (!svg) return;
-
-    const s = state.current;
-    if (!s.pointers.has(e.pointerId)) return;
-
-    s.pointers.set(e.pointerId, { clientX: e.clientX, clientY: e.clientY });
-
-    if (s.isPinching && s.pointers.size === 2) {
-      const [p1, p2] = [...s.pointers.values()];
-
-      const dx = p1.clientX - p2.clientX;
-      const dy = p1.clientY - p2.clientY;
-      const distance = Math.hypot(dx, dy);
-      const initialDistance = s.initialPinchDistance;
-      if (!initialDistance) return;
-
-      const pinchRatio = distance / initialDistance;
-
-      const angle = Math.atan2(p2.clientY - p1.clientY, p2.clientX - p1.clientX);
-      const angleDelta = angle - s.initialPinchAngle;
-
-      const rect = svg.getBoundingClientRect();
-      const vb = svg.viewBox.baseVal;
-
-      const mx = (p1.clientX + p2.clientX) / 2 - rect.left;
-      const my = (p1.clientY + p2.clientY) / 2 - rect.top;
-
-      const px = (mx / rect.width) * vb.width;
-      const py = (my / rect.height) * vb.height;
-
-      const ax = px / s.scale - s.x;
-      const ay = py / s.scale - s.y;
-
-      const pinchStrength = Math.abs(pinchRatio - 1);
-      const rotateStrength = Math.abs(angleDelta);
-
-      if (rotateStrength > ROTATE_THRESHOLD && rotateStrength > pinchStrength) {
-        const prevRotation = s.rotation;
-        const nextRotation = s.initialRotation + (angleDelta * 180) / Math.PI;
-
-        const rad = ((nextRotation - prevRotation) * Math.PI) / 180;
-        const cos = Math.cos(rad);
-        const sin = Math.sin(rad);
-
-        const rx = ax * cos - ay * sin;
-        const ry = ax * sin + ay * cos;
-
-        s.x += ax - rx;
-        s.y += ay - ry;
-
-        s.rotation = nextRotation;
-
-        apply();
-        return;
-      }
-
-      if (pinchStrength > PINCH_THRESHOLD) {
-        let nextScale = s.initialScale * pinchRatio;
-        nextScale = Math.min(MAX_SCALE, Math.max(MIN_SCALE, nextScale));
-
+        s.rotation = 0;
         s.scale = nextScale;
-        s.rotation = s.initialRotation;
+        s.x = vb.width / 2 / nextScale - cx;
+        s.y = vb.height / 2 / nextScale - cy;
 
-        s.x = px / nextScale - ax;
-        s.y = py / nextScale - ay;
+        gsap.to(map, {
+            x: s.x * s.scale,
+            y: s.y * s.scale,
+            scale: s.scale,
+            rotation: 0,
+            duration: 0.8,
+            ease: "power2.inOut",
+        });
+    };
+
+    const down = (e: ReactPointerEvent<SVGSVGElement>) => {
+        const svg = svgRef.current;
+        if (!svg) return;
+
+        svg.setPointerCapture(e.pointerId);
+
+        const s = state.current;
+        s.pointers.set(e.pointerId, { clientX: e.clientX, clientY: e.clientY });
+
+        if (s.pointers.size === 2) {
+            s.isPinching = true;
+            s.dragging = false;
+
+            const [p1, p2] = [...s.pointers.values()];
+            const dx = p1.clientX - p2.clientX;
+            const dy = p1.clientY - p2.clientY;
+
+            s.initialPinchDistance = Math.hypot(dx, dy);
+            s.initialScale = s.scale;
+
+            const angle = Math.atan2(p2.clientY - p1.clientY, p2.clientX - p1.clientX);
+
+            s.initialPinchAngle = angle;
+            s.initialRotation = s.rotation;
+
+            const rect = svg.getBoundingClientRect();
+            const vb = svg.viewBox.baseVal;
+
+            const mx = (p1.clientX + p2.clientX) / 2;
+            const my = (p1.clientY + p2.clientY) / 2;
+
+            s.pinchMidpoint = {
+                x: ((mx - rect.left) / rect.width) * vb.width,
+                y: ((my - rect.top) / rect.height) * vb.height,
+            };
+
+            return;
+        }
+
+        if (s.pointers.size === 1) {
+            s.dragging = true;
+            s.dragDistance = 0;
+            s.lastX = e.clientX;
+            s.lastY = e.clientY;
+            s.pointerDownTarget = e.target;
+        }
+    };
+
+    const move = (e: ReactPointerEvent<SVGSVGElement>) => {
+        const svg = svgRef.current;
+        if (!svg) return;
+
+        const s = state.current;
+        if (!s.pointers.has(e.pointerId)) return;
+
+        s.pointers.set(e.pointerId, { clientX: e.clientX, clientY: e.clientY });
+
+        if (s.isPinching && s.pointers.size === 2) {
+            const [p1, p2] = [...s.pointers.values()];
+
+            const dx = p1.clientX - p2.clientX;
+            const dy = p1.clientY - p2.clientY;
+            const distance = Math.hypot(dx, dy);
+            const initialDistance = s.initialPinchDistance;
+            if (!initialDistance) return;
+
+            const pinchRatio = distance / initialDistance;
+
+            const angle = Math.atan2(p2.clientY - p1.clientY, p2.clientX - p1.clientX);
+            const angleDelta = angle - s.initialPinchAngle;
+
+            const rect = svg.getBoundingClientRect();
+            const vb = svg.viewBox.baseVal;
+
+            const mx = (p1.clientX + p2.clientX) / 2 - rect.left;
+            const my = (p1.clientY + p2.clientY) / 2 - rect.top;
+
+            const px = (mx / rect.width) * vb.width;
+            const py = (my / rect.height) * vb.height;
+
+            const ax = px / s.scale - s.x;
+            const ay = py / s.scale - s.y;
+
+            const pinchStrength = Math.abs(pinchRatio - 1);
+            const rotateStrength = Math.abs(angleDelta);
+
+            if (rotateStrength > ROTATE_THRESHOLD && rotateStrength > pinchStrength) {
+                const prevRotation = s.rotation;
+                const nextRotation = s.initialRotation + (angleDelta * 180) / Math.PI;
+
+                const rad = ((nextRotation - prevRotation) * Math.PI) / 180;
+                const cos = Math.cos(rad);
+                const sin = Math.sin(rad);
+
+                const rx = ax * cos - ay * sin;
+                const ry = ax * sin + ay * cos;
+
+                s.x += ax - rx;
+                s.y += ay - ry;
+
+                s.rotation = nextRotation;
+
+                apply();
+                return;
+            }
+
+            if (pinchStrength > PINCH_THRESHOLD) {
+                let nextScale = s.initialScale * pinchRatio;
+                nextScale = Math.min(MAX_SCALE, Math.max(MIN_SCALE, nextScale));
+
+                s.scale = nextScale;
+                s.rotation = s.initialRotation;
+
+                s.x = px / nextScale - ax;
+                s.y = py / nextScale - ay;
+
+                apply();
+            }
+
+            return;
+        }
+
+        if (s.dragging && s.pointers.size === 1) {
+            const dx = e.clientX - s.lastX;
+            const dy = e.clientY - s.lastY;
+
+            s.dragDistance += Math.abs(dx) + Math.abs(dy);
+
+            s.x += dx / (s.scale * s.svgScale);
+            s.y += dy / (s.scale * s.svgScale);
+
+            s.lastX = e.clientX;
+            s.lastY = e.clientY;
+
+            apply();
+        }
+    };
+
+    const up = (e: ReactPointerEvent<SVGSVGElement>) => {
+        const s = state.current;
+        s.pointers.delete(e.pointerId);
+
+        if (s.isPinching && s.pointers.size < 2) {
+            s.isPinching = false;
+            s.initialScale = s.scale;
+            s.initialRotation = s.rotation;
+            s.initialPinchDistance = null;
+            s.pinchMidpoint = null;
+            s.pointerDownTarget = null;
+            return;
+        }
+
+        if (s.pointers.size === 0) {
+            s.dragging = false;
+
+            const CLICK_THRESHOLD = 5;
+            if (s.dragDistance > CLICK_THRESHOLD) {
+                s.pointerDownTarget = null;
+                return;
+            }
+
+            const downTarget = s.pointerDownTarget;
+            s.pointerDownTarget = null;
+
+            if (!(downTarget instanceof Element)) return;
+
+            const region = downTarget.closest(".region") as SVGElement | null;
+            if (!region) return;
+
+            const id = region.dataset.region;
+            const title = region.dataset.title;
+            const info = region.dataset.info;
+            if (!id) return;
+
+            setActiveRegion(id);
+            zoomTo(id);
+
+            onRegionSelect?.(title ?? "", info ?? "");
+        }
+    };
+
+    const wheel = (e: ReactWheelEvent<SVGSVGElement>) => {
+        const svg = svgRef.current;
+        if (!svg) return;
+
+        const s = state.current;
+        const rect = svg.getBoundingClientRect();
+        const vb = svg.viewBox.baseVal;
+
+        const zoom = e.deltaY < 0 ? 1.1 : 0.9;
+        const ns = Math.min(MAX_SCALE, Math.max(MIN_SCALE, s.scale * zoom));
+        if (ns === s.scale) return;
+
+        const mx = ((e.clientX - rect.left) / rect.width) * vb.width;
+        const my = ((e.clientY - rect.top) / rect.height) * vb.height;
+
+        const wx = mx / s.scale - s.x;
+        const wy = my / s.scale - s.y;
+
+        s.scale = ns;
+        s.x = mx / ns - wx;
+        s.y = my / ns - wy;
 
         apply();
-      }
-
-      return;
-    }
-
-    if (s.dragging && s.pointers.size === 1) {
-      const dx = e.clientX - s.lastX;
-      const dy = e.clientY - s.lastY;
-
-      s.dragDistance += Math.abs(dx) + Math.abs(dy);
-
-      s.x += dx / (s.scale * s.svgScale);
-      s.y += dy / (s.scale * s.svgScale);
-
-      s.lastX = e.clientX;
-      s.lastY = e.clientY;
-
-      apply();
-    }
-  };
-
-  const up = (e: ReactPointerEvent<SVGSVGElement>) => {
-    const s = state.current;
-    s.pointers.delete(e.pointerId);
-
-    if (s.isPinching && s.pointers.size < 2) {
-      s.isPinching = false;
-      s.initialScale = s.scale;
-      s.initialRotation = s.rotation;
-      s.initialPinchDistance = null;
-      s.pinchMidpoint = null;
-      s.pointerDownTarget = null;
-      return;
-    }
-
-    if (s.pointers.size === 0) {
-      s.dragging = false;
-
-      const CLICK_THRESHOLD = 5;
-      if (s.dragDistance > CLICK_THRESHOLD) {
-        s.pointerDownTarget = null;
-        return;
-      }
-
-      const downTarget = s.pointerDownTarget;
-      s.pointerDownTarget = null;
-
-      if (!(downTarget instanceof Element)) return;
-
-      const region = downTarget.closest(".region") as SVGElement | null;
-      if (!region) return;
-
-      const id = region.dataset.region;
-      const title = region.dataset.title;
-      const info = region.dataset.info;
-      if (!id) return;
-
-      setActiveRegion(id);
-      zoomTo(id);
-
-      onRegionSelect?.(title ?? "", info ?? "");
-    }
-  };
-
-  const wheel = (e: ReactWheelEvent<SVGSVGElement>) => {
-    const svg = svgRef.current;
-    if (!svg) return;
-
-    const s = state.current;
-    const rect = svg.getBoundingClientRect();
-    const vb = svg.viewBox.baseVal;
-
-    const zoom = e.deltaY < 0 ? 1.1 : 0.9;
-    const ns = Math.min(MAX_SCALE, Math.max(MIN_SCALE, s.scale * zoom));
-    if (ns === s.scale) return;
-
-    const mx = ((e.clientX - rect.left) / rect.width) * vb.width;
-    const my = ((e.clientY - rect.top) / rect.height) * vb.height;
-
-    const wx = mx / s.scale - s.x;
-    const wy = my / s.scale - s.y;
-
-    s.scale = ns;
-    s.x = mx / ns - wx;
-    s.y = my / ns - wy;
-
-    apply();
-  };
-useGSAP(() => {
-  const ctx = gsap.context(() => {
-    apply();
-  });
-
-  return () => ctx.revert();
-});
-
-  useEffect(() => {
-    updateSvgScale();
-    window.addEventListener("resize", updateSvgScale);
-    return () => window.removeEventListener("resize", updateSvgScale);
-  }, []);
-
-  useImperativeHandle(ref, () => ({
-    zoomTo: (id: string) => {
-      setActiveRegion(id);
-      zoomTo(id);
-    },
-    getRegions: () => {
-      const map = mapRef.current;
-      if (!map) return [];
-
-      return Array.from(map.querySelectorAll<SVGElement>(".region"))
-        .map((r) => ({
-          id: r.dataset.region ?? "",
-          name: r.dataset.title ?? "",
-        }))
-        .filter((r) => r.id.length > 0);
-    },
-  }));
-
-  useEffect(() => {
-    if (window.matchMedia("(hover: none)").matches) return;
-
-    const map = mapRef.current;
-    if (!map) return;
-
-    const onMove = (e: PointerEvent) => {
-      const target = e.target;
-      if (!(target instanceof Element)) return;
-
-      const region = target.closest(".region") as SVGElement | null;
-      if (!region) {
-        onTooltip?.((prev) => ({ ...prev, visible: false }));
-        return;
-      }
-
-      const { title, info } = region.dataset;
-
-      onTooltip?.({
-        visible: true,
-        x: e.clientX,
-        y: e.clientY,
-        title: title ?? "",
-        info: info ?? "",
-      });
     };
+    useGSAP(() => {
+        const ctx = gsap.context(() => {
+            apply();
+        });
 
-    const onLeave = () => {
-      onTooltip?.((prev) => ({ ...prev, visible: false }));
-    };
+        return () => ctx.revert();
+    });
 
-    map.addEventListener("pointermove", onMove);
-    map.addEventListener("pointerleave", onLeave);
+    useEffect(() => {
+        updateSvgScale();
+        window.addEventListener("resize", updateSvgScale);
+        return () => window.removeEventListener("resize", updateSvgScale);
+    }, []);
 
-    return () => {
-      map.removeEventListener("pointermove", onMove);
-      map.removeEventListener("pointerleave", onLeave);
-    };
-  }, [onTooltip]);
+    useImperativeHandle(ref, () => ({
+        zoomTo: (id: string) => {
+            setActiveRegion(id);
+            zoomTo(id);
+        },
+        getRegions: () => {
+            const map = mapRef.current;
+            if (!map) return [];
 
-  useEffect(() => {
-    const layer = bubbleLayerRef.current;
-    if (!layer) return;
+            return Array.from(map.querySelectorAll<SVGElement>(".region"))
+                .map((r) => ({
+                    id: r.dataset.region ?? "",
+                    name: r.dataset.title ?? "",
+                }))
+                .filter((r) => r.id.length > 0);
+        },
+    }));
 
-    const bubbleCount = window.innerWidth < 768 ? 12 : 24;
-    const bubbles: Array<{ el: HTMLDivElement; x: number; y: number; vx: number; vy: number }> = [];
+    useEffect(() => {
+        if (window.matchMedia("(hover: none)").matches) return;
 
-    const width = window.innerWidth;
-    const height = window.innerHeight;
+        const map = mapRef.current;
+        if (!map) return;
 
-    for (let i = 0; i < bubbleCount; i++) {
-      const el = document.createElement("div");
-      el.className = "bubble";
+        const onMove = (e: PointerEvent) => {
+            const target = e.target;
+            if (!(target instanceof Element)) return;
 
-      const size = Math.random() * 10 + 6;
-      el.style.width = `${size}px`;
-      el.style.height = `${size}px`;
+            const region = target.closest(".region") as SVGElement | null;
+            if (!region) {
+                onTooltip?.((prev) => ({ ...prev, visible: false }));
+                return;
+            }
 
-      layer.appendChild(el);
+            const { title, info } = region.dataset;
 
-      bubbles.push({
-        el,
-        x: Math.random() * width,
-        y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.15,
-        vy: -(Math.random() * 0.3 + 0.1),
-      });
-    }
+            onTooltip?.({
+                visible: true,
+                x: e.clientX,
+                y: e.clientY,
+                title: title ?? "",
+                info: info ?? "",
+            });
+        };
 
-    let rafId = 0;
+        const onLeave = () => {
+            onTooltip?.((prev) => ({ ...prev, visible: false }));
+        };
 
-    const animate = () => {
-      for (const b of bubbles) {
-        b.x += b.vx;
-        b.y += b.vy;
+        map.addEventListener("pointermove", onMove);
+        map.addEventListener("pointerleave", onLeave);
 
-        if (b.y < -20) b.y = height + 20;
-        if (b.x < -20) b.x = width + 20;
-        if (b.x > width + 20) b.x = -20;
+        return () => {
+            map.removeEventListener("pointermove", onMove);
+            map.removeEventListener("pointerleave", onLeave);
+        };
+    }, [onTooltip]);
 
-        b.el.style.transform = `translate3d(${b.x}px, ${b.y}px, 0)`;
-      }
+    useEffect(() => {
+        const layer = bubbleLayerRef.current;
+        if (!layer) return;
 
-      rafId = requestAnimationFrame(animate);
-    };
+        const bubbleCount = window.innerWidth < 768 ? 12 : 24;
+        const bubbles: Array<{ el: HTMLDivElement; x: number; y: number; vx: number; vy: number }> = [];
 
-    animate();
+        const width = window.innerWidth;
+        const height = window.innerHeight;
 
-    return () => {
-      cancelAnimationFrame(rafId);
-      bubbles.forEach((b) => b.el.remove());
-    };
-  }, []);
+        for (let i = 0; i < bubbleCount; i++) {
+            const el = document.createElement("div");
+            el.className = "bubble";
 
-  return (
-    <>
-    <WaterShader />
+            const size = Math.random() * 10 + 6;
+            el.style.width = `${size}px`;
+            el.style.height = `${size}px`;
+
+            layer.appendChild(el);
+
+            bubbles.push({
+                el,
+                x: Math.random() * width,
+                y: Math.random() * height,
+                vx: (Math.random() - 0.5) * 0.15,
+                vy: -(Math.random() * 0.3 + 0.1),
+            });
+        }
+
+        let rafId = 0;
+
+        const animate = () => {
+            for (const b of bubbles) {
+                b.x += b.vx;
+                b.y += b.vy;
+
+                if (b.y < -20) b.y = height + 20;
+                if (b.x < -20) b.x = width + 20;
+                if (b.x > width + 20) b.x = -20;
+
+                b.el.style.transform = `translate3d(${b.x}px, ${b.y}px, 0)`;
+            }
+
+            rafId = requestAnimationFrame(animate);
+        };
+
+        animate();
+
+        return () => {
+            cancelAnimationFrame(rafId);
+            bubbles.forEach((b) => b.el.remove());
+        };
+    }, []);
+
+    return (
+        <>
+            <WaterShader />
             <div ref={bubbleLayerRef} className="bubble-layer" />
             <div className="map-wrapper">
                 <svg className="mapsvg"
@@ -543,75 +543,75 @@ useGSAP(() => {
                                 <stop offset="1" stopColor="#fffdc6" />
                             </linearGradient>
                             <style>
-{`
-  .cls-12,
-  .cls-14,
-  .cls-17,
-  .cls-18,
-  .cls-20,
-  .cls-21,
-  .cls-22,
-  .cls-23,
-  .cls-25,
-  .cls-27,
-  .cls-3,
-  .cls-31,
-  .cls-32,
-  .cls-38,
-  .cls-39,
-  .cls-42,
-  .cls-44,
-  .cls-45,
-  .cls-51,
-  .cls-53,
-  .cls-6,
-  .cls-62,
-  .cls-64,
-  .cls-66,
-  .cls-72,
-  .cls-74,
-  .cls-76,
-  .cls-9 {
-    fill-rule: evenodd;
-  }
+                                {`
+                                    .cls-12,
+                                    .cls-14,
+                                    .cls-17,
+                                    .cls-18,
+                                    .cls-20,
+                                    .cls-21,
+                                    .cls-22,
+                                    .cls-23,
+                                    .cls-25,
+                                    .cls-27,
+                                    .cls-3,
+                                    .cls-31,
+                                    .cls-32,
+                                    .cls-38,
+                                    .cls-39,
+                                    .cls-42,
+                                    .cls-44,
+                                    .cls-45,
+                                    .cls-51,
+                                    .cls-53,
+                                    .cls-6,
+                                    .cls-62,
+                                    .cls-64,
+                                    .cls-66,
+                                    .cls-72,
+                                    .cls-74,
+                                    .cls-76,
+                                    .cls-9 {
+                                    fill-rule: evenodd;
+                                    }
 
-  .cls-3 { fill: #636571; }
-  .cls-6 { fill: #ffe6bb; }
-  .cls-9 { fill: #388e3c; }
-  .cls-12 { fill: #504f4e; }
-  .cls-14 { fill: #ab9e96; }
-  .cls-17 { fill: #555; }
-  .cls-18 { fill: #fff; }
-  .cls-20 { fill: #89e3e3; }
-  .cls-21 { fill: #54675d; }
-  .cls-22 { fill: #8b8880; }
-  .cls-23 { fill: #2d3d35; }
-  .cls-25 { fill: #256828; }
+                                    .cls-3 { fill: #636571; }
+                                    .cls-6 { fill: #ffe6bb; }
+                                    .cls-9 { fill: #388e3c; }
+                                    .cls-12 { fill: #504f4e; }
+                                    .cls-14 { fill: #ab9e96; }
+                                    .cls-17 { fill: #555; }
+                                    .cls-18 { fill: #fff; }
+                                    .cls-20 { fill: #89e3e3; }
+                                    .cls-21 { fill: #54675d; }
+                                    .cls-22 { fill: #8b8880; }
+                                    .cls-23 { fill: #2d3d35; }
+                                    .cls-25 { fill: #256828; }
 
-  .cls-77 {
-    stroke: #556565;
-    stroke-width: 3;
-    fill: none;
-  }
+                                    .cls-77 {
+                                    stroke: #556565;
+                                    stroke-width: 3;
+                                    fill: none;
+                                    }
 
-  .cls-27 { fill: #1e2f57; }
-  .cls-31 { fill: #d3d3d3; }
-  .cls-32 { fill: #caffff; }
-  .cls-38 { fill: #42534a; }
-  .cls-39 { fill: #89adff; }
-  .cls-42 { fill: #e6e6e6; }
-  .cls-44 { fill: #e1e1e1; }
-  .cls-45 { fill: #88e3e3; }
-  .cls-51 { fill: #545454; }
-  .cls-53 { fill: #5a2f25; }
-  .cls-62 { fill: #eee; }
-  .cls-64 { fill: #ae917d; }
-  .cls-66 { fill: #787777; }
-  .cls-72 { fill: #a4f3f3; }
-  .cls-74 { fill: #646464; }
-  .cls-76 { fill: #e8e8e8; }
-`}
-</style>
+                                    .cls-27 { fill: #1e2f57; }
+                                    .cls-31 { fill: #d3d3d3; }
+                                    .cls-32 { fill: #caffff; }
+                                    .cls-38 { fill: #42534a; }
+                                    .cls-39 { fill: #89adff; }
+                                    .cls-42 { fill: #e6e6e6; }
+                                    .cls-44 { fill: #e1e1e1; }
+                                    .cls-45 { fill: #88e3e3; }
+                                    .cls-51 { fill: #545454; }
+                                    .cls-53 { fill: #5a2f25; }
+                                    .cls-62 { fill: #eee; }
+                                    .cls-64 { fill: #ae917d; }
+                                    .cls-66 { fill: #787777; }
+                                    .cls-72 { fill: #a4f3f3; }
+                                    .cls-74 { fill: #646464; }
+                                    .cls-76 { fill: #e8e8e8; }
+                                `}
+                            </style>
 
                         </defs>
                         <g id="base">
@@ -711,12 +711,11 @@ useGSAP(() => {
                                 />
                             </g>
                             <g
-                                id="mitegreens"
                                 fillRule="evenodd"
                                 className="region"
                                 data-region="mitegreens"
                                 data-title="MITE Greens"
-                                data-info="No events here"
+                                data-info="1.Celebrity Nite 2.Battle of the Bands 3.Fashion Walk 4."
                             >
                                 <path
                                     d="M2066.58 2053.45l55.03 460.99c.04.32.08.64.14.96.05.32.12.63.19.95.07.31.15.63.24.94s.18.62.28.92c.1.31.21.61.33.91.12.3.24.6.38.89.13.29.27.58.42.87s.3.57.47.85c.16.28.33.55.51.82s.36.53.55.79.39.52.59.77c.2.25.41.49.63.73s.44.47.66.7c.23.23.46.45.7.67s.48.43.73.63.5.4.76.59c.26.19.52.37.79.55s.54.35.82.51.56.32.85.47.58.29.87.42.59.26.89.38c.3.12.6.23.91.33.31.1.61.2.92.29.31.09.62.17.94.24.31.07.63.14.95.19.32.06.64.1.96.14.32.04.64.07.96.09s.64.04.97.04h.97c.32-.01.64-.03.97-.05.32-.03.64-.06.96-.1s.64-.09.95-.15l721.95-134.69c.38-.07.76-.15 1.13-.25.37-.09.75-.2 1.11-.32.37-.12.73-.24 1.09-.38s.72-.29 1.07-.45.7-.33 1.04-.51.68-.37 1-.58c.33-.2.65-.41.97-.64.32-.22.62-.45.93-.69.3-.24.6-.49.88-.75.29-.26.56-.53.83-.8.27-.28.53-.56.78-.85s.5-.59.73-.9c.23-.31.46-.62.67-.94.21-.32.42-.65.61-.98.19-.33.38-.67.55-1.02a17.293 17.293 0 00.91-2.13c.13-.37.25-.73.36-1.1s.2-.74.29-1.12c.09-.38.16-.76.22-1.14s.11-.76.15-1.15c.04-.38.07-.77.08-1.15.01-.39.02-.77 0-1.16s-.03-.77-.06-1.16c-.03-.38-.08-.77-.13-1.15-.06-.38-.12-.76-.2-1.14-.08-.38-.17-.75-.27-1.12s-.22-.74-.34-1.11-.26-.73-.41-1.08c-.15-.36-.31-.71-.47-1.06-.17-.35-.35-.69-.54-1.03s-.39-.67-.6-.99l-275.11-425.77c-.13-.2-.26-.39-.39-.58s-.27-.38-.42-.57c-.14-.19-.29-.37-.44-.55s-.3-.36-.46-.54-.31-.35-.48-.52c-.16-.17-.33-.34-.49-.5-.17-.16-.34-.33-.51-.48-.17-.16-.35-.31-.53-.46-.18-.15-.36-.3-.55-.44-.19-.14-.37-.29-.56-.42-.19-.14-.38-.27-.58-.4-.2-.13-.39-.26-.59-.38-.2-.12-.4-.24-.61-.36-.2-.12-.41-.23-.62-.33-.21-.11-.42-.21-.63-.31-.21-.1-.43-.2-.64-.29-.22-.09-.43-.18-.65-.26l-.66-.24c-.22-.08-.45-.15-.67-.21-.23-.07-.45-.13-.68-.19-.23-.06-.46-.11-.68-.16-.23-.05-.46-.1-.69-.14s-.46-.08-.7-.11l-.7-.09-.7-.06c-.23-.02-.47-.03-.7-.03h-.7c-.23 0-.47 0-.7.02-.23.01-.47.03-.7.05s-.47.04-.7.07c-.23.03-.47.06-.7.1l-.69.12-501.87 99.47c-.29.06-.58.12-.86.19s-.57.15-.85.23-.56.17-.84.27-.55.2-.83.31c-.27.11-.54.23-.81.35s-.53.25-.79.39c-.26.13-.52.28-.77.42-.26.15-.51.3-.75.46-.25.16-.49.32-.73.49s-.48.35-.71.53-.46.37-.68.56c-.22.19-.44.39-.66.59-.21.2-.42.41-.63.62-.2.21-.4.43-.6.65-.19.22-.38.45-.57.68-.18.23-.36.46-.54.7-.17.24-.34.48-.5.73s-.32.5-.47.75-.29.51-.43.77-.27.52-.4.79-.25.53-.36.81c-.11.27-.22.55-.32.82-.1.28-.19.56-.28.84-.09.28-.17.56-.24.85-.07.28-.14.57-.2.86s-.11.58-.16.87c-.05.29-.09.58-.12.87s-.06.58-.08.88c-.02.29-.03.59-.04.88v.88c0 .29.02.59.04.88.02.29.05.59.08.88l-.02-.03z"
@@ -727,7 +726,11 @@ useGSAP(() => {
                                     fill="#24b729"
                                 />
                             </g>
-                            <g id="atm" fillRule="evenodd">
+                            <g id="atm" fillRule="evenodd"
+                                className="region"
+                                data-region="atm"
+                                data-title="Canara Bank ATM"
+                                data-info="No events here">
                                 <path
                                     d="M2634 2428.71l20.69-3.65 8.64 48.93-20.69 3.65-8.64-48.93z"
                                     fill="#fcfc17"
@@ -851,7 +854,14 @@ useGSAP(() => {
                                 className="cls-18"
                                 d="M3882.03 3258.15l-638.88-222.31.02.27c4.61 57.05 27.45 113.3 68.52 168.73 13.75 18.55 28.74 35.88 44.99 51.99 8.08 8.01 14.76 14.14 20.03 18.4l.37.3 190.18 198.44 40.65 42.41-10.83 10.38-230.17-240.16c-5.6-4.56-12.53-10.93-20.79-19.12-16.79-16.64-32.28-34.55-46.48-53.71-10.03-13.54-19.02-27.14-26.97-40.8-8.11 4.66-16.33 9.6-24.67 14.8a923.723 923.723 0 00-24.87 16.11c-34.04 22.8-53.11 39.15-57.2 49.05-4.12 9.95-6.25 17.34-6.39 22.17v.59c0 .53.03.95.1 1.28l-.05-.06c-.17-.38-.43-.75-.76-1.11a6.79 6.79 0 00-1.13-.94l-8.41 12.42c-7.19-4.88-6.26-18.24 2.77-40.08 5.26-12.7 26.16-31.3 62.72-55.79 17.3-11.59 34.17-22.11 50.6-31.55-22.22-41.82-34.72-84.19-37.5-127.11-11.34 4.26-24.47 10.12-39.38 17.59-42.42 21.24-81.2 47.91-116.35 79.99-3.58 3.27-8.89 8.14-15.94 14.63-25.98 23.92-46.02 41.61-60.13 53.07-23.47 19.07-47.39 35.7-71.76 49.91-59.79 34.86-137.23 63.29-232.33 85.26-34.18 7.9-70.66 16.36-109.44 25.36-4.84 1.13-9.36 2.17-13.56 3.14 10.31.38 19.33 1.39 27.06 3.03 27.08 5.75 48.76 22.37 65.04 49.85 6.49 10.96 12.86 24.8 19.11 41.52 3.74 10.02 9.15 26.11 16.22 48.27 6.61 20.73 11.82 36.46 15.64 47.18 13.2 37.09 30.05 115.84 50.57 236.26 2.02 11.86 3.99 23.57 5.91 35.16 7.79 46.97 14.74 91.58 20.85 133.82.72 3.54 2.03 8.21 3.93 14.01 3.92 11.94 8.91 23.51 14.98 34.72 17.78 32.85 41.49 56.87 71.12 72.04 2.5 1.28 5.05 2.5 7.63 3.66l-6.11 13.69c-36.33-16.22-64.94-43.64-85.84-82.25-6.49-12-11.83-24.39-16.03-37.18-2.12-6.47-3.6-11.79-4.43-15.94l-.04-.2-.03-.2c-7.6-52.58-16.51-108.85-26.72-168.81-1.44-8.42-2.85-16.63-4.25-24.65-.99-5.63-1.96-11.16-2.93-16.61l-1.12-.29c-9.12-2.35-20.11-4.18-32.97-5.49-27.42-2.78-51.41-1.13-71.95 4.97-18.11 5.37-29.63 13.05-34.58 23.06-2.66 5.39-3.48 13.03-2.45 22.92.21 2.04.34 3.52.39 4.43.1 1.87 1.04 10.5 2.82 25.89 8.17 70.46 12.13 117.23 11.87 140.33-.03 2.27-.09 4.31-.2 6.12-1.21 20.55-2.91 36.68-5.11 48.4-2.41 12.83-5.9 23.01-10.46 30.54-4.14 6.84-13.16 14.26-27.04 22.28-6.62 3.81-12.89 7.04-18.82 9.69l-6.11-13.7c3.18-1.42 6.49-3.03 9.91-4.84 2.44-1.28 4.95-2.66 7.52-4.14 11.66-6.74 18.9-12.42 21.71-17.06 3.62-5.98 6.47-14.5 8.55-25.54 1.17-6.22 2.19-13.83 3.08-22.84.69-7.04 1.29-14.93 1.81-23.67 1.14-19.39-2.73-67.34-11.6-143.84-1.82-15.71-2.79-24.65-2.9-26.83-.04-.66-.14-1.89-.33-3.67-.58-5.56-.77-10.08-.56-13.57.37-6.39 1.87-12.24 4.49-17.55 6.88-13.92 21.47-24.18 43.76-30.79 22.44-6.66 48.35-8.49 77.74-5.51 11.14 1.13 21.04 2.65 29.67 4.56-6.19-34.15-11.99-63.94-17.39-89.34-14.2.36-29.54 1.09-46.04 2.19-33.23 2.23-55.57 5.21-67.03 8.92-16.54 5.37-30.74 2.43-42.58-8.83-9.47-9-17.43-23.86-23.89-44.57-5.68-18.21-16.69-48.77-33.05-91.7a6738.02 6738.02 0 00-17.28-44.81l-.26-.67-.13-.7c-.3-1.65-1.42-3.1-3.35-4.33-5.24-3.34-14.29-2.07-27.16 3.8-5.66 2.58-11.85 4.96-18.57 7.13-12.21 3.94-26.17 7.19-41.89 9.75-12.1 1.97-22.67 3.24-31.7 3.78l-5.11.31-34.94-75.52-14.95-6.36c-6.28.02-12.23-.12-17.85-.42-36.08-1.91-62.62-20.55-79.64-55.92-5.89-12.24-10.6-26.57-14.13-42.97-1.97-9.15-3.87-21.03-5.71-35.62-.67-5.29-1.15-8.8-1.45-10.52-.2-1.15-.38-2-.54-2.55.22.43.54.85.95 1.28-5.22-5.45-43.04-213.76-113.48-624.93l-.05-.26-.02-.27c-21.81-221.09-36.33-383.32-43.57-486.68l-.45-6.54c-4.3-62.61-18.32-107.16-42.08-133.65-7.07-7.89-14.57-13.6-22.5-17.15-1.56-.7-2.97-1.26-4.24-1.7-1.73-.59-3.18-.94-4.37-1.04l.11-1.27c-8.71-.27-17.26-1-25.65-2.18-24.02-3.37-45-10.3-62.93-20.78-22.67-13.25-39.72-31.75-51.14-55.49-19.89-41.37-36.31-107.97-49.27-199.81-1.37-9.68-2.64-19.17-3.83-28.48-.46-.44-1.04-.95-1.73-1.53-2.41-2.02-5.28-3.91-8.6-5.67a71.64 71.64 0 00-4.88-2.35c-12.11-5.31-27.01-8.49-44.71-9.54-9.32-.55-19.42-.51-30.29.12l-.87-14.97c33.92-1.97 61.22 1.58 81.9 10.66 2.41 1.06 4.65 2.13 6.72 3.24-3.18-27.1-5.57-52.57-7.17-76.41l-.02-.25v-203.49l21-327.04c.24-23.79-.44-52.93-2.06-87.43-3.23-69.15-9.51-130.49-18.84-184.01l14.78-2.57c.8 4.61 1.59 9.29 2.35 14.02 8.15 50.74 13.71 108.03 16.7 171.86 1.63 34.88 2.32 64.37 2.07 88.49v.2l-21 326.96v202.51c2.5 37.15 6.94 78.35 13.33 123.61 12.74 90.3 28.71 155.43 47.93 195.4 18.4 38.25 52.61 60.89 102.63 67.92 15.94 2.24 32.54 2.73 49.81 1.48 8.59-.63 15.59-1.47 21.01-2.54 276.48-48.46 437.85-78.1 484.09-88.92 28.5-6.66 51.85-14.5 70.03-23.53 8.59-4.26 14.4-7.78 17.45-10.55-1.73-4.23-3.43-8.48-5.1-12.75-29.21-74.62-45.29-143.38-48.22-206.3-8.22-2.54-17.4-4.39-27.54-5.56-17.18-1.99-37.12-2.02-59.82-.09l-1.1.09c-19.06 1.65-35.85 4.09-50.36 7.32l-3.26-14.64c15.45-3.44 33.27-6.01 53.46-7.72 35.49-3.01 64.87-1.38 88.16 4.87-.04-3.66-.04-7.3 0-10.93.76-55.79 10.27-152.26 28.54-289.4h-31.04v-15h33v.41c3.91-29.01 8.2-59.76 12.87-92.26 13.08-91.12 26.1-176.34 39.07-255.65h-57.93v-15h59.5v5.46l.96-5.81-6.44-93.13 14.97-1.04 3.58 51.81 2.98 43.06-.14.87c-13.83 83.78-27.72 174.3-41.68 271.56-5.95 41.43-11.28 80-16 115.72h94.87l61.22 204.23-.67-3.61 51.5-9.5 2.73 14.75-50.29 9.27 2.61 8.7c10.79 37.07 20.65 77.02 29.59 119.84 18.08 86.54 22.37 144.9 12.88 175.07l-7.16-2.25 6.32 4.05c-4.22 6.58-8.21 13.23-11.95 19.95-23.79 42.67-37.94 88.07-42.44 136.18-1.57 16.68-1.85 32.73-.86 48.13.04.64.09 1.27.13 1.9.35 4.89.76 9.1 1.22 12.63 46.83 75 76.08 120.96 87.76 137.9l67.61 97.95 72.76 105.36c1.47 1.88 2.92 3.8 4.36 5.75 3.15 4.3 6.25 8.79 9.29 13.48l.84-.47 47.15 83.5 50.24-18.36 5.15 14.09-47.92 17.51 83.34 147.57 43.78-20.89 6.46 13.54-42.85 20.44 84.07 148.89-1.51-5.31 42-12 4.12 14.42-39.82 11.37 62.77 111.16 1.69-4.24 10.54 3.76c6.12-6.69 13.94-13.62 23.45-20.77 22.36-16.8 45.58-27.11 69.64-30.9 15.28-2.41 50.02-3.72 104.24-3.92 28.3-.1 61.9.09 100.82.59 54.47.69 106.75 1.72 156.82 3.08l11.1-43.59-28.69-36.09 11.75-9.33 33.31 41.91-15.9 62.42-5.99-.16c-51.8-1.44-105.99-2.52-162.59-3.24-63.82-.82-113.15-.83-148-.05-26.64.6-44.82 1.66-54.54 3.2-21.6 3.4-42.58 12.76-62.96 28.07-5.49 4.14-10.34 8.15-14.55 12.04-.82.77-1.63 1.53-2.4 2.29l616.77 220.63-5.05 14.12-629.18-225.06-.22.56 1.78 2.6-9.07 15.73-17.92 45.1 641.32 223.15.78.27-4.93 14.17v-.02zM2390.61 819.33l17.86 104.17-28.32 5.18 2.7 14.76 76.5-14-2.7-14.76-33.43 6.12-17.83-104.01-14.78 2.54zm64.8 468.18l-106 13-1.83-14.89 106-13 1.83 14.89zm566.73 25.78l32.36 101.61v54.4l-89.13 16.64-2.75-14.75 3.91-.73 72.97-13.63v-39.61l-28.4-89.2-3.25-10.19 14.29-4.55zm-478.64 281.89c.7-51.95 9.12-139.81 25.25-263.6h85.67l63.9 213.15c10.66 36.62 20.42 76.16 29.28 118.6 15.66 75.01 20.86 127.55 15.59 157.65-.56 3.23-1.25 6.21-2.06 8.92-32.02 50.2-50.73 104.19-56.14 161.96-1.19 12.67-1.67 25-1.44 37-18.68-29.98-39.72-63.86-63.12-101.66-4.09-6.95-9.2-16.52-15.35-28.7-12.38-24.53-23.69-49.88-33.93-76.03-32.68-83.47-48.56-159.24-47.64-227.29h-.01zm44.78 259.85c-4.11 2.92-9.7 6.14-16.79 9.65-19.23 9.54-43.65 17.77-73.28 24.7-46.52 10.88-208.15 40.57-484.9 89.08-5.36 1.06-12.16 1.92-20.41 2.57 4.4 3.38 8.63 7.35 12.71 11.9 26.05 29.05 41.34 76.59 45.87 142.63 1.03 15.06 2.23 31.44 3.59 49.14 7.92 103.09 21.38 250.89 40.36 443.38 17.51 102.23 35.3 204.82 53.36 307.76 15.8 90.06 28.48 161.09 38.03 213.1 5.67 30.86 10.15 54.56 13.45 71.12 1.77 8.85 3.18 15.62 4.26 20.3.53 2.33.97 4.11 1.32 5.33.09.32.17.59.24.79 1.02 1.76 1.81 4.26 2.38 7.5.34 1.95.85 5.68 1.55 11.2 1.79 14.17 3.62 25.62 5.5 34.34 3.28 15.25 7.61 28.46 12.98 39.63 14.44 30.03 36.75 45.84 66.91 47.44 19.39 1.03 43.08.1 71.06-2.77l.54-.06c1.8-.25 3.68-.52 5.64-.81 3.38-.49 6.93-1.02 10.67-1.58 32.68-4.94 66.9-10.94 102.65-18.02 17.32-3.43 30.45-5.89 39.4-7.39 5.07-.84 23-4.84 53.8-12 24.13-5.6 47.42-11 69.86-16.2l-6.93-45.55 14.83-2.26 6.76 44.42 24.94-5.77c93.62-21.64 169.67-49.51 228.16-83.61 23.7-13.82 46.98-30.02 69.85-48.59 13.87-11.27 33.68-28.76 59.43-52.47 7.08-6.51 12.41-11.4 15.99-14.67 21.37-19.51 44.06-37.08 68.05-52.69a527.72 527.72 0 0151.69-29.63c18.91-9.48 35.18-16.5 48.8-21.06l8.49-21.36c-6.88-3.47-15.29-8.03-25.22-13.69-23.45-13.37-45.99-27.78-67.61-43.23-69.55-49.73-116.89-100.83-142.01-153.28-5.7-11.9-10.92-24.32-15.67-37.26l-160.91 13.99-1.3-14.94 157.12-13.67c-13.22-40.06-22.15-84.82-26.79-134.28-2.11-22.47-3.19-44.59-3.24-66.37-.02-10.94.17-19.67.57-26.18 2.3-31.3 4.56-50.83 6.77-58.59.21-.74-.55-3.03-2.29-6.87-1.84-4.08-4.64-9.03-8.39-14.85-4.38-6.82-8.89-13.18-13.51-19.1l-.14-.18-73.01-105.72-67.62-97.96c-11.75-17.06-41.05-63.08-87.88-138.07l-1.33.26c-.2-1.03-.4-2.15-.59-3.34-22.25-35.65-48.39-77.7-78.4-126.16l-.04-.08-.04-.07c-4.26-7.23-9.55-17.11-15.86-29.63a885.223 885.223 0 01-23.4-50.22h-.02zm654.75 1124.67l6.21-10.78 3.95-9.92-4.07-5.96-276.18-489.09c-1.26 9.71-2.58 23.91-3.96 42.59-.38 6.19-.56 14.59-.54 25.22.05 21.32 1.11 42.99 3.17 64.99 6.6 70.24 21.98 130.6 46.15 181.09 24.01 50.14 69.74 99.32 137.2 147.56 21.2 15.15 43.31 29.28 66.32 42.4 8.4 4.78 15.65 8.75 21.75 11.9zm-545.1 576.89c5.68 15.96 12.08 39.99 19.21 72.09-2.69.07-5.41.16-8.17.27-11.23.41-23.11 1.04-35.64 1.88-34.47 2.31-58.02 5.52-70.65 9.61-10.88 3.54-20.09 1.72-27.62-5.43-7.58-7.21-14.22-19.93-19.9-38.16-4.94-15.86-13.84-40.85-26.69-74.97-6.81-18.08-14.73-38.72-23.75-61.93-1.23-5.58-4.53-10.08-9.89-13.5-9.83-6.26-23.64-5.32-41.45 2.8-8.6 3.93-18.62 7.35-30.05 10.27-8.15 2.07-17.01 3.89-26.59 5.46-9.37 1.52-17.74 2.6-25.11 3.24l-25.1-54.25-5.98-12.94c2.04-.13 4.11-.26 6.2-.42l.1.92c5.89-.67 13.22-1.63 21.98-2.88 17.03-1.77 42.63-5.16 76.79-10.17 38.23-5.6 65.83-9.11 82.79-10.52 17.85-1.49 33.15-1.81 45.91-.97 6.97.46 13.18 1.27 18.62 2.43 22.79 4.83 41.2 19.11 55.25 42.81 6.04 10.2 12.03 23.24 17.96 39.13 3.66 9.8 8.98 25.65 15.98 47.57 6.66 20.89 11.93 36.78 15.8 47.66z"
                             />
-                            <g id="mechblock" fillRule="evenodd">
+                            <g 
+                                id="mechblock"
+                                fillRule="evenodd"
+                                className="region"
+                                data-region="mechblock"
+                                data-title="Mechanical Block"
+                                data-info="No events here"
+                            >
                                 <path
                                     d="M1776 2726.06l108 697.5 345-55.5-34-147.5-62.5 11.5s-63.41-418.04-145.5-546c-51.8 7.78-211 40-211 40z"
                                     fill="#6db8fe"
@@ -870,7 +880,14 @@ useGSAP(() => {
                                 className="cls-9"
                                 d="M2527.5 3813.56s30.51 64.43 17 207c-15.92 17.43-17 25.5-17 25.5s-291.39 2.64-492.5 75.5c-35.06 15.9-31 14.5-31 14.5l-110.5-514 76-19 497.5-141s15.56 64.9 26.5 141 34 210.5 34 210.5z"
                             />
-                            <g id="pgblock">
+                            <g 
+                                id="pgblock"
+                                fillRule="evenodd"
+                                className="region"
+                                data-region="pgblock"
+                                data-title="PG Block"
+                                data-info="1.DRISHYAM 2.TIDAL-CLASH 3.THE TITANS"
+                                >
                                 <path
                                     className="cls-27"
                                     d="M2371.5 3560.56l-26.5 68.5 16 48 31-51-20.5-65.5z"
@@ -910,7 +927,12 @@ useGSAP(() => {
                                 className="cls-12"
                                 d="M1834 1462.06s14.45 25.53 41.5 30 325.74-28.12 509-38l132.5 8-4.5-28-64-18-614.5 46zM2619 820.56l-168-12.5-636 38v-59s79.73 12.03 119.5 11 111.44.1 130.5 0 228.02-7.4 281.5-11c53.47-3.6 130.5-12 130.5-12l142 45.5z"
                             />
-                            <g id="fc" fillRule="evenodd">
+                            <g id="fc" fillRule="evenodd"
+                                className="region"
+                                data-region="fc"
+                                data-title="Food Court"
+                                data-info="No events here"
+                            >
                                 <path
                                     d="M2289 4141.56l46 201.5 267-56s57.18-146.25-59.5-241c-58.88 27.16-253.5 95.5-253.5 95.5z"
                                     fill="#c47cff"
@@ -924,7 +946,11 @@ useGSAP(() => {
                                     fill="#521c7e"
                                 />
                             </g>
-                            <g id="nblock" fillRule="evenodd">
+                            <g id="nblock" fillRule="evenodd"
+                                className="region"
+                                data-region="nblock"
+                                data-title="N-Block Boys Hostel"
+                                data-info="No events here">
                                 <path
                                     d="M1961.5 1444.06l47.5 351 189-21-14.5-87.5-67.5 8.5-42.5-270-112 19z"
                                     fill="#f9c69c"
@@ -938,7 +964,11 @@ useGSAP(() => {
                                     fill="#785334"
                                 />
                             </g>
-                            <g id="oblock">
+                            <g id="oblock" fillRule="evenodd"
+                                className="region"
+                                data-region="oblock"
+                                data-title="O-Block Boys Hostel"
+                                data-info="No events here">
                                 <path
                                     d="M2354.5 1864.06l44-78.5-166.5 19-25.5 77.5 148-18z"
                                     fill="#fbbdaf"
@@ -968,7 +998,11 @@ useGSAP(() => {
                                 className="cls-9"
                                 d="M2220 2804.06l247.6-40.29 23.4-75.97-1.5-27.74 26-12 14 80 4.5 24.5 24 142.46-319.62 52.02-18.38-142.98z"
                             />
-                            <g id="mess" fillRule="evenodd">
+                            <g id="mess" fillRule="evenodd"
+                                className="region"
+                                data-region="mess"
+                                data-title="Mess"
+                                data-info="No events here">
                                 <path
                                     d="M1993 1404.06l159-2.5s119.8-15.46 154-66c-.15.34 7.5-21.5 7.5-21.5l-305 74-15.5 16z"
                                     fill="#f7b063"
@@ -986,7 +1020,11 @@ useGSAP(() => {
                                 className="cls-64"
                                 d="M2790.5 2106.06l164 290 486.5-103.5 78-28.5-148.5-736v-65l-96.5 29-7.5 27 56.5 334-199.5 16-269 81-70.5 92s-15.54 30.36 6.5 64z"
                             />
-                            <g id="mblock">
+                            <g id="mblock" fillRule="evenodd"
+                                className="region"
+                                data-region="mblock"
+                                data-title="M-Block Boys Hostel"
+                                data-info="No events here">
                                 <path
                                     d="M2012.5 1139.56l116.5-13-18-175 144.5-15 42.5 190 119-15-75.5-303.5-374.5 34 45.5 297.5z"
                                     fill="#ffda99"
@@ -1012,7 +1050,11 @@ useGSAP(() => {
                                     fillRule="evenodd"
                                 />
                             </g>
-                            <g id="tblock" fillRule="evenodd">
+                            <g id="tblock"  fillRule="evenodd"
+                                className="region"
+                                data-region="tblock"
+                                data-title="T-Block Boys Hostel"
+                                data-info="No events here">
                                 <path
                                     d="M1997.5 558.56l6.5 125h331s47.59-.75 43-73.5c-1.59-49.75 0-51.5 0-51.5h-380.5z"
                                     fill="#fbf8a3"
@@ -1054,7 +1096,11 @@ useGSAP(() => {
                                 className="cls-22"
                                 d="M2795.5 1111.06h-25l-17.5 25 59.5 314.5 169-25.5 237-31-34-169-53-114h-336z"
                             />
-                            <g id="girls1">
+                            <g id="girls1"  fillRule="evenodd"
+                                className="region"
+                                data-region="girls1"
+                                data-title="Girls Hostel"
+                                data-info="No events here">
                                 <path
                                     className="cls-31"
                                     d="M2804 1096.06l59.5 238 124.5-19.5-39.5-143 103.5-16 36 146 118-19.5-64-234-338 48z"
@@ -1072,7 +1118,11 @@ useGSAP(() => {
                                     d="M2964 1232.06l72-9.5 16-67-103.5 15.5 15.5 61z"
                                 />
                             </g>
-                            <g id="girls2">
+                            <g id="girls2" fillRule="evenodd"
+                                className="region"
+                                data-region="girls2"
+                                data-title="Girls Hostel"
+                                data-info="No events here">
                                 <path
                                     className="cls-31"
                                     d="M2794 1515.56l56 267 253-38-28-107.5-132 20.5-42.5-165.5-106.5 23.5z"
@@ -1086,7 +1136,11 @@ useGSAP(() => {
                                     d="M2784 1578.56l42.5 254.5 20-51-52-264-10.5 60.5z"
                                 />
                             </g>
-                            <g id="girls3">
+                            <g id="girls3" fillRule="evenodd"
+                                className="region"
+                                data-region="girls3"
+                                data-title="Girls Hostel"
+                                data-info="No events here">
                                 <path
                                     className="cls-31"
                                     d="M3084.5 1479.56l75 289 114.5-12-78.5-294.5-111 17.5z"
@@ -1100,7 +1154,11 @@ useGSAP(() => {
                                     d="M3074 1526.56l67.5 302 20-60-77-290-10.5 48z"
                                 />
                             </g>
-                            <g id="temple">
+                            <g id="temple" fillRule="evenodd"
+                                className="region"
+                                data-region="temple"
+                                data-title="Temple"
+                                data-info="No events here">
                                 <path
                                     className="cls-9"
                                     d="M3007 3282.56l6 173.5 451-21.5-123.2-132.5s-1.84-43.06-61.3-51c-36.68-2.5-57.5 0-57.5 0l-215 31.5z"
@@ -1128,6 +1186,10 @@ useGSAP(() => {
                                 d="M3105.69 3101.06l95.04-13.34 11.54 82.17-95.04 13.34-11.54-82.17z"
                                 fill="#8e6c38"
                                 fillRule="evenodd"
+                                className="region"
+                                data-region="house"
+                                data-title="House"
+                                data-info="No events here"
                             />
                             <g id="borderforest-4">
                                 <path
@@ -1147,14 +1209,23 @@ useGSAP(() => {
                                 id="entry"
                                 d="M4025 3025.06l-11.5 91s-9.69 45.69-54.5 54c-14.18 39.48-20.5 62-20.5 62s31.96 13.07 0 85.5c-18.87 25.92-35.39 44.9-36.5 45.5"
                                 stroke="#ffd231"
-                                strokeWidth="12"
+                                strokeWidth="20"
                                 fill="none"
+                                fillRule="evenodd"
+                                className="region"
+                                data-region="entry"
+                                data-title="Main Gate"
+                                data-info="No events here"
                             />
                             <path
                                 className="cls-23"
                                 d="M4460.5 2100.56l-345.5 23.5-68 38h437l-23.5-61.5z"
                             />
-                            <g id="playground">
+                            <g id="playground" fillRule="evenodd"
+                                className="region"
+                                data-region="playground"
+                                data-title="Playground"
+                                data-info="No events here">
                                 <path
                                     id="playgroundground"
                                     d="M880.67 1345.43l-282.84 757.86c-.21.57-.42 1.15-.61 1.73s-.37 1.17-.54 1.76-.32 1.18-.46 1.78c-.14.59-.27 1.19-.39 1.79s-.22 1.2-.32 1.81c-.09.6-.17 1.21-.24 1.82s-.12 1.22-.17 1.83c-.04.61-.07 1.22-.09 1.83s-.02 1.22-.02 1.84.03 1.22.06 1.83c.03.61.08 1.22.13 1.83.06.61.13 1.22.21 1.82.08.61.17 1.21.28 1.81.11.6.22 1.2.35 1.8s.27 1.19.43 1.78c.15.59.32 1.18.5 1.77 47.58 155.64 159.55 521.94 159.55 521.94s60.62 155.75 135.5 226c41.15 38.61 86.61 51.39 119.21 55.08 24.64 2.78 63.99 6.02 88.29 11 56.84 11.63 162.25 23.84 273-11.08 118.33-37.31 231.33-128.42 285.18-176.36 18.52-16.49 33.23-50.74 33.75-75.54l26.66-1293.43c.01-.73.01-1.45-.01-2.18-.02-.73-.06-1.45-.11-2.18-.06-.73-.13-1.45-.22-2.17s-.2-1.44-.33-2.16c-.13-.72-.27-1.43-.43-2.14s-.34-1.41-.53-2.12c-.19-.7-.4-1.4-.63-2.09s-.48-1.38-.74-2.05c-.26-.68-.54-1.35-.83-2.02-.29-.67-.6-1.32-.93-1.97-.33-.65-.67-1.29-1.03-1.93-.35-.63-.73-1.26-1.12-1.87-.39-.62-.79-1.22-1.2-1.82a44.32 44.32 0 00-2.68-3.45c-.47-.55-.96-1.09-1.45-1.62-.5-.53-1.01-1.05-1.54-1.55s-1.06-.99-1.61-1.47-1.11-.94-1.68-1.39c-.57-.45-1.15-.89-1.74-1.31s-1.2-.83-1.81-1.22a43.834 43.834 0 00-3.78-2.17c-.65-.33-1.3-.65-1.96-.95-.66-.3-1.33-.58-2.01-.85-.67-.27-1.36-.52-2.05-.75-.69-.23-1.38-.45-2.08-.65-.7-.2-1.4-.38-2.11-.55s-1.42-.32-2.13-.45c-.72-.13-1.44-.25-2.16-.34-.72-.1-1.44-.18-2.17-.24-.72-.06-1.44-.11-2.17-.13l-750.46-27.68c-.58-.02-1.17-.03-1.76-.03s-1.17.01-1.75.04c-.58.02-1.17.06-1.75.11a51.857 51.857 0 00-3.49.42c-.58.09-1.15.2-1.73.31-.57.11-1.15.24-1.71.38s-1.13.29-1.7.44c-.56.16-1.12.33-1.68.51s-1.11.37-1.66.58c-.55.2-1.09.42-1.63.64s-1.08.46-1.61.7c-.53.24-1.06.5-1.58.77s-1.04.54-1.55.83c-.51.29-1.02.58-1.51.89-.5.31-.99.62-1.48.95s-.97.66-1.44 1a46.764 46.764 0 00-2.76 2.17c-.45.38-.88.77-1.31 1.16-.43.4-.85.8-1.27 1.21-.41.41-.82.83-1.22 1.26-.4.43-.79.87-1.17 1.31-.38.44-.75.9-1.12 1.35-.36.46-.72.92-1.06 1.4-.35.47-.68.95-1.01 1.44a46.376 46.376 0 00-2.67 4.53c-.27.52-.52 1.05-.77 1.58s-.48 1.07-.71 1.61c-.23.54-.44 1.08-.65 1.63l.03-.02z"
@@ -1267,7 +1338,11 @@ useGSAP(() => {
                                 className="cls-38"
                                 d="M2029.58 4373.56l42.42 97.5 59-15 164.5-30 276-52.5 267.5-78.5 15.07 13.54 80.93-36.04 10.5 22.5-59.41 38.33-90.09 40.17s-71.13 23.61-94 24.5-57.2-10.85-68 0-33.59 10.96-48.5 17-22.93 8.21-45.5 11-42-8.88-52.5 0c-10.49 8.88-21.86 14.15-37.5 16.5s-16.71-5.12-35 0-326 50.5-326 50.5l-28 1-38.5-106H1965l-14-69 14-24 9.92 78.5h54.66z"
                             />
-                            <g id="fountain">
+                            <g id="fountain" fillRule="evenodd"
+                                className="region"
+                                data-region="fountain"
+                                data-title="Fountain"
+                                data-info="No events here">
                                 <path
                                     d="M2531.5 3707.56s-.35 26.79 23.5 36.5 49.44-4.38 49-26.5c-8.33 10.99-11.56 19.92-24 21.5s-14.69.88-25-3.5c-10.3-4.38-23.5-28-23.5-28z"
                                     fill="#5e6868"
@@ -1315,7 +1390,11 @@ useGSAP(() => {
                             />
                             <path
                                 id="parking"
-                                className="cls-3"
+                                fillRule="evenodd"
+                                data-region="parking"
+                                data-title="Events Area"
+                                data-info="No events here"
+                                className="cls-3 region"
                                 d="M2676.5 3340.06s55.39 124.6 153.5 578.5c78.84-23.82 228.5-70 228.5-70l136.5 51 141.5-135.5 81-161 160.5-53-114-117-450 23-7-175-330.5 59z"
                             />
                             <g>
@@ -1346,8 +1425,8 @@ useGSAP(() => {
                     </g>
                 </svg>
             </div>
-    </>
-  );
+        </>
+    );
 });
 
 export default SVGMap;
