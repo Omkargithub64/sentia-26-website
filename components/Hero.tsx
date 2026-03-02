@@ -39,23 +39,23 @@ useEffect(() => {
           <div ref={sceneRef} className="parallax-scene">
 
             {/* Background Layer */}
-            <div data-depth="0.0" className="parallax-layer">
+            <div data-depth="0.1" className="parallax-layer">
               <img
-                src="/hero/bg.png"
+                src="/images/herobg.png"
                 alt="Background"
                 className=""
               />
             </div>
 
             {/* Foreground Layer */}
-            <div data-depth="0.5" className="parallax-layer">
+            <div data-depth="0.3" className="parallax-layer">
               <img
-                src="/hero/fg.png"
+                src="/images/herofg.png"
                 alt="Foreground"
                 className="hero-fg"
               />
             </div>
-            <div data-depth="0.3" className="parallax-layer waves">
+            {/* <div data-depth="0.3" className="parallax-layer waves">
               <img
                 src="/hero/waves.png"
                 alt="Foreground2"
@@ -68,7 +68,7 @@ useEffect(() => {
                 alt="Foreground2"
                 className="hero-fg"
               />
-            </div>
+            </div> */}
           </div>
 
           {/* Overlay */}
