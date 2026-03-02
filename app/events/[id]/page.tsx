@@ -102,22 +102,45 @@ export default async function EventPage({ params }: PageProps) {
 <div className="bg-zinc-50 p-6 rounded-xl border border-zinc-100 space-y-6">
   {(() => {
     if (!event.rules) {
-      return <p className="text-slate-500 italic">No specific rules listed.</p>;
+      return (
+        <p className="text-slate-500 italic">
+          No specific rules listed.
+        </p>
+      );
     }
 
-    const lines = event.rules
-      .split("\n")
-      .map(l => l.trim())
-      .filter(Boolean);
+    // 🔹 Normalize rules into string[]
+    const lines: string[] =
+      typeof event.rules === "string"
+        ? event.rules
+            .split("\n")
+            .map((l: string) => l.trim())
+            .filter(Boolean)
+        : Array.isArray(event.rules)
+        ? event.rules
+        : [];
 
-    const hasHeadings = lines.some(line => line.endsWith(":"));
+    if (lines.length === 0) {
+      return (
+        <p className="text-slate-500 italic">
+          No specific rules listed.
+        </p>
+      );
+    }
 
-    // 🟢 Case 1: No Headings → Simple Bullet List
+    const hasHeadings = lines.some((line: string) =>
+      line.endsWith(":")
+    );
+
+    // 🟢 Simple Bullet List (No Headings)
     if (!hasHeadings) {
       return (
         <ul className="space-y-3">
-          {lines.map((line, idx) => (
-            <li key={idx} className="flex items-start gap-3 text-sm text-slate-700">
+          {lines.map((line: string, idx: number) => (
+            <li
+              key={idx}
+              className="flex items-start gap-3 text-sm text-slate-700"
+            >
               <span className="mt-1 w-1.5 h-1.5 rounded-full bg-slate-500" />
               <span>{line}</span>
             </li>
@@ -126,11 +149,16 @@ export default async function EventPage({ params }: PageProps) {
       );
     }
 
-    // 🟣 Case 2: Structured Sections
-    let currentSection: any = null;
-    const sections: any[] = [];
+    // 🟣 Structured Sections
+    type Section = {
+      title: string | null;
+      items: string[];
+    };
 
-    lines.forEach(line => {
+    const sections: Section[] = [];
+    let currentSection: Section | null = null;
+
+    lines.forEach((line: string) => {
       if (line.endsWith(":")) {
         currentSection = { title: line, items: [] };
         sections.push(currentSection);
@@ -143,16 +171,20 @@ export default async function EventPage({ params }: PageProps) {
       }
     });
 
-    return sections.map((section, idx) => (
+    return sections.map((section: Section, idx: number) => (
       <div key={idx} className="space-y-3">
         {section.title && (
           <h3 className="text-sm font-bold text-slate-900 uppercase tracking-wide">
             {section.title}
           </h3>
         )}
+
         <ul className="space-y-2">
           {section.items.map((item: string, i: number) => (
-            <li key={i} className="flex items-start gap-3 text-sm text-slate-700">
+            <li
+              key={i}
+              className="flex items-start gap-3 text-sm text-slate-700"
+            >
               <span className="mt-1 w-1.5 h-1.5 rounded-full bg-slate-500" />
               <span>{item}</span>
             </li>
