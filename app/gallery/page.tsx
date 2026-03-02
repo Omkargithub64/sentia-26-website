@@ -76,7 +76,6 @@ const timeline = [
       '/gallary/2013/4.webp',
       '/gallary/2013/5.webp',
       '/gallary/2013/6.webp',
-      '/gallary/2013/7.webp',
     ],
   },
     {
@@ -117,7 +116,6 @@ function YearBlock({
       </div>
 
       <p className="text-[10px] font-semibold tracking-[0.3em] text-zinc-300 uppercase mb-5">
-        Sentia Edition {String(index + 1).padStart(2, '0')}
       </p>
 
       {/* Responsive grid with auto height support */}
@@ -180,9 +178,7 @@ export default function GalleryPage() {
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           className="pb-10"
         >
-          <p className="text-[10px] font-bold tracking-[0.35em] text-zinc-400 uppercase mb-4">
-            Mangalore Institute of Technology & Engineering
-          </p>
+
           <h1 className="text-4xl md:text-5xl font-black tracking-tighter leading-tight text-black mb-3">
             A Decade of Memories
           </h1>
@@ -191,20 +187,6 @@ export default function GalleryPage() {
             Years of talent, culture, and unforgettable moments.
           </p>
         </motion.div>
-        {/* <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="border-t border-zinc-100 py-16 text-left"
-        >
-          <p className="text-3xl font-black tracking-tighter text-black">
-            Sentia 2026
-          </p>
-          <p className="text-xs text-zinc-400 mt-1 tracking-wide">
-            Coming soon — stay tuned.
-          </p>
-        </motion.div> */}
 
         {/* Timeline */}
         <div>

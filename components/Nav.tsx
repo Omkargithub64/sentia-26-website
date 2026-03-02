@@ -13,25 +13,6 @@ export default function Nav() {
   return (
     <header className="navbar">
       <div className="navbar-inner">
-        
-        {}
-        <nav className="nav-links">
-          <Link href="/">Home</Link>
-          <Link href="/#events">
-  Events
-</Link>
-          <a
-            href="https://mite.ac.in/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            About MITE
-          </a>
-          <Link href="/gallery">Gallery</Link>
-          <Link href="/map">Map</Link>
-        </nav>
-
-        {}
         <div className="nav-right">
             <Link href="/">
           <img
@@ -52,6 +33,25 @@ export default function Nav() {
             <span></span>
           </button>
         </div>
+        {}
+        <nav className="nav-links">
+          <Link href="/">Home</Link>
+          <a href="/#events">
+  Events
+</a>
+          <a
+            href="https://mite.ac.in/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            About MITE
+          </a>
+          <Link href="/gallery">Gallery</Link>
+          <Link href="/map">Map</Link>
+        </nav>
+
+        {}
+        
       </div>
 
       {}

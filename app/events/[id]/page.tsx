@@ -22,16 +22,6 @@ export default async function EventPage({ params }: PageProps) {
 
   return (
     <main className="min-h-screen bg-white">
-      {/* 1. Navbar / Back Button */}
-      <nav className="fixed top-0 left-0 right-0 z-50 p-6 flex justify-between items-center bg-gradient-to-b from-black/50 to-transparent pointer-events-none">
-        <Link 
-            href="/#events" 
-            className="pointer-events-auto bg-white/10 backdrop-blur-md border border-white/20 p-2.5 rounded-full text-white hover:bg-white hover:text-black transition-all duration-300 group"
-        >
-            <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
-        </Link>
-      </nav>
-
       {/* 2. Hero Header Banner */}
       <section className="relative h-[40vh] md:h-[50vh] w-full overflow-hidden bg-zinc-900">
          <img 

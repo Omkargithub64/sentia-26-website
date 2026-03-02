@@ -53,7 +53,7 @@ export default async function Home() {
 
   return (
 
-  <div className="bg-white text-black">
+  <div className=" text-black">
     <Hero />
     <ThemeReveal />
     <Reveal spotifyData={spotifyData} />

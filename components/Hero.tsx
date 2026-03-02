@@ -8,12 +8,27 @@ import "./Hero.css";
 export default function Hero() {
   const sceneRef = useRef(null);
 
-  useEffect(() => {
-    if (sceneRef.current) {
-      const parallaxInstance = new Parallax(sceneRef.current);
-      return () => parallaxInstance.disable();
-    }
-  }, []);
+useEffect(() => {
+  if (sceneRef.current) {
+    const parallaxInstance = new Parallax(sceneRef.current, {
+      relativeInput: true,
+      hoverOnly: true,
+
+      // 👇 Smooth cinematic feel
+      scalarX: 3,
+      scalarY: 3,
+
+      frictionX: 0.08,
+      frictionY: 0.08,
+
+      // 👇 Prevent exaggerated tilt
+      // limitX: 20,
+      // limitY: 20,
+    });
+
+    return () => parallaxInstance.disable();
+  }
+}, []);
 
   return (
     <section className="hero">
@@ -24,23 +39,36 @@ export default function Hero() {
           <div ref={sceneRef} className="parallax-scene">
 
             {/* Background Layer */}
-            <div data-depth="0.2" className="parallax-layer">
+            <div data-depth="0.0" className="parallax-layer">
               <img
-                src="/images/herobg.png"
+                src="/hero/bg.png"
                 alt="Background"
-                className="hero-bg"
+                className=""
               />
             </div>
 
             {/* Foreground Layer */}
-            <div data-depth="0.6" className="parallax-layer">
+            <div data-depth="0.5" className="parallax-layer">
               <img
-                src="/images/herofg.png"
+                src="/hero/fg.png"
                 alt="Foreground"
                 className="hero-fg"
               />
             </div>
-
+            <div data-depth="0.3" className="parallax-layer waves">
+              <img
+                src="/hero/waves.png"
+                alt="Foreground2"
+                className="hero-fg"
+              />
+            </div>
+            <div data-depth="0.9" className="parallax-layer waves">
+              <img
+                src="/hero/waves2.png"
+                alt="Foreground2"
+                className="hero-fg"
+              />
+            </div>
           </div>
 
           {/* Overlay */}

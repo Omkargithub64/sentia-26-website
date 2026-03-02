@@ -11,6 +11,7 @@
 body {
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
   overflow-x: hidden;
+  background: #ffffff;
 }
 
 ::selection {
