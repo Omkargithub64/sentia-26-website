@@ -17,7 +17,7 @@ export default async function EventPage({
 
   const rules: string[] =
     typeof event.rules === "string"
-      ? event.rules.split("\n").map(r => r.trim()).filter(Boolean)
+      ? event.rules.split("\n").map((r: string) => r.trim()).filter(Boolean)
       : Array.isArray(event.rules)
       ? event.rules
       : []
