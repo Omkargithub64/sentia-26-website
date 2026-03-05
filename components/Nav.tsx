@@ -16,7 +16,7 @@ export default function Nav() {
         <div className="nav-right">
             <Link href="/">
           <img
-            src="./MITE.png"
+            src="/MITE.png"
             alt="MITE Logo"
             className="nav-logo"
             />

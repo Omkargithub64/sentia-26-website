@@ -1,0 +1,245 @@
+.cardSection{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:40px;
+  background:#598bff;
+  color:white;
+}
+
+.mainLayout{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  grid-template-rows:1fr auto;
+  gap:2rem;
+  width:100%;
+  max-width:1200px;
+  position:relative;
+}
+
+/* Glass Card */
+
+.glassCard{
+  background:rgba(0, 0, 0, 0.288);
+  backdrop-filter:blur(20px);
+  border:1px solid rgba(255, 255, 255, 0.308);
+  border-radius:30px;
+  padding:2.5rem;
+  display:flex;
+  flex-direction:column;
+  z-index:2;
+  margin: 1rem;
+  height: fit-content;
+}
+
+.desktopTitle{
+  font-size:2.5rem;
+  text-transform:uppercase;
+  color: white;
+  font-weight: 700;
+}
+
+.rulesList{
+  font-size:1rem;
+  line-height:1.6;
+  margin-bottom:2rem;
+  overflow-y:auto;
+}
+
+.registerBtn{
+  background:white;
+  color:black;
+  border:none;
+  padding:1.2rem;
+  border-radius:40px;
+  font-weight:800;
+  text-transform:uppercase;
+  cursor:pointer;
+  width: 100%;
+}
+
+/* Floating Image */
+
+.imageContainer{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.floatingImg{
+  max-height:70vh;
+  /* animation:float2 4s ease-in-out infinite; */
+}
+
+/* @keyframes float2{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-20px)}
+} */
+
+/* Footer */
+
+.infoFooter{
+  grid-column:span 2;
+  display:flex;
+  gap:15px;
+  margin:20px;
+}
+
+.chip{
+  background:rgba(0,0,0,0.4);
+  padding:10px 25px;
+  border-radius:30px;
+  font-size:.8rem;
+  font-weight:bold;
+  margin: 0.5rem;
+}
+
+.organizerInfo{
+  position:absolute;
+  bottom:0;
+  right:0;
+  text-align:right;
+  font-size:.8rem;
+  opacity:.8;
+}
+
+.line{
+  height:2px;
+  background:linear-gradient(90deg, rgba(255, 255, 255, 0), rgb(255, 255, 255), rgba(255, 255, 255, 0));
+  margin:2rem 0;
+}
+
+.mobileTitle{
+  display:none;
+}
+.mobileMainTitle{
+    display: none;
+}
+
+/* Mobile */
+/* Mobile */
+
+@media (max-width:1268px){
+
+  .cardSection{
+    padding:20px;
+    align-items:flex-start;
+  }
+
+  .mainLayout{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:flex-start;
+    gap:1.2rem;
+    width:100%;
+  }
+
+  /* Image comes first */
+  .imageContainer{
+    order:1;
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin-top: 5rem;
+  }
+
+  .floatingImg{
+    max-height:35vh;
+    width:auto;
+    object-fit:contain;
+  }
+
+  /* Title */
+  .mobileTitle{
+    display:block;
+    font-size:1.2rem;
+    text-transform:uppercase;
+    text-align:center;
+    order:2;
+    color: rgba(255, 255, 255, 0.801);
+  }
+  .mobileMainTitle{
+    display:block;
+    font-size:1.6rem;
+    font-weight: 600;
+    text-transform:uppercase;
+    text-align:center;
+    order:2;
+    color: rgba(255, 255, 255, 0.801);
+    text-shadow: 0 0 3px rgba(0, 0, 0, 0.253);
+  }
+
+  .desktopTitle{
+    display:none;
+  }
+
+  /* Glass card */
+  .glassCard{
+    order:3;
+    padding:1.2rem;
+    border-radius:20px;
+  }
+
+  .rulesList{
+    font-size:0.9rem;
+  }
+
+  /* Chips */
+  .infoFooter{
+    order:4;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:10px;
+  }
+
+  .chip{
+    padding:8px 16px;
+    font-size:0.75rem;
+  }
+
+  /* Hide desktop organizer info */
+  .organizerInfo{
+    display:none;
+  }
+
+  .registerBtn{
+    padding:14px;
+    font-size:0.9rem;
+    border-radius:30px;
+  }
+
+}
+
+/* Full page background */
+.pageBackground{
+  position:relative;
+  min-height:100vh;
+  width:100%;
+  background-size:cover;
+  background-position:top;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+/* Blue blurred overlay */
+.bgOverlay{
+  position:absolute;
+  inset:0;
+
+  background: color-mix(in srgb, var(--boxColor) 40%, transparent);
+
+  backdrop-filter:blur(40px);
+
+  z-index:0;
+}
+
+/* Content layer */
+.pageContent{
+  position:relative;
+  z-index:2;
+  width:100%;
+}

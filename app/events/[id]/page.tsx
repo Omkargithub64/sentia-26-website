@@ -1,99 +1,76 @@
+import Link from "next/link"
+import { events } from "@/lib/eventsData"
+import { notFound } from "next/navigation"
+import styles from "./EventPage.module.css"
 
-import React from 'react'
-import Link from 'next/link'
-import { events } from '@/lib/eventsData'
-import { notFound } from 'next/navigation'
-import { ArrowLeft, Clock, Users, Calendar, Trophy, AlertCircle, ExternalLink } from 'lucide-react'
+export default async function EventPage({
+  params,
+}: {
+  params: Promise<{ id: string }>
+}) {
 
-interface PageProps {
-  params: Promise<{
-    id: string
-  }>
-}
+  const { id } = await params
 
-export default async function EventPage({ params }: PageProps) {
-  const resolvedParams = await params
-  const eventId = parseInt(resolvedParams.id)
-  const event = events.find(e => e.id === eventId)
+  const event = events.find(e => String(e.id) === id)
 
-  if (!event) {
-    notFound()
-  }
+  if (!event) notFound()
+
+  const rules: string[] =
+    typeof event.rules === "string"
+      ? event.rules.split("\n").map(r => r.trim()).filter(Boolean)
+      : Array.isArray(event.rules)
+      ? event.rules
+      : []
 
   return (
-    <main className="min-h-screen bg-white">
-      {/* 2. Hero Header Banner */}
-      <section className="relative h-[40vh] md:h-[50vh] w-full overflow-hidden bg-zinc-900">
-         <img 
-            src={event.image} 
-            alt={event.title}
-            className="w-full h-full object-cover"
-         />
-         {/* Minimal overlay for back button contrast if needed, but keeping it clean as requested */}
-         <div className="absolute inset-0 bg-black/10" /> 
-      </section>
+    <main className={styles.pageBackground} style={{ 
+        backgroundImage: `url('${event.image}')`,
+        "--boxColor": `#${event.color}`,
+        "--gradientColor": `#${event.border}`
+      } as React.CSSProperties}>
+      <div className={styles.bgOverlay}></div>
 
-      {/* 2b. Title & Description & Meta (Minimal Spacing) */}
-      <div className="max-w-3xl mx-auto px-4 md:px-0 pt-2 pb-2 text-left flex flex-col items-start w-full">
-            <span className="inline-block px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-[10px] font-bold tracking-[0.1em] uppercase mb-3 border border-blue-100">
-                {event.category} Event
-            </span>
-            <h1 className="w-full text-left text-4xl md:text-6xl font-bold tracking-tight text-slate-900 mb-2 leading-none">
-                {event.title}
-            </h1>
-            <p className="w-full text-left text-base md:text-lg text-slate-500 font-medium leading-relaxed mb-4">
-                {event.description}
-            </p>
+      <div className={styles.mainLayout}>
 
-            {/* Event Meta Data Row */}
-            <div className="flex flex-wrap justify-start gap-5 md:gap-8 text-xs md:text-sm font-medium text-slate-500 mb-4 w-full">
-                <div className="flex items-center gap-2">
-                    <Calendar className="w-4 h-4 text-slate-900" />
-                    <span>March 15, 2026</span>
-                </div>
-                <div className="flex items-center gap-2">
-                    <Clock className="w-4 h-4 text-slate-900" />
-                    <span>9:00 AM - 4:00 PM</span>
-                </div>
-                <div className="flex items-center gap-2">
-                    <Users className="w-4 h-4 text-slate-900" />
-                    <span>Open to All</span>
-                </div>
-            </div>
-            
-            <div className="w-full h-px bg-slate-100 mb-8" />
-      </div>
+        {/* Mobile Title */}
+        <h2 className={styles.mobileMainTitle}>
+          {event.title}
+        </h2>
 
-      {/* 3. Main Content (Refined Spacing) */}
-      <section className="px-4 md:px-0 pb-24">
-         <div className="max-w-3xl mx-auto space-y-10 text-left">
-            
-            {/* About */}
-            <div className="space-y-3">
-                 <h2 className="text-lg font-bold text-slate-900 tracking-tight flex items-center gap-2">
-                    <AlertCircle className="w-5 h-5 text-slate-900" />
-                    About the Event
-                 </h2>
-                 <p className="text-slate-600 leading-relaxed text-sm md:text-base font-normal text-justify md:text-left">
-                    Prepare yourself for an exhilarating experience as you compete against the best. 
-                    Showcase your skills, push your limits, and claim your glory at {event.title}. 
-                    This event is designed to test your abilities in the most creative and challenging ways possible.
+        {/* Glass Card */}
+        <div className={styles.glassCard}>
 
-                    {event.general}
-                 </p>
+          <h2 className={styles.desktopTitle}>
+            {event.title}
+          </h2>
+
+          <ul className={styles.rulesList}>
+
+            <h3 className={styles.mobileTitle}>
+              Event Details
+            </h3>
+
+            <div className={`${styles.infoFooter} ${styles.mobileTitle}`}>
+              <div className={styles.chip}>
+                TIME: {event.time}
+              </div>
+
+              <div className={styles.chip}>
+                DATE: {event.date}
+              </div>
+
+              <div className={styles.chip}>
+                VENUE: {event.venue}
+              </div>
             </div>
 
-            {/* Rules */}
-            <div className="space-y-4">
-                <h2 className="text-lg font-bold text-slate-900 tracking-tight flex items-center gap-2">
-                    <Trophy className="w-5 h-5 text-slate-900" />
-                    Rules & Regulations
-                </h2>
-<div className="bg-zinc-50 p-6 rounded-xl border border-zinc-100 space-y-6">
+            <div className={styles.line}></div>
+
+
   {(() => {
     if (!event.rules) {
       return (
-        <p className="text-slate-500 italic">
+        <p className="text-white italic">
           No specific rules listed.
         </p>
       );
@@ -112,7 +89,7 @@ export default async function EventPage({ params }: PageProps) {
 
     if (lines.length === 0) {
       return (
-        <p className="text-slate-500 italic">
+        <p className="text-white italic">
           No specific rules listed.
         </p>
       );
@@ -129,9 +106,9 @@ export default async function EventPage({ params }: PageProps) {
           {lines.map((line: string, idx: number) => (
             <li
               key={idx}
-              className="flex items-start gap-3 text-sm text-slate-700"
+              className="flex items-start gap-3 text-white"
             >
-              <span className="mt-1 w-1.5 h-1.5 rounded-full bg-slate-500" />
+              <span className="mt-1 w-1.5 h-1.5 rounded-full bg-white" />
               <span>{line}</span>
             </li>
           ))}
@@ -164,7 +141,7 @@ export default async function EventPage({ params }: PageProps) {
     return sections.map((section: Section, idx: number) => (
       <div key={idx} className="space-y-3">
         {section.title && (
-          <h3 className="text-sm font-bold text-slate-900 uppercase tracking-wide">
+          <h3 className="text-sm font-bold text-white uppercase tracking-wide">
             {section.title}
           </h3>
         )}
@@ -173,9 +150,9 @@ export default async function EventPage({ params }: PageProps) {
           {section.items.map((item: string, i: number) => (
             <li
               key={i}
-              className="flex items-start gap-3 text-sm text-slate-700"
+              className="flex items-start gap-3 text-sm text-white"
             >
-              <span className="mt-1 w-1.5 h-1.5 rounded-full bg-slate-500" />
+              <span className="mt-1 w-1.5 h-1.5 rounded-full bg-white" />
               <span>{item}</span>
             </li>
           ))}
@@ -183,36 +160,70 @@ export default async function EventPage({ params }: PageProps) {
       </div>
     ));
   })()}
-</div>
+
+
+            <div className={styles.line}></div>
+
+            <div className={styles.mobileTitle}>
+              <h3>Coordinators</h3>
+
+              <span>{event.eventcoordinator1}</span>
+              <br />
+
+              <span>{event.eventcoordinator2}</span>
             </div>
 
-            {/* Coordinator & Action */}
-            <div className="pt-6 border-t border-slate-100 flex flex-col items-start gap-4">
-                <div className="space-y-1">
-                    <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-0.5">Event Coordinator</p>
-                    <div className="flex flex-col md:flex-row md:items-baseline gap-1 md:gap-3">
-                        <p className="text-base font-bold text-slate-900">
-                            Sanath Kumar
-                        </p>
-                        <p className="text-slate-500 font-mono text-xs">
-                            +91 98765 43210
-                        </p>
-                    </div>
-                </div>
+          </ul>
 
-                <Link 
-                    href={event.registerLink || '#'} 
-                    target="_blank"
-                    className="w-full md:w-auto"
-                >
-                    <button className="w-full md:w-auto px-6 py-3.5 rounded-lg bg-black text-white font-bold text-base hover:bg-zinc-800 transition-all shadow-md hover:shadow-lg hover:-translate-y-1 active:translate-y-0 flex items-center justify-center gap-2 group">
-                        Register Now
-                        <ExternalLink className="w-4 h-4 opacity-70 group-hover:translate-x-1 transition-transform" />
-                    </button>
-                </Link>
-            </div>
-         </div>
-      </section>
+          <Link
+            href={event.registerLink || "#"}
+            target="_blank"
+          >
+            <button className={styles.registerBtn}>
+              Register for this Event
+            </button>
+          </Link>
+
+        </div>
+
+        {/* Floating Character Image */}
+        <div className={styles.imageContainer}>
+          <img
+            src={event.image}
+            alt={event.title}
+            className={styles.floatingImg}
+          />
+        </div>
+
+        {/* Footer Info Chips */}
+        <div className={`${styles.infoFooter} ${styles.desktopTitle}`}>
+
+          <div className={styles.chip}>
+            TIME: {event.time}
+          </div>
+
+          <div className={styles.chip}>
+            DATE: {event.date}
+          </div>
+
+          <div className={styles.chip}>
+            VENUE: {event.venue}
+          </div>
+
+        </div>
+
+        {/* Organizer Info */}
+        <div className={styles.organizerInfo}>
+          <p>Event Coordinators</p>
+
+          <span>{event.eventcoordinator1}</span>
+          <br />
+
+          <span>{event.eventcoordinator2}</span>
+        </div>
+
+      </div>
+
     </main>
   )
 }
