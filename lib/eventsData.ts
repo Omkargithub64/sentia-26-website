@@ -30,10 +30,10 @@ export const events: any[] = [
     title: "RHYTHMIC REVERENCE",
     description: "Western Group Dance",
     category: "UG",
-    image: "https://images.unsplash.com/photo-1547153760-18fc86324498?q=80&w=2574&auto=format&fit=crop",
+    image: "/events/Western Group Dance F7BE05 EBBA90.webp",
     iconName: "Users",
-    color: "from-pink-500/20 to-rose-500/5",
-    border: "group-hover:border-pink-500/50",
+    color: "fEBBA9",
+    border: "F7BE05",
     rules: `One team per college.
 Each group must have minimum of 5 and maximum of 12 participants.
 Duration: 4+1 minutes.
@@ -45,10 +45,10 @@ Styles allowed: Pure western dance forms such as hip-hop, jazz, locking and open
     title: "Rhythm Rumble",
     description: "Dance Battle",
     category: "UG",
-    image: "",
+    image: "/events/Dance Battle FD7583 06F2FE.webp",
     iconName: "Music",
-    color: "from-purple-500/20 to-violet-500/5",
-    border: "group-hover:border-purple-500/50",
+    color: "06F2FE",
+    border: "FD7583",
       rules: `2 entries per college.
 Dancer will be challenged impromptu on varied beats of a live dj.
 The music genre will change for each pair of dancers and can range from any genre.
@@ -61,10 +61,10 @@ The final battle will have 2 dancers competing.`,
     title: "TALES OF TAAL",
     description: "Eastern Group Dance",
     category: "UG",
-    image: "",
+    image: "/events/Eastern Group Dance E77D2F F2BF2F.webp",
     iconName: "Music",
-    color: "from-purple-500/20 to-violet-500/5",
-    border: "group-hover:border-purple-500/50",
+    color: "F2BF2F",
+    border: "E77D2F",
       rules: `One team per college.
 Each group must have minimum of 5 and maximum of 12 participants.
 Duration: 4+1 minutes.
@@ -75,10 +75,10 @@ Styles allowed: Semi-classical, fusion, contemporary, folk.`,
     title: "NADA SAGARA",
     description: "Eastern Group Singing",
     category: "UG",
-    image: "",
+    image: "/events/Eastern Group Singing 9B864E DAA693.webp",
     iconName: "Music",
-    color: "from-purple-500/20 to-violet-500/5",
-    border: "group-hover:border-purple-500/50",
+    color: "DAA693",
+    border: "9B864E",
       rules: `One entry per collage.
 Time limit: 4+1 mins.
 Performance Style: Semi classical, Light Music genres such as Bhavageetha, Folk song, Devotional song, Ghazals.
@@ -89,10 +89,10 @@ Participants should bring their own musical instrument.`,
     title: "POSEIDON’S PLAYBACK DUETS",
     description: "Filmy Duet singing",
     category: "UG",
-    image: "",
+    image: "/events/Filmy Duet singing E79F8A FEB870.webp",
     iconName: "Music",
-    color: "from-purple-500/20 to-violet-500/5",
-    border: "group-hover:border-purple-500/50",
+    color: "FEB870",
+    border: "E79F8A",
       rules: `Two participants make a team.
 One entry per college.
 Duration: 4+1 mins.
@@ -103,10 +103,10 @@ Participants are allowed to use any kind of musical instrument or karaoke for th
     title: "DRISHYAM",
     description: "Reel Making Contest",
     category: "UG",
-    image: "",
+    image: "/events/reel making contest D97D32 EBBA90.webp",
     iconName: "Music",
-    color: "from-purple-500/20 to-violet-500/5",
-    border: "group-hover:border-purple-500/50",
+    color: "EBBA90",
+    border: "D97D32",
       rules: `Participation is limited to two members per team.
 The reel must have a maximum duration of 60 seconds.
 Only original content created by the participants will be accepted; copied or plagiarized content is not allowed.
@@ -117,10 +117,10 @@ The final video must be submitted within the given time frame as instructed by t
     title: "LENSCRAFT",
     description: "Photography Contest",
     category: "UG",
-    image: "",
+    image: "/events/Photography Contest A7573A D69676.webp",
     iconName: "Music",
-    color: "from-purple-500/20 to-violet-500/5",
-    border: "group-hover:border-purple-500/50",
+    color: "D69676",
+    border: "A7573A",
       rules: `Participation is individual only.
 All photographs must be taken within the campus premises.
 Images must be captured using a digital camera only.
@@ -132,10 +132,10 @@ Editing or any form of image manipulation is not permitted.`,
     title: "RANGA VIMARSHA",
     description: "Street Play Competition",
     category: "UG",
-    image: "",
+    image: "/events/Street Play Competition 1B1C21 949BA1.webp",
     iconName: "Music",
-    color: "from-purple-500/20 to-violet-500/5",
-    border: "group-hover:border-purple-500/50",
+    color: "949BA1",
+    border: "1B1C21",
       rules:
 `
 Team Size: 6–10 members
@@ -162,10 +162,10 @@ Content must be original, non-offensive and
     title: "BINDAAS BRANDS",
     description: "Mad Ads",
     category: "UG",
-    image: "",
+    image: "/events/Mad Ads 3BA130 C6E83A.webp",
     iconName: "Music",
-    color: "from-purple-500/20 to-violet-500/5",
-    border: "group-hover:border-purple-500/50",
+    color: "C6E83A",
+    border: "3BA130",
       rules:
 `
 Team size : 5–8 members.
@@ -188,10 +188,10 @@ Judges’ decision is final and binding.
     title: "SPELL",
     description: "Spell Bee Competition",
     category: "UG",
-    image: "",
+    image: "/events/",
     iconName: "Music",
-    color: "from-purple-500/20 to-violet-500/5",
-    border: "group-hover:border-purple-500/50",
+    color: "fEBBA9",
+    border: "F7BE05",
       rules:
 `
 Category: Vocabulary.
@@ -219,10 +219,10 @@ Judges’ decision will be final and binding.
     title: "MOCK PRESS",
     description: "",
     category: "UG",
-    image: "",
+    image: "/events/MOCK PRESS FFFAE8 D74D43.webp",
     iconName: "Music",
-    color: "from-purple-500/20 to-violet-500/5",
-    border: "group-hover:border-purple-500/50",
+    color: "D74D43",
+    border: "FFFAE8",
       rules:
 `
 Category: Literary / Communication.
@@ -246,10 +246,10 @@ Judges’ decision will be final and binding.
     title: "JAM (Flip Master)",
     description: "",
     category: "UG",
-    image: "",
+    image: "/events/JAM FFFFFF B89182.webp",
     iconName: "Music",
-    color: "from-purple-500/20 to-violet-500/5",
-    border: "group-hover:border-purple-500/50",
+    color: "B89182",
+    border: "1B1C21",
       rules:
 `
 Category: Speaking Event.
@@ -272,10 +272,10 @@ Judges’ decision will be final and binding.
     title: "LIVING CANVAS",
     description: "Arm Painting event",
     category: "UG",
-    image: "",
+    image: "/events/arm painting.webp",
     iconName: "Music",
-    color: "from-purple-500/20 to-violet-500/5",
-    border: "group-hover:border-purple-500/50",
+    color: "D74D43",
+    border: "B89182",
       rules:
 `
 Rules
@@ -302,10 +302,10 @@ Time Duration: 1 Hour.
     title: "CHROMAFATE",
     description: "Theme based Blind color pick round",
     category: "UG",
-    image: "",
+    image: "/events/CHROMAFATE FEBEA2 2FB3D8.webp",
     iconName: "Music",
-    color: "from-purple-500/20 to-violet-500/5",
-    border: "group-hover:border-purple-500/50",
+    color: "2FB3D8",
+    border: "FEBEA2",
       rules:
 `
 Time Duration: 1 Hour.
@@ -331,10 +331,10 @@ The judges’ decision will be final and binding.
     title: "CTF",
     description: "Capture the flag",
     category: "UG",
-    image: "",
+    image: "/events/Capture the flag B2DF20 000000.webp",
     iconName: "Music",
-    color: "from-purple-500/20 to-violet-500/5",
-    border: "group-hover:border-purple-500/50",
+    color: "000000",
+    border: "B2DF20",
       rules:
 `
 Team Size: 2 per team.
@@ -353,10 +353,10 @@ Ranking: Total points; ties by earliest solve.
     title: "Code Chef",
     description: "",
     category: "UG",
-    image: "",
+    image: "/events/Code Chef FEA3A0 A32238.webp",
     iconName: "Music",
-    color: "from-purple-500/20 to-violet-500/5",
-    border: "group-hover:border-purple-500/50",
+    color: "A32238",
+    border: "FEA3A0",
       rules:
 `
 Entries: Max 2 teams per college; each team up to 2
@@ -375,10 +375,10 @@ Decision: Judges’ and organizers’ decisions are final and binding.
     title: "Drone Edge",
     description: "",
     category: "UG",
-    image: "",
+    image: "/events/Drone Edge.webp",
     iconName: "Music",
-    color: "from-purple-500/20 to-violet-500/5",
-    border: "group-hover:border-purple-500/50",
+    color: "2FB3D8",
+    border: "517393",
       rules:
 `
 Type: Manually piloted quadcopter challenge
@@ -404,10 +404,10 @@ Judges’ decision is final.
     title: "WebCraft Design",
     description: "",
     category: "UG",
-    image: "",
+    image: "/events/WebCraft Design E0E0E0 50A125.webp",
     iconName: "Music",
-    color: "from-purple-500/20 to-violet-500/5",
-    border: "group-hover:border-purple-500/50",
+    color: "50A125",
+    border: "E0E0E0",
       rules:
 `
 Team Size: 2–4 members.
@@ -424,10 +424,10 @@ AI Use: AI-generated websites will be disqualified.
     title: "Mind2Circuit",
     description: "",
     category: "UG",
-    image: "",
+    image: "/events/Mind2Circuit 003054 EFDABB.webp",
     iconName: "Music",
-    color: "from-purple-500/20 to-violet-500/5",
-    border: "group-hover:border-purple-500/50",
+    color: "EFDABB",
+    border: "003054",
       rules:
 `
 Team Size: 2 members.
@@ -449,10 +449,10 @@ Judged on creativity, debugging, conceptual clarity & time management.
     title: "Yudhastra",
     description: "",
     category: "UG",
-    image: "",
+    image: "/events/Yudhastra 1B1B1B 483A37.webp",
     iconName: "Music",
-    color: "from-purple-500/20 to-violet-500/5",
-    border: "group-hover:border-purple-500/50",
+    color: "483A37",
+    border: "1B1B1B",
       rules:
 `
 Objective: Build a purely mechanical launchpad to launch a 200 g projectile with power and precision.
@@ -475,10 +475,10 @@ Round 3 – Power: Clear a 2 m barrier and hit target zone; miss = zero score.
     title: "VISION X",
     description: "",
     category: "UG",
-    image: "",
+    image: "/events/VISION X 3F485C FF9C02.webp",
     iconName: "Music",
-    color: "from-purple-500/20 to-violet-500/5",
-    border: "group-hover:border-purple-500/50",
+    color: "FF9C02",
+    border: "3F485C",
       rules:
 `
 Objective: Autonomous navigation using camera-based vision only.
@@ -513,10 +513,10 @@ Final: Judges’ decision is final & binding.
     title: "Gen AI Prompt Engg. Battle",
     description: "",
     category: "UG",
-    image: "",
+    image: "/events/Gen AI Prompt Engg. Battle 5A8A74 FF9C02.webp",
     iconName: "Music",
-    color: "from-purple-500/20 to-violet-500/5",
-    border: "group-hover:border-purple-500/50",
+    color: "FF9C02",
+    border: "5A8A74",
       rules:
 `
 Participation: Individual or teams of up to 2.
@@ -536,10 +536,10 @@ Decision: Judges’ decision is final and binding.
     title: "Robo Soccer",
     description: "",
     category: "UG",
-    image: "",
+    image: "/events/robo soccer 687190 F68557.webp",
     iconName: "Music",
-    color: "from-purple-500/20 to-violet-500/5",
-    border: "group-hover:border-purple-500/50",
+    color: "F68557",
+    border: "687190",
       rules:
 `
 Team Size: 2–4 college students; 1 bot per team (same members may form multiple teams).
@@ -559,10 +559,10 @@ Timeouts: One 60-sec technical timeout; 1-min halftime with court swap.
     title: "TIDAL-CLASH",
     description: "(Finance Event)",
     category: "PG",
-    image: "",
+    image: "/events/TIDAL-CLASH 123668 B1BEA4.webp",
     iconName: "Music",
-    color: "from-purple-500/20 to-violet-500/5",
-    border: "group-hover:border-purple-500/50",
+    color: "B1BEA4",
+    border: "123668",
       rules:
 `
 Team size - 2
@@ -579,10 +579,10 @@ Solvency and achieve peak alpha in this crucible.
     title: "THE TITANS",
     description: "(Best Management Team)",
     category: "PG",
-    image: "",
+    image: "/events/THE TITANS 080D11 BFBB8B.webp",
     iconName: "Music",
-    color: "from-purple-500/20 to-violet-500/5",
-    border: "group-hover:border-purple-500/50",
+    color: "BFBB8B",
+    border: "080D11",
       rules:
 `
 Team size - 3
@@ -597,10 +597,10 @@ Only the most adaptive leaders will survive the gauntlet and claim the title of 
     title: "AQUA IMPERIUM",
     description: "(Marketing Event)",
     category: "PG",
-    image: "",
+    image: "/events/AQUA IMPERIUM D7D7D9 03B09D.webp",
     iconName: "Music",
-    color: "from-purple-500/20 to-violet-500/5",
-    border: "group-hover:border-purple-500/50",
+    color: "03B09D",
+    border: "D7D7D9",
       rules:
 `
 Team size - 2
@@ -614,10 +614,10 @@ An immersive marketing crucible testing strategic acuity, brand resuscitation, p
     title: "TIDE OF TALENTS",
     description: "(HR Event)",
     category: "PG",
-    image: "",
+    image: "/events/TIDE OF TALENTS D7D7D9 FB6C35.webp",
     iconName: "Music",
-    color: "from-purple-500/20 to-violet-500/5",
-    border: "group-hover:border-purple-500/50",
+    color: "FB6C35",
+    border: "D7D7D9",
       rules:
 `
 Team size - 2
@@ -631,10 +631,10 @@ An intensive HR huddle evaluating workforce agility, cognitive bandwidth, decisi
     title: "IT MANAGER CHALLENGE",
     description: "",
     category: "PG",
-    image: "",
+    image: "/events/IT MANAGER CHALLENGE FEEFB4.webp",
     iconName: "Music",
-    color: "from-purple-500/20 to-violet-500/5",
-    border: "group-hover:border-purple-500/50",
+    border: "3e9396",
+    color: "FEEFB4",
       rules:
 `
 Rules:
@@ -654,10 +654,10 @@ Judges’ decision will be final and binding.
     title: "CODE RED",
     description: "",
     category: "PG",
-    image: "",
+    image: "/events/CODE RED 222F35 990030.webp",
     iconName: "Music",
-    color: "from-purple-500/20 to-violet-500/5",
-    border: "group-hover:border-purple-500/50",
+    color: "990030",
+    border: "222F35",
       rules:
 `
 Rules:
@@ -674,10 +674,10 @@ Winning criteria: Correct identification of the murderer and the motive.
     title: "NEXT NODE",
     description: "(Virtual Treasure Hunt)",
     category: "PG",
-    image: "",
+    image: "/events/Virtual Treasure Hunt BDD9E6 FFC800.webp",
     iconName: "Music",
-    color: "from-purple-500/20 to-violet-500/5",
-    border: "group-hover:border-purple-500/50",
+    border: "FFC800",
+    color: "BDD9E6",
       rules:
 `
 Rules:
@@ -697,10 +697,10 @@ The coordinators decisions are final and binding.
     title: "Battle of Bands",
     description: "",
     category: "General",
-    image: "",
+    image: "/events/",
     iconName: "Music",
-    color: "from-purple-500/20 to-violet-500/5",
-    border: "group-hover:border-purple-500/50",
+    color: "fEBBA9",
+    border: "F7BE05",
       rules:
 `
 Date: 26 March 2026
@@ -715,10 +715,10 @@ Time: 6:45pm Onwards
     title: "Fashion Walk",
     description: "",
     category: "General",
-    image: "",
+    image: "/events/",
     iconName: "Music",
-    color: "from-purple-500/20 to-violet-500/5",
-    border: "group-hover:border-purple-500/50",
+    color: "fEBBA9",
+    border: "F7BE05",
       rules:
 `
 Date: 26 March 2026
@@ -734,10 +734,10 @@ Time: 8:00pm Onwards
     title: "TECH DUMB CHARADES (TDC)",
     description: "",
     category: "General",
-    image: "",
+    image: "/events/TECH DUMB CHARADES 4F2E1C B69A8F.webp",
     iconName: "Music",
-    color: "from-purple-500/20 to-violet-500/5",
-    border: "group-hover:border-purple-500/50",
+    color: "B69A8F",
+    border: "4F2E1C",
       rules:
 `
 Rules:
@@ -758,10 +758,10 @@ Judges’/Coordinators’ decisions are final and binding.
     title: "General Quiz",
     description: "",
     category: "General",
-    image: "",
+    image: "/events/General Quiz CBD1D7 1C2936.webp",
     iconName: "Music",
-    color: "from-purple-500/20 to-violet-500/5",
-    border: "group-hover:border-purple-500/50",
+    color: "CBD1D7",
+    border: "1C2936",
       rules:
 `
 Rules:

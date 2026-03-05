@@ -1,0 +1,116 @@
+.card{
+  width:294px;
+  height:400px;
+  border-radius:37px;
+  background:rgb(255, 255, 255);
+  position:relative;
+  overflow:visible;
+  display:flex;
+  justify-content:center;
+  margin-top: 3rem;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.13);
+
+}
+
+
+.inner{
+  width:100%;
+  height:100%;
+  position:relative;
+}
+
+/* green gradient bottom */
+.inner::after{
+  content:"";
+  position:absolute;
+  bottom:0;
+  left:0;
+  width:100%;
+  height:55%;
+  border-bottom-right-radius:37px;
+  border-bottom-left-radius:37px;
+  background:linear-gradient(
+    180deg,
+    rgba(255,255,255,0) 0%,
+    var(--gradientColor) 100%
+  );
+  z-index:1;
+}
+
+/* top rectangle */
+.imageBox{
+  position:absolute;
+  top:25px;
+  left:50%;
+  transform:translateX(-50%);
+  width:255px;
+  height:177px;
+  border-radius:18px;
+  background-color: var(--boxColor);
+  overflow:hidden;
+      transition: all 0.3s;
+    transform-origin: 0;
+}
+
+.image{
+  object-fit:cover;
+}
+
+/* character */
+.character{
+  position:absolute;
+  left:50%;
+  bottom: 35%;
+  transform:translateX(-50%);
+  width:220px;
+  height:300px;
+    transition: all 0.3s;
+    transform-origin: 0;
+}
+
+.card:hover .character{
+  scale:1.1;
+}
+
+.card:hover .imageBox{
+  scale:0.9;
+}
+
+
+.characterImg{
+  object-fit:contain;
+}
+/* bottom text */
+.content{
+  position:absolute;
+  bottom:0px;
+  width:100%;
+  text-align:center;
+  z-index:3;
+  padding: 1rem;
+}
+
+.title{
+  font-size:20px;
+  font-weight:700;
+  font-family:Inter, sans-serif;
+  margin-bottom:18px;
+  text-transform: capitalize;
+}
+
+/* button */
+.button{
+  width:100%;
+  margin:auto;
+  padding:12px 0;
+  border-radius:25px;
+  background:#000502;
+  color:white;
+  font-size:18px;
+  font-weight:500;
+  transition: color 0.3s;
+}
+
+.button:hover{
+  color: var(--boxColor);
+}

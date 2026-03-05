@@ -5,16 +5,17 @@ import { cn } from '@/lib/utils' // Assuming you have a utils file, or I'll inli
 
 // Mock Data with Categories
 const allImages = [
-  { src: "https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?q=80&w=1974&auto=format&fit=crop", category: 'UG' },
-  { src: "https://images.unsplash.com/photo-1635322966219-b75ed372eb01?q=80&w=1964&auto=format&fit=crop", category: 'UG' },
-  { src: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=1780&auto=format&fit=crop", category: 'PG' },
-  { src: "https://images.unsplash.com/photo-1599566150163-29194dcaad36?q=80&w=1974&auto=format&fit=crop", category: 'UG' },
-  { src: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?q=80&w=1964&auto=format&fit=crop", category: 'PG' }, 
-  { src: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1964&auto=format&fit=crop", category: 'UG' },
-  { src: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1974&auto=format&fit=crop", category: 'PG' },
-  { src: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1974&auto=format&fit=crop", category: 'UG' },
-  { src: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1974&auto=format&fit=crop", category: 'PG' },
-  { src: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?q=80&w=1974&auto=format&fit=crop", category: 'UG' },
+  { src: "/gallary/2015/1.webp", category: 'UG' },
+  { src: "/gallary/2019/4.webp", category: 'UG' },
+  { src: "/gallary/2022/5.webp", category: 'UG' },
+  { src: "/gallary/2016/4.webp", category: 'UG' },
+  { src: "/gallary/2014/3.webp", category: 'UG' },
+  { src: "/gallary/2015/4.webp", category: 'UG' }, 
+  { src: "/gallary/2023/6.webp", category: 'UG' },
+  { src: "/gallary/2023/7.webp", category: 'UG' },
+  { src: "/gallary/2022/1.webp", category: 'UG' },
+  { src: "/gallary/2016/2.webp", category: 'UG' },
+  { src: "/gallary/2022/3.webp", category: 'UG' },
 ]
 
 export default function About() {
@@ -72,7 +73,7 @@ export default function About() {
                         <span className="font-mono text-[10px] md:text-xs text-zinc-400 absolute -top-6 left-2 md:left-0 tracking-widest">01 / OVERVIEW</span>
                         <h3 className="text-4xl md:text-5xl font-black tracking-tighter text-black leading-[0.9] uppercase">
                             3 Days.<br />
-                            50+ Events.<br />
+                            30+ Events.<br />
                             One Vision.
                         </h3>
                     </div>
@@ -113,10 +114,10 @@ export default function About() {
                                     alt={`Gallery image ${i + 1}`} 
                                     className="w-full h-full object-cover rounded-2xl bg-white border border-white/20 block filter grayscale-[0.2] group-hover:grayscale-0 transition-all duration-500 pointer-events-none"
                                  />
-                                 {/* Category Label (Optional, for visual confirmation) */}
+                                 {/* Category Label (Optional, for visual confirmation)
                                  <div className="absolute top-2 right-2 bg-black/60 backdrop-blur-md px-2 py-0.5 rounded text-[10px] font-bold text-white opacity-0 group-hover:opacity-100 transition-opacity">
                                     {img.category}
-                                 </div>
+                                 </div> */}
                             </div>
                         )
                     })}

@@ -5,6 +5,7 @@ import { Calendar, Music, Code, Gamepad, Award, Shield, Mic, Camera, Video, Pale
 
 import Link from 'next/link'
 import { events } from '@/lib/eventsData'
+import EventCard from "@/components/eventCard/EventCard"
 
 export default function Events() {
   const [activeCategory, setActiveCategory] = useState<'General'|'UG' | 'PG'>('General')
@@ -12,7 +13,7 @@ export default function Events() {
   const filteredEvents = events.filter(event => event.category === activeCategory)
 
   return (
-    <section className="py-24 bg-white text-slate-900 md:px-8 relative overflow-hidden p-5">
+    <section className="py-24 text-slate-900 md:px-8 relative overflow-hidden p-5">
        
       <div className="max-w-[1400px] mx-auto relative z-10 w-full">
         {/* Header Section */}
@@ -50,47 +51,19 @@ export default function Events() {
          </div>
 
         {/* Events Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 justify-items-center">
           {filteredEvents.map((event, i) => (
-            <Link
-              href={`/events/${event.id}`}
-              key={event.id}
-              className="group flex flex-col gap-3 p-3 rounded-[2rem] bg-zinc-50 border border-black/5"
-            >
-               {/* 1. Image Section */}
-                <div className="w-full aspect-[4/3] rounded-[1.5rem] overflow-hidden relative">
-                     <img 
-                         src={event.image} 
-                         alt={event.title}
-                         className="w-full h-full object-cover"
-                     />
-                     <div className="absolute inset-0 " />
-                     {/* Category Tag */}
-                     <div className="p-2 absolute top-3 right-3 bg-white/90 backdrop-blur-sm py-1 rounded-full text-[10px] font-bold text-slate-800 shadow-sm">
-                        {event.category}
-                     </div>
-                </div>
+            // <Link
+            //   href={`/events/${event.id}`}
+            //   key={event.id}
+            //   className="group flex flex-col gap-3 p-3 rounded-[2rem] bg-zinc-50 border border-black/5"
+            // >
+                <EventCard
+            key={event.id}
+            event={event}
+            index={i}
+          />
 
-               {/* 2. Number & Title Section */}
-               <div className="flex flex-col gap-1 mt-1">
-                    <div className="flex items-baseline gap-2">
-                        <span className="font-mono text-blue-600 text-xs font-bold tracking-widest">0{i + 1}</span>
-                        <h3 className="text-lg font-bold tracking-tight text-slate-900 transition-colors">
-                            {event.title}
-                        </h3>
-                    </div>
-                    <p className="text-slate-500 text-xs pl-6 line-clamp-2 leading-relaxed">{event.description}</p>
-               </div>
-
-               {/* 3. Button Section */}
-               <div className="mt-auto px-1 pb-1">
-                   <div className="w-full py-3.5 rounded-[1.2rem] bg-black text-white hover:bg-zinc-800 transition-all duration-300 flex items-center justify-center gap-2 group/btn">
-                        <span className="text-[10px] font-bold uppercase tracking-[0.15em]">View Event</span>
-                        <span className="group-hover/btn:translate-x-1 transition-transform duration-300 text-xs">→</span>
-                   </div>
-               </div>
-
-            </Link>
           ))}
         </div>
       </div>
