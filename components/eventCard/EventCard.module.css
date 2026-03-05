@@ -114,3 +114,27 @@
 .button:hover{
   color: var(--boxColor);
 }
+
+@media (max-width:900px){
+
+.character{
+  scale:1.1;
+}
+
+.imageBox{
+  scale:0.9;
+}
+
+.card:hover .character{
+  scale:1;
+}
+
+.card:hover .imageBox{
+  scale:0;
+}
+
+
+
+
+
+}

@@ -68,11 +68,11 @@ export default function Reveal({ spotifyData }: RevealProps) {
     : `https://open.spotify.com/embed/artist/${ARTIST_ID}?utm_source=generator&theme=0`
 
   return (
-    <section className="bg-white py-10 md:py-16 flex flex-col items-center overflow-hidden ">
+    <section className="py-10 md:py-16 flex flex-col items-center overflow-hidden ">
       <div className="w-[96%] max-w-[1400px] mx-auto">
 
         {/* Outer dark container */}
-        <div className="bg-gray-50 rounded-[2rem] md:rounded-[3rem] p-6 md:p-8 relative overflow-hidden">
+        <div className="rounded-[2rem] md:rounded-[3rem] p-6 md:p-8 relative overflow-hidden">
 
           {/* Header */}
           <div className="mb-6 md:mb-8 flex flex-col md:flex-row md:items-center justify-between gap-6 relative z-10">

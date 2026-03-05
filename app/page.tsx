@@ -4,6 +4,7 @@ import Reveal from '@/components/Reveal'
 import Events from '@/components/Events'
 import About from '@/components/About'
 import Footer from '@/components/Footer'
+import MainEventsSection from '@/components/mainevent/MainEventsSection'
 import { getArtist, getArtistTopTracks } from '@/lib/spotify'
 
 
@@ -57,9 +58,10 @@ export default async function Home() {
     <Hero />
     <ThemeReveal />
     <Reveal spotifyData={spotifyData} />
-    <div id="events">
+    {/* <div id="events">
       <Events />
-    </div>
+    </div> */}
+    <MainEventsSection />
     <About />
     <Footer />
   </div>

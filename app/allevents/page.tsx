@@ -1,0 +1,184 @@
+"use client"
+
+import { useState } from "react"
+import { events } from "@/lib/eventsData"
+import EventCard from "@/components/eventCard/EventCard"
+import { Filter } from "lucide-react"
+
+export default function AllEventsPage(){
+
+  const [search,setSearch] = useState("")
+  const [openFilter,setOpenFilter] = useState(false)
+
+  const categories = [
+    "Razzle (Dance Events)",
+    "Chords (Musical Events)",
+    "Captcha & Pixel",
+    "Mask (Theatre Events)",
+    "Speakers & Literally",
+    "Pallet (Art events)",
+    "Technical Events",
+    "MCA Events",
+    "MBA Events",
+    "General"
+  ]
+
+  const filteredEvents = events.filter(event =>
+    event.title.toLowerCase().includes(search.toLowerCase()) ||
+    event.description.toLowerCase().includes(search.toLowerCase())
+  )
+
+  function scrollToCategory(category:string){
+
+    const id = category.replace(/\s+/g,"-")
+
+    const element = document.getElementById(id)
+
+    if(element){
+      element.scrollIntoView({ behavior:"smooth", block:"start" })
+    }
+
+    setOpenFilter(false)
+  }
+
+  return(
+
+    <main className="py-24 px-6">
+
+      <div className="max-w-[1400px] mx-auto space-y-16">
+
+        {/* Header */}
+        <div className="text-center space-y-2">
+
+          <h1 className="text-5xl font-bold">
+            All Events
+          </h1>
+
+          <p className="text-slate-500">
+            Explore the full lineup of competitions.
+          </p>
+
+        </div>
+
+
+        {/* Controls */}
+        <div className="sticky top-12 z-40 py-5">
+
+  <div className="max-w-[1400px] mx-auto flex items-center gap-3">
+
+    {/* Search */}
+    <input
+      type="text"
+      placeholder="Search events..."
+      value={search}
+      onChange={(e)=>setSearch(e.target.value)}
+      className="flex-1 px-6 py-3 rounded-full border border-zinc-200 focus:outline-none focus:ring-2 focus:ring-black bg-white"
+    />
+
+    {/* Filter Icon Button */}
+    <button
+      onClick={()=>setOpenFilter(true)}
+      className="w-12 h-12 flex items-center justify-center rounded-full bg-black text-white hover:bg-zinc-800 transition"
+    >
+      <Filter size={18} />
+    </button>
+
+  </div>
+
+</div>
+
+        {/* Category Sections */}
+        <div className="space-y-24">
+
+          {categories.map(category=>{
+
+            const categoryEvents = filteredEvents.filter(
+              e => e.category === category
+            )
+
+            if(categoryEvents.length === 0) return null
+
+            const sectionId = category.replace(/\s+/g,"-")
+
+            return(
+
+              <section
+                key={category}
+                id={sectionId}
+                className="space-y-10 scroll-mt-32 "
+              >
+
+                <div className="flex items-center gap-6">
+
+                  <h2 className="text-3xl font-semibold">
+                    {category}
+                  </h2>
+
+                  <div className="h-px flex-1 bg-black"></div>
+
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 justify-items-center">
+
+                  {categoryEvents.map((event,index)=>(
+                    <EventCard
+                      key={event.id}
+                      event={event}
+                      index={index}
+                    />
+                  ))}
+
+                </div>
+
+              </section>
+
+            )
+
+          })}
+
+        </div>
+
+      </div>
+
+
+      {/* FILTER POPUP */}
+      {openFilter && (
+
+        <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
+
+          <div className="bg-white rounded-2xl p-8 w-[90%] max-w-md space-y-6">
+
+            <h3 className="text-xl font-bold text-center">
+              Select Category
+            </h3>
+
+            <div className="space-y-3 max-h-[400px] overflow-y-auto">
+
+              {categories.map(category=>(
+                <button
+                  key={category}
+                  onClick={()=>scrollToCategory(category)}
+                  className="w-full text-left px-4 py-3 rounded-lg hover:bg-zinc-100 transition"
+                >
+                  {category}
+                </button>
+              ))}
+
+            </div>
+
+            <button
+              onClick={()=>setOpenFilter(false)}
+              className="w-full py-3 rounded-full bg-zinc-100 hover:bg-zinc-200"
+            >
+              Close
+            </button>
+
+          </div>
+
+        </div>
+
+      )}
+
+    </main>
+  )
+}

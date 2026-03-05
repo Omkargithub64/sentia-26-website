@@ -36,7 +36,7 @@ export default function Nav() {
         {}
         <nav className="nav-links">
           <Link href="/">Home</Link>
-          <a href="/#events">
+          <a href="/allevents">
   Events
 </a>
           <a
@@ -57,7 +57,7 @@ export default function Nav() {
       {}
       <div className={`mobile-menu ${open ? "open" : ""}`}>
         <Link href="/" onClick={() => setOpen(false)}>Home</Link>
-        <a href="#events" onClick={() => setOpen(false)}>Events</a>
+        <a href="/allevents" onClick={() => setOpen(false)}>Events</a>
         <a
           href="https://mite.ac.in/"
           target="_blank"

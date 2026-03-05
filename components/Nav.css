@@ -13,7 +13,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 40px;
+  padding: 40px 40px;
 }
 
 /* ===============================
@@ -27,7 +27,7 @@
   border-radius: 12px;
   background: #4986ff8a;
   backdrop-filter: blur(10px);
-    margin-top: 2rem;
+  /* margin-top: 2rem; */
 }
 
 .nav-links a {
@@ -169,7 +169,9 @@
 
   }
 .navbar-inner{
-    margin-top: 1.2rem;
+    margin-top: 0rem;
+    position: sticky;
+    z-index: 1000;
 
 }
   .hamburger {
@@ -182,6 +184,8 @@
 
   .navbar-inner {
     padding: 12px 35px;
+    background: rgba(255, 255, 255, 0);
+    backdrop-filter: blur(30px);
   }
 
   .nav-logo {
