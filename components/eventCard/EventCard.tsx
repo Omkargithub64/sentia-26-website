@@ -14,9 +14,10 @@ type Event = {
   border: string
   type: string
   location?: string
+  index: number
 }
 
-export default function EventCard({ event }: { event: Event }) {
+export default function EventCard({ event }: { event: Event, index: number }) {
 
   function capitalizeWords(text: string) {
     return text
