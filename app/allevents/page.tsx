@@ -45,7 +45,7 @@ export default function AllEventsPage(){
 
     <main className="py-24 px-6">
 
-      <div className="max-w-[1400px] mx-auto space-y-16">
+      <div className="max-w-[1400px] mx-auto ">
 
         {/* Header */}
         <div className="text-center space-y-2">
@@ -63,7 +63,7 @@ export default function AllEventsPage(){
 
         {/* Controls */}
         <div className="sticky top-12 z-40 py-5">
-<div className="max-w-[1400px] mx-auto flex items-center justify-center gap-3 mt-6 md:mt-10">
+<div className="max-w-[1400px] mx-auto flex items-center justify-center gap-3 mt-0 md:mt-10">
 
   {/* Search */}
   <div className="relative w-full md:w-[420px]">
@@ -89,7 +89,8 @@ export default function AllEventsPage(){
   </button>
 
 </div>
-
+<br />
+<br />
 </div>
 
         {/* Category Sections */}

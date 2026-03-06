@@ -62,7 +62,7 @@
   left:50%;
   bottom: 35%;
   transform:translateX(-50%);
-  width:220px;
+  width:250px;
   height:350px;
     transition: all 0.3s;
     transform-origin: 0;

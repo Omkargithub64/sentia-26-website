@@ -1,9 +1,10 @@
 import { Instagram, Twitter, Linkedin, Facebook, ArrowUpRight, Cloud, MapPin } from 'lucide-react'
+import Link from 'next/link'
 
 export default function Footer() {
   return (
-    <footer className="bg-white pt-1 pb-2 px-1 md:px-2">
-        <div className="w-[98%] max-w-[1800px] mx-auto bg-black rounded-[2.5rem] p-6 md:p-10 overflow-hidden relative">
+    <footer className=" pt-1 pb-2 px-1 md:px-2">
+        <div className="w-[98%] max-w-[1800px] mx-auto bg-black rounded-[1.5rem] p-6 md:p-10 overflow-hidden relative">
             
             {/* Background Video */}
             <div className="absolute inset-0 z-0">
@@ -31,7 +32,7 @@ export default function Footer() {
                 </div>
 
                 {/* Explore Links */}
-                <div className="md:pl-8">
+                {/* <div className="md:pl-8">
                     <h4 className="text-white/60 mb-4 text-xs font-medium uppercase tracking-wide">Explore</h4>
                     <ul className="space-y-3 font-medium text-base text-white">
                         <li><a href="#" className="hover:text-blue-400 transition-colors block">Events</a></li>
@@ -39,7 +40,7 @@ export default function Footer() {
                         <li><a href="#" className="hover:text-blue-400 transition-colors block">Sponsors</a></li>
                         <li><a href="#" className="hover:text-blue-400 transition-colors block">Contact</a></li>
                     </ul>
-                </div>
+                </div> */}
 
                 {/* Socials */}
                 <div>
@@ -62,7 +63,7 @@ export default function Footer() {
 
                 {/* CTA */}
                 <div>
-                    <a href="#" className="group block mb-6">
+                    <Link href="/allevents" className="group block mb-6">
                         <div className="flex items-center gap-3 text-xl font-medium mb-1 text-orange-500">
                              Register Now 
                              <div className="bg-orange-500 text-white p-1 rounded-full group-hover:rotate-45 transition-transform">
@@ -70,14 +71,15 @@ export default function Footer() {
                              </div>
                         </div>
                         <p className="text-white/60 text-xs">Join the excitement</p>
-                    </a>
+                    </Link>
                 </div>
             </div>
 
             {/* Massive Typography */}
             <div className="relative w-full flex justify-center border-b border-white/10 pb-2 z-10">
                 <h1 className="text-[14vw] leading-[0.8] font-black tracking-tighter text-white select-none pointer-events-none">
-                    SENTIA 2026
+                    <img src="/Sentia26.png" alt="" />
+                    <br />
                 </h1>
             </div>
 
