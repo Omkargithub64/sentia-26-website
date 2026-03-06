@@ -63,27 +63,32 @@ export default function AllEventsPage(){
 
         {/* Controls */}
         <div className="sticky top-12 z-40 py-5">
+<div className="max-w-[1400px] mx-auto flex items-center justify-center gap-3 mt-6 md:mt-10">
 
-  <div className="max-w-[1400px] mx-auto flex items-center gap-3">
-
-    {/* Search */}
+  {/* Search */}
+  <div className="relative w-full md:w-[420px]">
     <input
       type="text"
-      placeholder="Search events..."
+      placeholder="Search events"
       value={search}
       onChange={(e)=>setSearch(e.target.value)}
-      className="flex-1 px-6 py-3 rounded-full border border-zinc-200 focus:outline-none focus:ring-2 focus:ring-black bg-white"
+      className="w-full px-6 py-3 rounded-full border border-zinc-200 bg-white shadow-sm 
+      focus:outline-none focus:border-zinc-300 focus:ring-2 focus:ring-black/10
+      transition-all duration-200"
     />
-
-    {/* Filter Icon Button */}
-    <button
-      onClick={()=>setOpenFilter(true)}
-      className="w-12 h-12 flex items-center justify-center rounded-full bg-black text-white hover:bg-zinc-800 transition"
-    >
-      <Filter size={18} />
-    </button>
-
   </div>
+
+  {/* Filter Button */}
+  <button
+    onClick={()=>setOpenFilter(true)}
+    className="w-11 h-11 flex items-center justify-center rounded-full 
+    border border-zinc-200 bg-white shadow-sm
+    hover:bg-zinc-50 transition"
+  >
+    <Filter size={18} className="text-zinc-700" />
+  </button>
+
+</div>
 
 </div>
 

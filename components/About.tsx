@@ -12,10 +12,7 @@ const allImages = [
   { src: "/gallary/2014/3.webp", category: 'UG' },
   { src: "/gallary/2015/4.webp", category: 'UG' }, 
   { src: "/gallary/2023/6.webp", category: 'UG' },
-  { src: "/gallary/2023/7.webp", category: 'UG' },
-  { src: "/gallary/2022/1.webp", category: 'UG' },
-  { src: "/gallary/2016/2.webp", category: 'UG' },
-  { src: "/gallary/2022/3.webp", category: 'UG' },
+  { src: "/gallary/2023/7.webp", category: 'UG' }
 ]
 
 export default function About() {

@@ -38,7 +38,7 @@ export const events: any[] = [
 Each group must have minimum of 5 and maximum of 12 participants.
 Duration: 4+1 minutes.
 Styles allowed: Pure western dance forms such as hip-hop, jazz, locking and open style.`,
-    registerLink: "https://docs.google.com/forms/d/e/1FAIpQLSfD_placeholder/viewform"
+    registerLink: "https://forms.gle/v1h1aPJFRPWeCnbS7"
   },
   {
     id: 2,
@@ -54,7 +54,7 @@ Dancer will be challenged impromptu on varied beats of a live dj.
 The music genre will change for each pair of dancers and can range from any genre.
 Judges will choose 1 dancer from each battle to advance to the next round.
 The final battle will have 2 dancers competing.`,
-    registerLink: ""
+    registerLink: "https://forms.gle/LqF2PGZukQeoTQSx9"
   },
   {
     id: 3,
@@ -69,7 +69,7 @@ The final battle will have 2 dancers competing.`,
 Each group must have minimum of 5 and maximum of 12 participants.
 Duration: 4+1 minutes.
 Styles allowed: Semi-classical, fusion, contemporary, folk.`,
-    registerLink: ""
+    registerLink: "https://forms.gle/8PPoFc9iYzC98jhz7"
   },{
     id: 4,
     title: "NADA SAGARA",
@@ -83,7 +83,7 @@ Styles allowed: Semi-classical, fusion, contemporary, folk.`,
 Time limit: 4+1 mins.
 Performance Style: Semi classical, Light Music genres such as Bhavageetha, Folk song, Devotional song, Ghazals.
 Participants should bring their own musical instrument.`,
-    registerLink: ""
+    registerLink: "https://forms.gle/dT57FaGvMcvMs3xV9"
   },{
     id: 5,
     title: "POSEIDON’S PLAYBACK DUETS",
@@ -97,7 +97,7 @@ Participants should bring their own musical instrument.`,
 One entry per college.
 Duration: 4+1 mins.
 Participants are allowed to use any kind of musical instrument or karaoke for the performance.`,
-    registerLink: ""
+    registerLink: "https://forms.gle/ae7WNQt9ASP898nt9"
   },{
     id: 6,
     title: "DRISHYAM",
@@ -111,7 +111,7 @@ Participants are allowed to use any kind of musical instrument or karaoke for th
 The reel must have a maximum duration of 60 seconds.
 Only original content created by the participants will be accepted; copied or plagiarized content is not allowed.
 The final video must be submitted within the given time frame as instructed by the organizers.`,
-    registerLink: ""
+    registerLink: "https://forms.gle/jyvq7pn1ByKHLi8YA"
   },{
     id: 7,
     title: "LENSCRAFT",
@@ -125,7 +125,7 @@ The final video must be submitted within the given time frame as instructed by t
 All photographs must be taken within the campus premises.
 Images must be captured using a digital camera only.
 Editing or any form of image manipulation is not permitted.`,
-    registerLink: ""
+    registerLink: "https://forms.gle/ydEFaiS8Ej4P6L5R8"
   }
   ,{
     id: 8,
@@ -154,7 +154,7 @@ No microphones, speakers, recorded audio, or electronic aids.
 Content must be original, non-offensive and
 
 `,
-    registerLink: ""
+    registerLink: "https://forms.gle/AMp7MTVxMuzcntPbA"
   }
   
   ,{
@@ -180,7 +180,7 @@ Exceeding time limit leads to mark deduction.
 Judging based on creativity, innovation, teamwork & presentation.
 Judges’ decision is final and binding.
 `,
-    registerLink: ""
+    registerLink: "https://forms.gle/3KRFuVMwmyCwRNqGA"
   }
   
   ,{
@@ -211,7 +211,7 @@ Difficulty level increases with each round.
 Any misconduct will lead to disqualification.
 Judges’ decision will be final and binding.
 `,
-    registerLink: ""
+    registerLink: "https://forms.gle/9ZJZcobFm5qsUNAB7"
   }
   
   ,{
@@ -238,7 +238,7 @@ Mobile phones and external help are not allowed during active rounds.
 Time limits must be strictly followed.
 Judges’ decision will be final and binding.
 `,
-    registerLink: ""
+    registerLink: "https://forms.gle/pJnKVi8j1T5xPa8m6"
   }
   
   ,{
@@ -264,7 +264,7 @@ Use of notes, mobile phones, or prompts is not allowed Offensive, political, or 
 Language of the event: English only.
 Judges’ decision will be final and binding.
 `,
-    registerLink: ""
+    registerLink: "https://forms.gle/h8S7ygorrjxpEEzp8"
   }
   
   ,{
@@ -294,7 +294,7 @@ Artwork must be completed within the given time limit.
 The judges’ decision will be final and binding.
 Time Duration: 1 Hour.
 `,
-    registerLink: ""
+    registerLink: "https://forms.gle/kSivsPoznLbyy9Wj9"
   }
   
   ,{
@@ -323,7 +323,7 @@ One artwork per participant is permitted.
 The artwork must be completed within the given time limit.
 The judges’ decision will be final and binding.
 `,
-    registerLink: ""
+    registerLink: "https://forms.gle/vc8znQvNP6gr7Cii9"
   }
   
   ,{
@@ -345,12 +345,12 @@ Fair Play: Unfair means = disqualification.
 Duration: 3 hours with live scoreboard.
 Ranking: Total points; ties by earliest solve.
 `,
-    registerLink: ""
+    registerLink: "https://forms.gle/R9dQtt198ahiQVNc7"
   }
   
   ,{
     id: 16,
-    title: "Code Chef",
+    title: "Code Chef Programming Contest",
     description: "",
     category: "Technical Events",
     image: "/events/Code Chef FEA3A0 A32238.webp",
@@ -367,7 +367,7 @@ Round 1: Elimination – 30 objective programming aptitude questions.
 Round 2: Final – Analyze problem statement and develop a programmatic solution.
 Decision: Judges’ and organizers’ decisions are final and binding.
 `,
-    registerLink: ""
+    registerLink: "https://forms.gle/jmaZCedDRfR5gFP47"
   }
   
   ,{
@@ -396,7 +396,7 @@ Judging:
 Based on completion time, accuracy & control.
 Judges’ decision is final.
 `,
-    registerLink: ""
+    registerLink: "https://forms.gle/TLLKFJ84YPK7x2jR6"
   }
   
   ,{
@@ -416,7 +416,7 @@ Originality: Only original designs; no templates (WordPress/Wix, etc.).
 Anonymity: No branding, names, or logo during judging.
 AI Use: AI-generated websites will be disqualified.
 `,
-    registerLink: ""
+    registerLink: "https://forms.gle/oT7CGr3FoXfiu5Fn9"
   }
   
   ,{
@@ -441,7 +441,7 @@ Evaluation:
 Maximum number of valid, unique, working circuits.
 Judged on creativity, debugging, conceptual clarity & time management.
 `,
-    registerLink: ""
+    registerLink: "https://forms.gle/foMgMC9cuZR1YjnV9"
   }
   
   ,{
@@ -467,7 +467,7 @@ Round 1 – Range: 2 attempts; best distance counts; top 50% qualify.
 Round 2 – Accuracy: Hit target (≤10 m); 3 launches; adjustable angle only; highest score advances.
 Round 3 – Power: Clear a 2 m barrier and hit target zone; miss = zero score.
 `,
-    registerLink: ""
+    registerLink: "https://forms.gle/VoRZoodUtSCuAzVN6"
   }
   
   ,{
@@ -505,7 +505,7 @@ Only 1 member near arena during run.
 Unsafe robots prohibited.
 Final: Judges’ decision is final & binding.
 `,
-    registerLink: ""
+    registerLink: "https://forms.gle/FGRMwQt7m8ZAAtuc8"
   }
   
   ,{
@@ -528,7 +528,7 @@ Evaluation: Participants may explain prompt strategy to judges.
 Fair Play: Malpractice leads to disqualification.
 Decision: Judges’ decision is final and binding.
 `,
-    registerLink: ""
+    registerLink: "https://forms.gle/BLcehMxwsd6xKQ1V9"
   }
   
   ,{
@@ -551,7 +551,7 @@ Arena: 7 ft × 5 ft.
 Gameplay: Bot must not be immobile > 10 sec; pushing opponent into goal allowed.
 Timeouts: One 60-sec technical timeout; 1-min halftime with court swap.
 `,
-    registerLink: ""
+    registerLink: "https://forms.gle/6apYkHqobrSPx3nC8"
   }
     
   ,{
@@ -570,7 +570,7 @@ Navigate high-stakes capital restructuring and liquidity crunches.
 Teams must execute dynamic hedging and optimize risk-adjusted returns under extreme volatility to maintain fiscal.
 Solvency and achieve peak alpha in this crucible.
 `,
-    registerLink: ""
+    registerLink: "https://forms.gle/NmLoVBH6hQ6SjHDr9"
   }
     
     
@@ -589,7 +589,7 @@ Team size - 3
 The challenge tests your team’s grit and synchronization in the face of professional pressure.
 Only the most adaptive leaders will survive the gauntlet and claim the title of Best Management Team.
 `,
-    registerLink: ""
+    registerLink: "https://forms.gle/usWJs5oXeUQfvBSP7"
   }
       
   ,{
@@ -606,7 +606,7 @@ Only the most adaptive leaders will survive the gauntlet and claim the title of 
 Team size - 2
 An immersive marketing crucible testing strategic acuity, brand resuscitation, persuasion, and marketcraft where insight, ideation, and data-driven positioning converge to showcase contemporary managerial marketing prowess.
 `,
-    registerLink: ""
+    registerLink: "https://forms.gle/vEG2i4ByzwdbeEN38"
   }
       
   ,{
@@ -623,7 +623,7 @@ An immersive marketing crucible testing strategic acuity, brand resuscitation, p
 Team size - 2
 An intensive HR huddle evaluating workforce agility, cognitive bandwidth, decision velocity, and situational judgment where talent orchestration, behavioral insight, and people-centric strategy converge under high-pressure conditions.
 `,
-    registerLink: ""
+    registerLink: "https://forms.gle/kC9gBv4XjHV2rP1d7"
   }
       
   ,{
@@ -646,7 +646,7 @@ Laptops are not allowed unless explicitly permitted by the organizers.
 Any malpractice will lead to immediate disqualification.
 Judges’ decision will be final and binding.
 `,
-    registerLink: ""
+    registerLink: "https://forms.gle/ghZUniSs5oWVNoTW7"
   }
       
   ,{
@@ -666,7 +666,7 @@ Use of mobiles and laptops strictly prohibited.
 Inter-team discussion not allowed.
 Winning criteria: Correct identification of the murderer and the motive.
 `,
-    registerLink: ""
+    registerLink: "https://forms.gle/uc1PBgBewC7FJ4Xu7"
   }
       
   ,{
@@ -688,7 +688,7 @@ Refreshing pages, manipulating URLs, or bypassing rounds will lead to disqualifi
 Any form of malpractice or answer sharing with other teams is strictly prohibited.
 The coordinators decisions are final and binding.
 `,
-    registerLink: ""
+    registerLink: "https://forms.gle/ZnZFKYHYmdLRnAzu8"
   }
 
         
@@ -752,7 +752,7 @@ All three team members must actively participate in the Finals.
 Any form of malpractice, rule violation, or unfair means will lead to disqualification.
 Judges’/Coordinators’ decisions are final and binding.
 `,
-    registerLink: ""
+    registerLink: "https://forms.gle/r1kXkcSCXPfMMV2e9"
   }
       
   ,{
@@ -770,7 +770,7 @@ Rules:
 Make a team of 2.
 Preliminary round followed by final round.
 `,
-    registerLink: ""
+    registerLink: "https://forms.gle/49biFbF87CArGKvj6"
   }
  
 ]

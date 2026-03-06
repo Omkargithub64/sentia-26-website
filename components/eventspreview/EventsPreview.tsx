@@ -19,12 +19,22 @@ export default function EventsPreview(){
 
       <div className="max-w-[1400px] mx-auto">
 
-  <h2 className="text-4xl font-bold">
+ <div className="max-w-2xl mb-10 md:mb-14">
+
+  <span className="text-[11px] font-bold tracking-[0.25em] text-zinc-500 uppercase block mb-2">
+    Explore
+  </span>
+
+  <h2 className="text-3xl md:text-5xl font-black tracking-tight text-zinc-900 leading-tight mb-4">
     Event Lineup
   </h2>
 
-  <p className="text-gray-600 text-xs md:text-sm leading-relaxed text-left md:text-right pb-8 pt-4">Step into the arena of creativity, skill, and performance as the playground of Poseidon comes alive with unforgettable events.</p>
+  <p className="text-zinc-600 text-sm md:text-base leading-relaxed">
+    Step into the arena of creativity, skill, and performance as the playground
+    of Poseidon comes alive with unforgettable events.
+  </p>
 
+</div>
         {/* Horizontal Scroll Container */}
         <div className="flex lg:grid lg:grid-cols-4 gap-6 overflow-x-auto lg:overflow-visible pb-4 scroll-smooth pl-3 lg:pl-0">
 

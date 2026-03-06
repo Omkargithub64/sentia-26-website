@@ -35,7 +35,7 @@ const ARTIST_ID = '19LIHDDSHBD5NyYHI3gpzB'
 const fallbackData: SpotifyData = {
   artist: {
     name: 'Shilpa Rao',
-    image: '/images/2.jpeg',
+    image: '/images/2.webp',
     followers: 4100000,
     genres: ['bollywood'],
     spotifyUrl: `https://open.spotify.com/artist/${ARTIST_ID}`,
@@ -68,73 +68,92 @@ export default function Reveal({ spotifyData }: RevealProps) {
     : `https://open.spotify.com/embed/artist/${ARTIST_ID}?utm_source=generator&theme=0`
 
   return (
-    <section className="py-10 md:py-16 flex flex-col items-center overflow-hidden ">
-      <div className="w-[96%] max-w-[1400px] mx-auto">
+    <section className="py-16 md:py-24 flex flex-col items-center overflow-hidden">
 
-        {/* Outer dark container */}
-        <div className="rounded-[2rem] md:rounded-[3rem] p-6 md:p-8 relative overflow-hidden">
+  <div className="w-[96%] max-w-[1400px] mx-auto">
 
-          {/* Header */}
-          <div className="mb-6 md:mb-8 flex flex-col md:flex-row md:items-center justify-between gap-6 relative z-10">
-            <div>
-              <span className="text-[10px] font-bold tracking-[0.2em] text-black uppercase block mb-2">
-                The Main Event
-              </span>
-              <h2 className="text-3xl md:text-5xl font-black tracking-tighter text-black leading-[0.9]">
-                Celebrity Nite
-              </h2>
-            </div>
-            <div className="flex flex-col items-start md:items-end gap-3 md:max-w-xs">
-              <p className="text-gray-600 text-xs md:text-sm leading-relaxed text-left md:text-right">
-                An unforgettable night of live music featuring Bollywood&apos;s most celebrated voices. Get a taste of what&apos;s coming — listen to her biggest hits before the big night.
-              </p>
-              {/* <a
-                href={artist.spotifyUrl ?? `https://open.spotify.com/artist/${ARTIST_ID}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 px-4 py-2 rounded-full bg-[#1DB954] text-black text-xs font-bold hover:bg-[#1ed760] transition-colors shrink-0"
-              >
-                <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
-                </svg>
-                Open on Spotify
-              </a> */}
-            </div>
-          </div>
+    <div className="rounded-[2rem] md:rounded-[3rem] p-6 md:p-10 relative overflow-hidden backdrop-blur-xl border border-blue-200">
 
-          {/* Main Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 relative z-10">
-
-            {/* LEFT: Single Spotify Embed Card */}
-            <div className="lg:col-span-5 flex flex-col gap-4">
-
-              {/* The Spotify Embed — this IS the card */}
-              <div className="rounded-2xl overflow-hidden">
-                <iframe
-                  key={embedUri}
-                  src={embedUri}
-                  width="100%"
-                  height={selectedTrackId ? 152 : 352}
-                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                  loading="lazy"
-                  className="block transition-all duration-500"
-                  style={{ borderRadius: '16px' }}
-                />
-              </div>
-            </div>
-
-            {/* RIGHT: Artist Photo */}
-            <div className="lg:col-span-7 rounded-2xl overflow-hidden border border-white/10 relative min-h-[320px]">
-              <img
-                src="/images/2.jpeg"
-                alt={artist.name}
-                className="w-full h-full object-cover object-top absolute inset-0"
-              />
-            </div>
-
-          </div>
-        </div>
+      {/* Background Blur */}
+      <div className="absolute inset-0 -z-10">
+        <img
+          src="/images/2.webp"
+          alt=""
+          className="w-full h-full object-cover blur-3xl scale-110 opacity-30"
+        />
       </div>
-    </section>
+
+      {/* Header */}
+      <div className="mb-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+
+        <div>
+          <span className="text-[11px] font-bold tracking-[0.25em] text-zinc-500 uppercase block mb-2">
+            The Main Event
+          </span>
+
+          <h2 className="text-4xl md:text-6xl font-black tracking-tight text-zinc-900 leading-[0.9]">
+            Celebrity Nite
+          </h2>
+        </div>
+
+        <div className="md:max-w-sm">
+          <p className="text-zinc-600 text-sm leading-relaxed md:text-right">
+            An unforgettable night of live music featuring Bollywood's most
+            celebrated voices. Listen to the biggest hits before the big night.
+          </p>
+        </div>
+
+      </div>
+
+      {/* Main Grid */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+
+        {/* Spotify */}
+        <div className="lg:col-span-5 flex">
+
+          <div className="rounded-2xl overflow-hidden shadow-md border border-zinc-200 w-full">
+
+            <iframe
+              key={embedUri}
+              src={embedUri}
+              width="100%"
+              height={selectedTrackId ? 152 : 352}
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              loading="lazy"
+              className="block w-full"
+            />
+
+          </div>
+
+        </div>
+
+        {/* Artist Image */}
+        <div className="lg:col-span-7 rounded-2xl overflow-hidden border border-zinc-200 shadow-md relative min-h-[352px]">
+
+          {/* Desktop */}
+          <img
+            src="/images/2.webp"
+            alt={artist.name}
+            className="hidden md:block absolute inset-0 w-full h-full object-cover object-top"
+          />
+
+          {/* Mobile vertical */}
+          <img
+            src="/images/2.webp"
+            alt={artist.name}
+            className="block md:hidden w-full h-[650px] object-cover object-top"
+          />
+
+          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
   )
 }

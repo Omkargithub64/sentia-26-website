@@ -13,14 +13,18 @@ export default function MainEventsSection(){
 
   <section className={styles.section}>
 
-    <h2 className="text-3xl md:text-5xl font-black tracking-tighter text-black leading-[0.9]">
-      Spotlight Competitions
-    </h2>
-    <br />
-    <p className="text-gray-600 text-xs md:text-sm leading-relaxed text-left md:text-right pb-8">
-      From thunderous rhythms to striking runway moments, these spotlight competitions unleash talent that rivals the power of the sea.
-    </p>
+    <div className="max-w-2xl mb-10 md:mb-14">
 
+  <h2 className="text-3xl md:text-5xl font-black tracking-tight text-zinc-900 leading-tight mb-4">
+    Spotlight Competitions
+  </h2>
+
+  <p className="text-zinc-600 text-sm md:text-base leading-relaxed">
+    From thunderous rhythms to striking runway moments, these spotlight
+    competitions unleash talent that rivals the power of the sea.
+  </p>
+
+</div>
     <div className={styles.posterGrid}>
 
       {mainEvents.map(event => (

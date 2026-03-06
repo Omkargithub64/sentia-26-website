@@ -1,9 +1,9 @@
 'use client'
 
 import styles from './styles.module.scss'
-import Picture1 from '../public/images/1.jpeg'
+import Picture1 from '../public/images/1.webp'
 // import Picture2 from '../public/images/2.jpeg'
-import Picture3 from '../public/images/3.jpg'
+import Picture3 from '../public/images/3.webp'
 // import Picture4 from '../public/images/4.jpg'
 // import Picture5 from '../public/images/5.jpg'
 // import Picture6 from '../public/images/6.jpg'

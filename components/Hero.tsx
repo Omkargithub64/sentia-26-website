@@ -41,7 +41,7 @@ useEffect(() => {
             {/* Background Layer */}
             <div data-depth="0.1" className="parallax-layer">
               <img
-                src="/images/herobg.png"
+                src="/images/herobg.webp"
                 alt="Background"
                 className=""
               />
@@ -50,25 +50,11 @@ useEffect(() => {
             {/* Foreground Layer */}
             <div data-depth="0.3" className="parallax-layer">
               <img
-                src="/images/herofg.png"
+                src="/images/herofg.webp"
                 alt="Foreground"
                 className="hero-fg"
               />
             </div>
-            {/* <div data-depth="0.3" className="parallax-layer waves">
-              <img
-                src="/hero/waves.png"
-                alt="Foreground2"
-                className="hero-fg"
-              />
-            </div>
-            <div data-depth="0.9" className="parallax-layer waves">
-              <img
-                src="/hero/waves2.png"
-                alt="Foreground2"
-                className="hero-fg"
-              />
-            </div> */}
           </div>
 
           {/* Overlay */}
