@@ -130,7 +130,6 @@ export default function AllEventsPage(){
                     <EventCard
                       key={event.id}
                       event={event}
-                      index={index}
                     />
                   ))}
 
