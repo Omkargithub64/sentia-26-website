@@ -1,6 +1,6 @@
 .card{
-  width:294px;
-  height:400px;
+  width:300px;
+  height:450px;
   border-radius:37px;
   background:rgb(255, 255, 255);
   position:relative;
@@ -63,7 +63,7 @@
   bottom: 35%;
   transform:translateX(-50%);
   width:220px;
-  height:300px;
+  height:350px;
     transition: all 0.3s;
     transform-origin: 0;
 }
@@ -118,7 +118,7 @@
 @media (max-width:900px){
 
 .character{
-  scale:1.1;
+  scale:0.9;
 }
 
 .imageBox{

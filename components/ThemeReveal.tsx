@@ -19,6 +19,8 @@ export default function ThemeReveal() {
     offset: ['start start', 'end end'],
   })
 
+  const opacityText = useTransform(scrollYProgress, [0.25,0.55], [0,1])
+
   const scale4 = useTransform(scrollYProgress, [0, 1], [1, 4])
   const scale5 = useTransform(scrollYProgress, [0, 1], [1, 5])
   const scale6 = useTransform(scrollYProgress, [0, 1], [1, 6])
@@ -45,6 +47,16 @@ export default function ThemeReveal() {
             </div>
           </motion.div>
         ))}
+                <motion.div
+          style={{ opacity: opacityText }}
+          className={styles.themeText}
+        >
+          <h2>THEME REVEAL</h2>
+          <h1>POSEIDON'S PLAYGROUND</h1>
+          <p>
+            Dive into Poseidon’s Playground, a realm where the untamed power of the ocean meets boundless creativity. Inspired by the myths of the sea, this year’s fest celebrates waves of talent, energy, and imagination.
+          </p>
+        </motion.div>
       </div>
     </div>
   )

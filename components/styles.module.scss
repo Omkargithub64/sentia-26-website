@@ -24,6 +24,7 @@
 
         img {
           object-fit: cover;
+          border-radius: 0px;
         }
       }
 
@@ -81,4 +82,147 @@
       }
     }
   }
+}
+
+/* Theme text */
+
+.themeText {
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+  color: white;
+  z-index: 5;
+  pointer-events: none;
+
+  h2 {
+    letter-spacing: 0.3em;
+    font-size: 14px;
+    opacity: 0.8;
+  }
+
+  h1 {
+    font-size: clamp(40px, 10vw, 120px);
+    font-weight: 900;
+    margin: 10px 0;
+  }
+
+  p {
+    max-width: 500px;
+    font-size: 14px;
+  }
+}
+
+/* MOBILE RESPONSIVE */
+
+@media (max-width: 768px) {
+
+  .container {
+    height: 250vh;
+  }
+
+  .sticky .el .imageContainer {
+    width: 45vw;
+    height: 30vh;
+  }
+
+  .sticky .el:nth-of-type(2) .imageContainer {
+    top: -25vh;
+    left: 8vw;
+    width: 50vw;
+    height: 28vh;
+  }
+
+  .sticky .el:nth-of-type(3) .imageContainer {
+    top: -10vh;
+    left: -35vw;
+    width: 40vw;
+    height: 35vh;
+  }
+
+  .sticky .el:nth-of-type(4) .imageContainer {
+    left: 30vw;
+    width: 45vw;
+    height: 25vh;
+  }
+
+  .sticky .el:nth-of-type(5) .imageContainer {
+    top: 25vh;
+    left: 10vw;
+    width: 40vw;
+    height: 22vh;
+  }
+
+  .sticky .el:nth-of-type(6) .imageContainer {
+    top: 25vh;
+    left: -35vw;
+    width: 45vw;
+    height: 22vh;
+  }
+
+  .sticky .el:nth-of-type(7) .imageContainer {
+    top: 22vh;
+    left: 30vw;
+    width: 30vw;
+    height: 18vh;
+  }
+
+  .themeText {
+    padding: 0 20px;
+
+    h1 {
+      font-size: 11vw;
+    }
+
+    p {
+      font-size: 13px;
+    }
+  }
+
+  .sticky .el .imageContainer {
+    width: 45vw;
+    height: auto;
+    aspect-ratio: 4 / 3;
+  }
+
+  .sticky .el:nth-of-type(2) .imageContainer {
+    top: -20vh;
+    left: 8vw;
+    width: 50vw;
+  }
+
+  .sticky .el:nth-of-type(3) .imageContainer {
+    top: -8vh;
+    left: -35vw;
+    width: 40vw;
+  }
+
+  .sticky .el:nth-of-type(4) .imageContainer {
+    left: 30vw;
+    width: 45vw;
+  }
+
+  .sticky .el:nth-of-type(5) .imageContainer {
+    top: 25vh;
+    left: 10vw;
+    width: 40vw;
+  }
+
+  .sticky .el:nth-of-type(6) .imageContainer {
+    top: 25vh;
+    left: -35vw;
+    width: 45vw;
+  }
+
+  .sticky .el:nth-of-type(7) .imageContainer {
+    top: 22vh;
+    left: 30vw;
+    width: 30vw;
+  }
+
 }
