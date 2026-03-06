@@ -6,7 +6,7 @@ export interface EventData {
   id: number;
   title: string;
   description: string;
-  category: "General" | "Razzle (Dance Events)"| "Chords (Musical Events)" | "Captcha & Pixel" | "Mask (Theatre Events)" | "Speakers & Literally" | "Pallet (Art events)" | "Technical Events" |"MCA Events" | "MBA Events";
+  category: "General" | "Razzle (Dance Events)" | "Chords (Musical Events)" | "Captcha & Pixel" | "Mask (Theatre Events)" | "Speakers & Literally" | "Pallet (Art events)" | "Technical Events" | "MCA Events" | "MBA Events";
   image: string;
   // icon: React.ReactNode; 
   color: string;
@@ -38,6 +38,10 @@ export const events: any[] = [
 Each group must have minimum of 5 and maximum of 12 participants.
 Duration: 4+1 minutes.
 Styles allowed: Pure western dance forms such as hip-hop, jazz, locking and open style.`,
+    time: "11:00 AM - 1:30 PM",
+    date: "26-03-2026",
+    venue: "Main Stage",
+    type:"Open to All",
     registerLink: "https://forms.gle/v1h1aPJFRPWeCnbS7"
   },
   {
@@ -49,12 +53,17 @@ Styles allowed: Pure western dance forms such as hip-hop, jazz, locking and open
     iconName: "Music",
     color: "06F2FE",
     border: "FD7583",
-      rules: `2 entries per college.
+    rules: `2 entries per college.
 Dancer will be challenged impromptu on varied beats of a live dj.
 The music genre will change for each pair of dancers and can range from any genre.
 Judges will choose 1 dancer from each battle to advance to the next round.
 The final battle will have 2 dancers competing.`,
+    time: "11:00 AM - 1:30 PM",
+    date: "26-03-2026",
+    venue: "TBD",
+    type:"Open to All",
     registerLink: "https://forms.gle/LqF2PGZukQeoTQSx9"
+
   },
   {
     id: 3,
@@ -65,12 +74,16 @@ The final battle will have 2 dancers competing.`,
     iconName: "Music",
     color: "F2BF2F",
     border: "E77D2F",
-      rules: `One team per college.
+    rules: `One team per college.
 Each group must have minimum of 5 and maximum of 12 participants.
 Duration: 4+1 minutes.
 Styles allowed: Semi-classical, fusion, contemporary, folk.`,
+    time: "11:00 AM - 1:30 PM",
+    date: "26-03-2026",
+    venue: "Main Stage",
+    type:"Open to All",
     registerLink: "https://forms.gle/8PPoFc9iYzC98jhz7"
-  },{
+  }, {
     id: 4,
     title: "NADA SAGARA",
     description: "Eastern Group Singing",
@@ -79,12 +92,16 @@ Styles allowed: Semi-classical, fusion, contemporary, folk.`,
     iconName: "Music",
     color: "DAA693",
     border: "9B864E",
-      rules: `One entry per collage.
+    rules: `One entry per collage.
 Time limit: 4+1 mins.
 Performance Style: Semi classical, Light Music genres such as Bhavageetha, Folk song, Devotional song, Ghazals.
 Participants should bring their own musical instrument.`,
+    time: "3:30 PM - 3:30 PM",
+    date: "26-03-2026",
+    venue: "AUDI - 03",
+    type:"Open to All",
     registerLink: "https://forms.gle/dT57FaGvMcvMs3xV9"
-  },{
+  }, {
     id: 5,
     title: "POSEIDON’S PLAYBACK DUETS",
     description: "Filmy Duet singing",
@@ -93,12 +110,16 @@ Participants should bring their own musical instrument.`,
     iconName: "Music",
     color: "FEB870",
     border: "E79F8A",
-      rules: `Two participants make a team.
+    rules: `Two participants make a team.
 One entry per college.
 Duration: 4+1 mins.
 Participants are allowed to use any kind of musical instrument or karaoke for the performance.`,
+    time: "11:00 AM - 1:30 PM",
+    date: "26-03-2026",
+    venue: "AUDI - 03",
+    type:"Open to All",
     registerLink: "https://forms.gle/ae7WNQt9ASP898nt9"
-  },{
+  }, {
     id: 6,
     title: "DRISHYAM",
     description: "Reel Making Contest",
@@ -107,12 +128,16 @@ Participants are allowed to use any kind of musical instrument or karaoke for th
     iconName: "Music",
     color: "EBBA90",
     border: "D97D32",
-      rules: `Participation is limited to two members per team.
+    rules: `Participation is limited to two members per team.
 The reel must have a maximum duration of 60 seconds.
 Only original content created by the participants will be accepted; copied or plagiarized content is not allowed.
 The final video must be submitted within the given time frame as instructed by the organizers.`,
+    time: "11:00 AM - 1:30 PM",
+    date: "26-03-2026",
+    venue: "TBD",
+    type:"Open to All",
     registerLink: "https://forms.gle/jyvq7pn1ByKHLi8YA"
-  },{
+  }, {
     id: 7,
     title: "LENSCRAFT",
     description: "Photography Contest",
@@ -121,13 +146,17 @@ The final video must be submitted within the given time frame as instructed by t
     iconName: "Music",
     color: "D69676",
     border: "A7573A",
-      rules: `Participation is individual only.
+    rules: `Participation is individual only.
 All photographs must be taken within the campus premises.
 Images must be captured using a digital camera only.
 Editing or any form of image manipulation is not permitted.`,
+    time:"11:00 AM - 1:30 PM",
+    date:"26-03-2026",
+    venue:"TBD",
+    type:"Open to All",
     registerLink: "https://forms.gle/ydEFaiS8Ej4P6L5R8"
   }
-  ,{
+  , {
     id: 8,
     title: "RANGA VIMARSHA",
     description: "Street Play Competition",
@@ -136,8 +165,8 @@ Editing or any form of image manipulation is not permitted.`,
     iconName: "Music",
     color: "949BA1",
     border: "1B1C21",
-      rules:
-`
+    rules:
+      `
 Team Size: 6–10 members
 Selection Process:
 Submit a 5-minute video for screening.
@@ -152,12 +181,15 @@ Topic announced via official social media.
 Banners, posters and percussion instruments allowed.
 No microphones, speakers, recorded audio, or electronic aids.
 Content must be original, non-offensive and
-
 `,
+    time:"11:00 AM - 1:30 PM",
+    date:"26-03-2026",
+    venue:"TBD",
+    type:"Open to All",
     registerLink: "https://forms.gle/AMp7MTVxMuzcntPbA"
   }
-  
-  ,{
+
+  , {
     id: 9,
     title: "BINDAAS BRANDS",
     description: "Mad Ads",
@@ -166,8 +198,8 @@ Content must be original, non-offensive and
     iconName: "Music",
     color: "C6E83A",
     border: "3BA130",
-      rules:
-`
+    rules:
+      `
 Team size : 5–8 members.
 Time: 5 + 1 minutes.
 Rules:
@@ -180,10 +212,14 @@ Exceeding time limit leads to mark deduction.
 Judging based on creativity, innovation, teamwork & presentation.
 Judges’ decision is final and binding.
 `,
+    time:"3:30 PM - 4:45 PM",
+    date:"26-03-2026",
+    venue:"Main Stage",
+    type:"Under Graduate",
     registerLink: "https://forms.gle/3KRFuVMwmyCwRNqGA"
   }
-  
-  ,{
+
+  , {
     id: 10,
     title: "SPELL",
     description: "Spell Bee Competition",
@@ -192,8 +228,8 @@ Judges’ decision is final and binding.
     iconName: "Music",
     color: "fEBBA9",
     border: "F7BE05",
-      rules:
-`
+    rules:
+      `
 Category: Vocabulary.
 Participation: Individual.
 Event Description:
@@ -211,10 +247,14 @@ Difficulty level increases with each round.
 Any misconduct will lead to disqualification.
 Judges’ decision will be final and binding.
 `,
+    time:"11:00 AM - 1:30 PM",
+    date:"26-03-2026",
+    venue:"TBD",
+    type:"Under Graduate",
     registerLink: "https://forms.gle/9ZJZcobFm5qsUNAB7"
   }
-  
-  ,{
+
+  , {
     id: 11,
     title: "MOCK PRESS",
     description: "",
@@ -223,8 +263,8 @@ Judges’ decision will be final and binding.
     iconName: "Music",
     color: "D74D43",
     border: "FFFAE8",
-      rules:
-`
+    rules:
+      `
 Category: Literary / Communication.
 Participation: Individual.
 Event Overview:
@@ -238,10 +278,14 @@ Mobile phones and external help are not allowed during active rounds.
 Time limits must be strictly followed.
 Judges’ decision will be final and binding.
 `,
+    time:"1:45 PM - 4:00 PM",
+    date:"26-03-2026",
+    venue:"AUDI - 04",
+    type:"Open to All",
     registerLink: "https://forms.gle/pJnKVi8j1T5xPa8m6"
   }
-  
-  ,{
+
+  , {
     id: 12,
     title: "JAM (Flip Master)",
     description: "",
@@ -250,8 +294,8 @@ Judges’ decision will be final and binding.
     iconName: "Music",
     color: "B89182",
     border: "1B1C21",
-      rules:
-`
+    rules:
+      `
 Category: Speaking Event.
 Participation: Individual.
 Time Limit: 1 minute.
@@ -264,10 +308,14 @@ Use of notes, mobile phones, or prompts is not allowed Offensive, political, or 
 Language of the event: English only.
 Judges’ decision will be final and binding.
 `,
+    time:"2:00 PM - 3:30 PM",
+    date:"26-03-2026",
+    venue:"Main Stage",
+    type:"Open to All",
     registerLink: "https://forms.gle/h8S7ygorrjxpEEzp8"
   }
-  
-  ,{
+
+  , {
     id: 13,
     title: "LIVING CANVAS",
     description: "Arm Painting event",
@@ -276,9 +324,9 @@ Judges’ decision will be final and binding.
     iconName: "Music",
     color: "D74D43",
     border: "B89182",
-      rules:
-`
-Rules
+    rules:
+      `
+Rules:
 Each team must consist of 2 participants.
 Painting is allowed only on the arm.
 Painting on the face, neck, or any other body part is strictly prohibited.
@@ -294,10 +342,14 @@ Artwork must be completed within the given time limit.
 The judges’ decision will be final and binding.
 Time Duration: 1 Hour.
 `,
+    time:"11:00 AM - 1:30 PM",
+    date:"26-03-2026",
+    venue:"TBD",
+    type:"Open to All",
     registerLink: "https://forms.gle/kSivsPoznLbyy9Wj9"
   }
-  
-  ,{
+
+  , {
     id: 14,
     title: "CHROMAFATE",
     description: "Theme based Blind color pick round",
@@ -306,8 +358,8 @@ Time Duration: 1 Hour.
     iconName: "Music",
     color: "2FB3D8",
     border: "FEBEA2",
-      rules:
-`
+    rules:
+      `
 Time Duration: 1 Hour.
 Participation: Individual.
 Rules:
@@ -323,10 +375,14 @@ One artwork per participant is permitted.
 The artwork must be completed within the given time limit.
 The judges’ decision will be final and binding.
 `,
+    time:"11:00 AM - 1:30 PM",
+    date:"26-03-2026",
+    venue:"TBD",
+    type:"Open to All",
     registerLink: "https://forms.gle/vc8znQvNP6gr7Cii9"
   }
-  
-  ,{
+
+  , {
     id: 15,
     title: "CTF",
     description: "Capture the flag",
@@ -335,8 +391,8 @@ The judges’ decision will be final and binding.
     iconName: "Music",
     color: "000000",
     border: "B2DF20",
-      rules:
-`
+    rules:
+      `
 Team Size: 2 per team.
 Format: Easy, Medium & Hard challenges.
 Domains: Crypto, Stego, Blockchain, RE, Web, beginner tasks.
@@ -345,10 +401,14 @@ Fair Play: Unfair means = disqualification.
 Duration: 3 hours with live scoreboard.
 Ranking: Total points; ties by earliest solve.
 `,
+    time:"11:00 AM - 1:30 PM",
+    date:"26-03-2026",
+    venue:"TBD",
+    type:"Under Graduate",
     registerLink: "https://forms.gle/R9dQtt198ahiQVNc7"
   }
-  
-  ,{
+
+  , {
     id: 16,
     title: "Code Chef Programming Contest",
     description: "",
@@ -357,8 +417,8 @@ Ranking: Total points; ties by earliest solve.
     iconName: "Music",
     color: "A32238",
     border: "FEA3A0",
-      rules:
-`
+    rules:
+      `
 Entries: Max 2 teams per college; each team up to 2
 members from the same college.
 Restrictions: No books, notes, mobiles, or electronic gadgets allowed.
@@ -367,10 +427,14 @@ Round 1: Elimination – 30 objective programming aptitude questions.
 Round 2: Final – Analyze problem statement and develop a programmatic solution.
 Decision: Judges’ and organizers’ decisions are final and binding.
 `,
+    time:"11:00 AM - 1:30 PM",
+    date:"26-03-2026",
+    venue:"TBD",
+    type:"Under Graduate",
     registerLink: "https://forms.gle/jmaZCedDRfR5gFP47"
   }
-  
-  ,{
+
+  , {
     id: 17,
     title: "Drone Edge",
     description: "",
@@ -379,8 +443,8 @@ Decision: Judges’ and organizers’ decisions are final and binding.
     iconName: "Music",
     color: "2FB3D8",
     border: "517393",
-      rules:
-`
+    rules:
+      `
 Type: Manually piloted quadcopter challenge
 Team Size: Up to 4 members.
 Drone Rules: Non-DJI quadcopter within specified size, motor, propeller & 3S/4S battery limits.
@@ -396,10 +460,14 @@ Judging:
 Based on completion time, accuracy & control.
 Judges’ decision is final.
 `,
+    time:"11:00 AM - 1:30 PM",
+    date:"26-03-2026",
+    venue:"TBD",
+    type:"Under Graduate",
     registerLink: "https://forms.gle/TLLKFJ84YPK7x2jR6"
   }
-  
-  ,{
+
+  , {
     id: 18,
     title: "WebCraft Design",
     description: "",
@@ -408,18 +476,22 @@ Judges’ decision is final.
     iconName: "Music",
     color: "50A125",
     border: "E0E0E0",
-      rules:
-`
+    rules:
+      `
 Team Size: 2–4 members.
 Theme: Announced at event start.
 Originality: Only original designs; no templates (WordPress/Wix, etc.).
 Anonymity: No branding, names, or logo during judging.
 AI Use: AI-generated websites will be disqualified.
 `,
+    time:"11:00 AM - 1:30 PM",
+    date:"26-03-2026",
+    venue:"TBD",
+    type:"Under Graduate",
     registerLink: "https://forms.gle/oT7CGr3FoXfiu5Fn9"
   }
-  
-  ,{
+
+  , {
     id: 19,
     title: "Mind2Circuit",
     description: "",
@@ -428,8 +500,8 @@ AI Use: AI-generated websites will be disqualified.
     iconName: "Music",
     color: "EFDABB",
     border: "003054",
-      rules:
-`
+    rules:
+      `
 Team Size: 2 members.
 Event Type: Hands-on Technical Challenge.
 Challenge:
@@ -441,10 +513,14 @@ Evaluation:
 Maximum number of valid, unique, working circuits.
 Judged on creativity, debugging, conceptual clarity & time management.
 `,
+    time:"11:00 AM - 1:30 PM",
+    date:"26-03-2026",
+    venue:"TBD",
+    type:"Under Graduate",
     registerLink: "https://forms.gle/foMgMC9cuZR1YjnV9"
   }
-  
-  ,{
+
+  , {
     id: 20,
     title: "Yudhastra",
     description: "",
@@ -453,8 +529,8 @@ Judged on creativity, debugging, conceptual clarity & time management.
     iconName: "Music",
     color: "483A37",
     border: "1B1B1B",
-      rules:
-`
+    rules:
+      `
 Objective: Build a purely mechanical launchpad to launch a 200 g projectile with power and precision.
 Team Size: 2–4 members.
 Restrictions:
@@ -467,10 +543,14 @@ Round 1 – Range: 2 attempts; best distance counts; top 50% qualify.
 Round 2 – Accuracy: Hit target (≤10 m); 3 launches; adjustable angle only; highest score advances.
 Round 3 – Power: Clear a 2 m barrier and hit target zone; miss = zero score.
 `,
+    time:"11:00 AM - 1:30 PM",
+    date:"26-03-2026",
+    venue:"TBD",
+    type:"Under Graduate",
     registerLink: "https://forms.gle/VoRZoodUtSCuAzVN6"
   }
-  
-  ,{
+
+  , {
     id: 21,
     title: "VISION X",
     description: "",
@@ -479,8 +559,8 @@ Round 3 – Power: Clear a 2 m barrier and hit target zone; miss = zero score.
     iconName: "Music",
     color: "FF9C02",
     border: "3F485C",
-      rules:
-`
+    rules:
+      `
 Objective: Autonomous navigation using camera-based vision only.
 Main Processor: Raspberry Pi 3 / 4 / 5 (mandatory for vision).
 Camera: Pi Camera or USB Camera.
@@ -505,10 +585,14 @@ Only 1 member near arena during run.
 Unsafe robots prohibited.
 Final: Judges’ decision is final & binding.
 `,
+    time:"11:00 AM - 1:30 PM",
+    date:"26-03-2026",
+    venue:"TBD",
+    type:"Under Graduate",
     registerLink: "https://forms.gle/FGRMwQt7m8ZAAtuc8"
   }
-  
-  ,{
+
+  , {
     id: 22,
     title: "Gen AI Prompt Engg. Battle",
     description: "",
@@ -517,8 +601,8 @@ Final: Judges’ decision is final & binding.
     iconName: "Music",
     color: "FF9C02",
     border: "5A8A74",
-      rules:
-`
+    rules:
+      `
 Participation: Individual or teams of up to 2.
 Format: Multiple rounds (as decided by organizers).
 Allowed Tools: Approved LLMs only (ChatGPT, Gemini, LLAMA).
@@ -528,10 +612,14 @@ Evaluation: Participants may explain prompt strategy to judges.
 Fair Play: Malpractice leads to disqualification.
 Decision: Judges’ decision is final and binding.
 `,
+    time:"11:00 AM - 1:30 PM",
+    date:"26-03-2026",
+    venue:"TBD",
+    type:"Under Graduate",
     registerLink: "https://forms.gle/BLcehMxwsd6xKQ1V9"
   }
-  
-  ,{
+
+  , {
     id: 23,
     title: "Robo Soccer",
     description: "",
@@ -540,8 +628,8 @@ Decision: Judges’ decision is final and binding.
     iconName: "Music",
     color: "F68557",
     border: "687190",
-      rules:
-`
+    rules:
+      `
 Team Size: 2–4 college students; 1 bot per team (same members may form multiple teams).
 Match Format: 3 minutes (2 halves of 1.5 minutes).
 Robot Specs: Max 35 × 35 cm, 5 kg (±5%), voltage ≤ 12.5 V; no LEGO or pre-made kits.
@@ -551,10 +639,14 @@ Arena: 7 ft × 5 ft.
 Gameplay: Bot must not be immobile > 10 sec; pushing opponent into goal allowed.
 Timeouts: One 60-sec technical timeout; 1-min halftime with court swap.
 `,
+    time:"11:00 AM - 1:30 PM",
+    date:"26-03-2026",
+    venue:"TBD",
+    type:"Under Graduate",
     registerLink: "https://forms.gle/6apYkHqobrSPx3nC8"
   }
-    
-  ,{
+
+  , {
     id: 24,
     title: "TIDAL-CLASH",
     description: "(Finance Event)",
@@ -563,18 +655,22 @@ Timeouts: One 60-sec technical timeout; 1-min halftime with court swap.
     iconName: "Music",
     color: "B1BEA4",
     border: "123668",
-      rules:
-`
+    rules:
+      `
 Team size - 2
 Navigate high-stakes capital restructuring and liquidity crunches.
 Teams must execute dynamic hedging and optimize risk-adjusted returns under extreme volatility to maintain fiscal.
 Solvency and achieve peak alpha in this crucible.
 `,
+    time:"11:00 AM - 1:30 PM",
+    date:"26-03-2026",
+    venue:"TBD",
+    type:"MBA",
     registerLink: "https://forms.gle/NmLoVBH6hQ6SjHDr9"
   }
-    
-    
-  ,{
+
+
+  , {
     id: 25,
     title: "THE TITANS",
     description: "(Best Management Team)",
@@ -583,16 +679,20 @@ Solvency and achieve peak alpha in this crucible.
     iconName: "Music",
     color: "BFBB8B",
     border: "080D11",
-      rules:
-`
+    rules:
+      `
 Team size - 3
 The challenge tests your team’s grit and synchronization in the face of professional pressure.
 Only the most adaptive leaders will survive the gauntlet and claim the title of Best Management Team.
 `,
+    time:"11:00 AM - 1:30 PM",
+    date:"26-03-2026",
+    venue:"TBD",
+    type:"MBA",
     registerLink: "https://forms.gle/usWJs5oXeUQfvBSP7"
   }
-      
-  ,{
+
+  , {
     id: 26,
     title: "AQUA IMPERIUM",
     description: "(Marketing Event)",
@@ -601,15 +701,19 @@ Only the most adaptive leaders will survive the gauntlet and claim the title of 
     iconName: "Music",
     color: "03B09D",
     border: "D7D7D9",
-      rules:
-`
+    rules:
+      `
 Team size - 2
 An immersive marketing crucible testing strategic acuity, brand resuscitation, persuasion, and marketcraft where insight, ideation, and data-driven positioning converge to showcase contemporary managerial marketing prowess.
 `,
+    time:"11:00 AM - 1:30 PM",
+    date:"26-03-2026",
+    venue:"TBD",
+    type:"MBA",
     registerLink: "https://forms.gle/vEG2i4ByzwdbeEN38"
   }
-      
-  ,{
+
+  , {
     id: 27,
     title: "TIDE OF TALENTS",
     description: "(HR Event)",
@@ -618,15 +722,19 @@ An immersive marketing crucible testing strategic acuity, brand resuscitation, p
     iconName: "Music",
     color: "FB6C35",
     border: "D7D7D9",
-      rules:
-`
+    rules:
+      `
 Team size - 2
 An intensive HR huddle evaluating workforce agility, cognitive bandwidth, decision velocity, and situational judgment where talent orchestration, behavioral insight, and people-centric strategy converge under high-pressure conditions.
 `,
+    time:"11:00 AM - 1:30 PM",
+    date:"26-03-2026",
+    venue:"TBD",
+    type:"MBA",
     registerLink: "https://forms.gle/kC9gBv4XjHV2rP1d7"
   }
-      
-  ,{
+
+  , {
     id: 28,
     title: "IT MANAGER CHALLENGE",
     description: "",
@@ -635,8 +743,8 @@ An intensive HR huddle evaluating workforce agility, cognitive bandwidth, decisi
     iconName: "Music",
     border: "3e9396",
     color: "FEEFB4",
-      rules:
-`
+    rules:
+      `
 Rules:
 Team size:4.
 All participants must carry at least one copy of their resume.
@@ -646,10 +754,14 @@ Laptops are not allowed unless explicitly permitted by the organizers.
 Any malpractice will lead to immediate disqualification.
 Judges’ decision will be final and binding.
 `,
+    time:"11:00 AM - 1:30 PM",
+    date:"26-03-2026",
+    venue:"TBD",
+    type:"MCA",
     registerLink: "https://forms.gle/ghZUniSs5oWVNoTW7"
   }
-      
-  ,{
+
+  , {
     id: 29,
     title: "CODE RED",
     description: "",
@@ -658,18 +770,22 @@ Judges’ decision will be final and binding.
     iconName: "Music",
     color: "990030",
     border: "222F35",
-      rules:
-`
+    rules:
+      `
 Rules:
 Team size: 3.
 Use of mobiles and laptops strictly prohibited.
 Inter-team discussion not allowed.
 Winning criteria: Correct identification of the murderer and the motive.
 `,
+    time:"11:00 AM - 1:30 PM",
+    date:"26-03-2026",
+    venue:"TBD",
+    type:"MCA",
     registerLink: "https://forms.gle/uc1PBgBewC7FJ4Xu7"
   }
-      
-  ,{
+
+  , {
     id: 30,
     title: "NEXT NODE",
     description: "(Virtual Treasure Hunt)",
@@ -678,8 +794,8 @@ Winning criteria: Correct identification of the murderer and the motive.
     iconName: "Music",
     border: "FFC800",
     color: "BDD9E6",
-      rules:
-`
+    rules:
+      `
 Rules:
 Team size:2.
 One system per team.
@@ -688,11 +804,15 @@ Refreshing pages, manipulating URLs, or bypassing rounds will lead to disqualifi
 Any form of malpractice or answer sharing with other teams is strictly prohibited.
 The coordinators decisions are final and binding.
 `,
+    time:"11:00 AM - 1:30 PM",
+    date:"26-03-2026",
+    venue:"TBD",
+    type:"MCA",
     registerLink: "https://forms.gle/ZnZFKYHYmdLRnAzu8"
   }
 
-        
-  ,{
+
+  , {
     id: 31,
     title: "Battle of Bands",
     main: true,
@@ -702,16 +822,16 @@ The coordinators decisions are final and binding.
     iconName: "Music",
     color: "fEBBA9",
     border: "F7BE05",
-      rules:
-`
+    rules:
+      `
 Date: 26 March 2026
 Venue: MITE Greens
 Time: 6:45pm Onwards
 `,
     registerLink: ""
   }
-      
-   ,{
+
+  , {
     id: 32,
     title: "Fashion Walk",
     main: true,
@@ -721,8 +841,8 @@ Time: 6:45pm Onwards
     iconName: "Music",
     color: "fEBBA9",
     border: "F7BE05",
-      rules:
-`
+    rules:
+      `
 Date: 26 March 2026
 Venue: MITE Greens
 Time: 8:00pm Onwards
@@ -730,8 +850,8 @@ Time: 8:00pm Onwards
     registerLink: ""
   }
 
-      
-  ,{
+
+  , {
     id: 33,
     title: "TECH DUMB CHARADES (TDC)",
     description: "",
@@ -740,8 +860,8 @@ Time: 8:00pm Onwards
     iconName: "Music",
     color: "B69A8F",
     border: "4F2E1C",
-      rules:
-`
+    rules:
+      `
 Rules:
 Team size: 2 members per team.
 Standard Dumb Charades rules apply , no speaking, lip-syncing, writing or use of electronic devices is allowed - only gestures and body movements are permitted.
@@ -752,10 +872,14 @@ All three team members must actively participate in the Finals.
 Any form of malpractice, rule violation, or unfair means will lead to disqualification.
 Judges’/Coordinators’ decisions are final and binding.
 `,
+    time:"2:00 PM - 3:15 PM",
+    date:"26-03-2026",
+    venue:"TBD",
+    type:"Open to All",
     registerLink: "https://forms.gle/r1kXkcSCXPfMMV2e9"
   }
-      
-  ,{
+
+  , {
     id: 34,
     title: "General Quiz",
     description: "",
@@ -764,13 +888,17 @@ Judges’/Coordinators’ decisions are final and binding.
     iconName: "Music",
     color: "CBD1D7",
     border: "1C2936",
-      rules:
-`
+    rules:
+      `
 Rules:
 Make a team of 2.
 Preliminary round followed by final round.
 `,
+    time:"11:00 AM - 1:30 PM",
+    date:"26-03-2026",
+    venue:"TBD",
+    type:"Open to All",
     registerLink: "https://forms.gle/49biFbF87CArGKvj6"
   }
- 
+
 ]

@@ -72,14 +72,14 @@ export default function Reveal({ spotifyData }: RevealProps) {
 
   <div className="w-[96%] max-w-[1400px] mx-auto">
 
-    <div className="rounded-[2rem] md:rounded-[3rem] p-6 md:p-10 relative overflow-hidden backdrop-blur-xl border border-blue-200">
+    <div className="rounded-[2rem] md:rounded-[2rem] p-6 md:p-6 relative overflow-hidden backdrop-blur-xl border border-blue-200">
 
       {/* Background Blur */}
       <div className="absolute inset-0 -z-10">
         <img
-          src="/images/2.webp"
+          src="/images/shilparao.webp"
           alt=""
-          className="w-full h-full object-cover blur-3xl scale-110 opacity-30"
+          className="w-full h-full object-cover blur-3xl scale-110 opacity-60"
         />
       </div>
 
@@ -128,23 +128,23 @@ export default function Reveal({ spotifyData }: RevealProps) {
         </div>
 
         {/* Artist Image */}
-        <div className="lg:col-span-7 rounded-2xl overflow-hidden border border-zinc-200 shadow-md relative min-h-[352px]">
+        <div className="lg:col-span-7 overflow-hidden  relative min-h-[352px]">
 
           {/* Desktop */}
           <img
             src="/images/2.webp"
             alt={artist.name}
-            className="hidden md:block absolute inset-0 w-full h-full object-cover object-top"
+            className="hidden md:block absolute inset-0 w-full h-full object-cover object-top md:rounded-[1rem]"
           />
 
           {/* Mobile vertical */}
           <img
-            src="/images/2.webp"
+            src="/images/shilparao.webp"
             alt={artist.name}
-            className="block md:hidden w-full h-[650px] object-cover object-top"
+            className="block md:hidden w-full object-contain object-top"
           />
 
-          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+          
 
         </div>
 

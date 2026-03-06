@@ -132,9 +132,59 @@
 .card:hover .imageBox{
   scale:0;
 }
+}
 
+/* 
+.tag {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  color: white;
+  border-radius: 999px;
+  z-index: 5;
+}
 
+.location {
+  position: absolute;
+  bottom: 10px;
+  left: 12px;
+  font-size: 12px;
+  font-weight: 500;
+  background: rgba(0,0,0,0.55);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 6px;
+  backdrop-filter: blur(6px);
+  z-index: 4;
+} */
+.metaRow{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin-bottom:1rem;
+  justify-content: center;
+}
 
+.tag{
+  padding:8px 10px;
+  font-size:12px;
+  font-weight:500;
+  color:rgb(0, 0, 0);
+  border-radius:999px;
+}
 
-
+.location{
+  font-size:11px;
+  color:#6b7280;
+  font-weight:500;
+    font-size: 12px;
+  font-weight: 500;
+  background: rgba(0,0,0,0.55);
+  color: white;
+  padding: 8px 10px;
+  border-radius: 20px;
+  backdrop-filter: blur(6px);
 }

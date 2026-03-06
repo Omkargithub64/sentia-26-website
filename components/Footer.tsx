@@ -76,10 +76,9 @@ export default function Footer() {
             </div>
 
             {/* Massive Typography */}
-            <div className="relative w-full flex justify-center border-b border-white/10 pb-2 z-10">
+            <div className="relative w-full flex justify-center border-b border-white/10 pb-12 z-10">
                 <h1 className="text-[14vw] leading-[0.8] font-black tracking-tighter text-white select-none pointer-events-none">
                     <img src="/Sentia26.png" alt="" />
-                    <br />
                 </h1>
             </div>
 
