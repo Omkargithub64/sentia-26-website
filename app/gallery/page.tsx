@@ -167,7 +167,7 @@ export default function GalleryPage() {
   }, [])
 
   return (
-    <main className="min-h-screen bg-white text-black">
+    <main className="min-h-screen text-black">
 
       <div className="max-w-5xl mx-auto px-6 pt-32">
 

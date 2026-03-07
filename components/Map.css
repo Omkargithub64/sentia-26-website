@@ -242,7 +242,7 @@
 .event-list {
   position: fixed;
   top: 120px;
-  right: 20px;
+  right: 40px;
 
   width: 220px;
   background: #4986ff8a;
@@ -254,7 +254,7 @@
   color: #fff;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.123);
   z-index: 1000;
 
   max-width: 420px;

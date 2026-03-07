@@ -141,7 +141,7 @@ export default async function EventPage({
     return sections.map((section: Section, idx: number) => (
       <div key={idx} className="space-y-3">
         {section.title && (
-          <h3 className="text-sm font-bold text-white uppercase tracking-wide">
+          <h3 className="text-sm font-bold text-white uppercase tracking-wide md:mt-8">
             {section.title}
           </h3>
         )}

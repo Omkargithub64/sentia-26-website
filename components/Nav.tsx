@@ -36,16 +36,16 @@ export default function Nav() {
         {}
         <nav className="nav-links">
           <Link href="/">Home</Link>
-          <a href="/allevents">
+          <Link href="/allevents">
   Events
-</a>
-          <a
+</Link>
+          <Link
             href="https://mite.ac.in/"
             target="_blank"
             rel="noopener noreferrer"
           >
             About MITE
-          </a>
+          </Link>
           <Link href="/gallery">Gallery</Link>
           <Link href="/map">Map</Link>
         </nav>
@@ -57,15 +57,15 @@ export default function Nav() {
       {}
       <div className={`mobile-menu ${open ? "open" : ""}`}>
         <Link href="/" onClick={() => setOpen(false)}>Home</Link>
-        <a href="/allevents" onClick={() => setOpen(false)}>Events</a>
-        <a
+        <Link href="/allevents" onClick={() => setOpen(false)}>Events</Link>
+        <Link
           href="https://mite.ac.in/"
           target="_blank"
           rel="noopener noreferrer"
           onClick={() => setOpen(false)}
         >
           About MITE
-        </a>
+        </Link>
         <Link href="/gallery" onClick={() => setOpen(false)}>Gallery</Link>
         <Link href="/map" onClick={() => setOpen(false)}>Map</Link>
       </div>
