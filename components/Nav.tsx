@@ -23,6 +23,16 @@ export default function Nav() {
             </Link>
 
           {}
+
+          <a target="_blank" 
+  rel="noopener noreferrer" href="https://bcqthgtmknxsyjzbqfya.supabase.co/storage/v1/object/public/sentia/Sentia%202026%20Brochure.pdf" download className="download-btn mobileBrochure">
+  <svg className="download-icon" viewBox="0 0 24 24">
+    <path d="M12 16L7 11H10V4H14V11H17L12 16Z"/>
+    <path d="M5 20H19V18H5V20Z"/>
+  </svg>
+  Brochure
+</a>
+
           <button
             className={`hamburger ${open ? "active" : ""}`}
             onClick={() => setOpen(!open)}
@@ -35,6 +45,15 @@ export default function Nav() {
         </div>
         {}
         <nav className="nav-links">
+
+          <a target="_blank" 
+  rel="noopener noreferrer" href="https://bcqthgtmknxsyjzbqfya.supabase.co/storage/v1/object/public/sentia/Sentia%202026%20Brochure.pdf" download className="download-btn">
+  <svg className="download-icon" viewBox="0 0 24 24">
+    <path d="M12 16L7 11H10V4H14V11H17L12 16Z"/>
+    <path d="M5 20H19V18H5V20Z"/>
+  </svg>
+  Brochure
+</a>
           <Link href="/">Home</Link>
           <Link href="/allevents">
   Events

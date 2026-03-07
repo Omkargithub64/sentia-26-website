@@ -13,23 +13,23 @@ export const EVENTS = [
   },
   {
     name: "NADA SAGARA",
-    regionId: "mitegreens"
+    regionId: "mainblock"
   },
   {
     name: "POSEIDON’S PLAYBACK DUETS",
-    regionId: "mitegreens"
+    regionId: "mainblock"
   },
   {
     name: "DRISHYAM",
-    regionId: "pgblock"
+    regionId: "mainblock"
   },
   {
     name: "LENSCRAFT",
-    regionId: "mitegreens"
+    regionId: "mainblock"
   },
   {
     name: "RANGA VIMARSHA",
-    regionId: "mitegreens"
+    regionId: "mainblock"
   },
   {
     name: "BINDAAS BRANDS",

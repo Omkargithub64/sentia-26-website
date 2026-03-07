@@ -16,9 +16,51 @@
   padding: 40px 40px 0px 40px;
 }
 
+.download-btn{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  padding:8px 14px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:600;
+  text-decoration:none;
+  color:white;
+  background:rgba(255,255,255,0.15);
+  backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,0.25);
+  transition:all .25s ease;
+}
+
+.mobileBrochure{
+  display: none;
+}
+
+.download-btn:hover{
+  background:rgba(255,255,255,0.25);
+  transform:scale(1.05);
+}
+
+.download-icon{
+  width:14px;
+  height:14px;
+  fill:white;
+}
+
 /* ===============================
    DESKTOP LINKS
 ================================= */
+.mobileBrochure{
+  display:none;
+
+}
+
+@media (max-width:768px){
+  .mobileBrochure{
+    display:flex;
+  }
+
+}
 
 .nav-links {
   display: flex;
