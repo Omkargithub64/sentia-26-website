@@ -25,7 +25,7 @@ export default function Nav() {
           {}
 
           <a target="_blank" 
-  rel="noopener noreferrer" href="https://bcqthgtmknxsyjzbqfya.supabase.co/storage/v1/object/public/sentia/Sentia%202026%20Brochure.pdf" download className="download-btn mobileBrochure">
+  rel="noopener noreferrer" href="https://drive.google.com/file/d/1uMj8H-Ed5wO10V-QgxivQxU34puKt26R/view?usp=sharing" download className="download-btn mobileBrochure">
   <svg className="download-icon" viewBox="0 0 24 24">
     <path d="M12 16L7 11H10V4H14V11H17L12 16Z"/>
     <path d="M5 20H19V18H5V20Z"/>
@@ -47,7 +47,7 @@ export default function Nav() {
         <nav className="nav-links">
 
           <a target="_blank" 
-  rel="noopener noreferrer" href="https://bcqthgtmknxsyjzbqfya.supabase.co/storage/v1/object/public/sentia/Sentia%202026%20Brochure.pdf" download className="download-btn">
+  rel="noopener noreferrer" href="https://drive.google.com/file/d/1uMj8H-Ed5wO10V-QgxivQxU34puKt26R/view?usp=sharing" download className="download-btn">
   <svg className="download-icon" viewBox="0 0 24 24">
     <path d="M12 16L7 11H10V4H14V11H17L12 16Z"/>
     <path d="M5 20H19V18H5V20Z"/>
@@ -66,7 +66,7 @@ export default function Nav() {
             About MITE
           </Link>
           <Link href="/gallery">Gallery</Link>
-          <Link href="/map">Map</Link>
+          <Link href="/map?region=entry">Map</Link>
         </nav>
 
         {}
@@ -86,7 +86,7 @@ export default function Nav() {
           About MITE
         </Link>
         <Link href="/gallery" onClick={() => setOpen(false)}>Gallery</Link>
-        <Link href="/map" onClick={() => setOpen(false)}>Map</Link>
+        <Link href="/map?region=entry" onClick={() => setOpen(false)}>Map</Link>
       </div>
     </header>
   );

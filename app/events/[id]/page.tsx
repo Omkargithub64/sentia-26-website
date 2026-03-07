@@ -3,6 +3,15 @@ import { events } from "@/lib/eventsData"
 import { notFound } from "next/navigation"
 import styles from "./EventPage.module.css"
 
+
+export function generateStaticParams() {
+  return events.map((event) => ({
+    id: String(event.id),
+  }))
+}
+
+
+
 export default async function EventPage({
   params,
 }: {
