@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 
 import SVGMap, { type MapHandle, type TooltipState } from "@/components/Map";
@@ -42,7 +42,7 @@ export default function MapPage() {
   }, [region]);
 
   return (
-    <>
+    <Suspense fallback={null}>
       <Tooltip {...tooltip} />
 
       <div className="map-scope">
@@ -63,6 +63,6 @@ export default function MapPage() {
         text={modal.text}
         onClose={() => setModal({ open: false, title: "", text: "" })}
       />
-    </>
+    <Suspense/>
   );
 }

@@ -255,7 +255,7 @@
   font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.123);
-  z-index: 1000;
+  z-index: 980;
 
   max-width: 420px;
   max-height: 250px;

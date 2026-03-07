@@ -15,6 +15,7 @@ type Event = {
   type: string
   location?: string
   index: number
+  regionId?: string
 }
 
 export default function EventCard({ event }: { event: Event, index: number }) {
@@ -78,7 +79,7 @@ export default function EventCard({ event }: { event: Event, index: number }) {
   </div>
 </Link>
 
-<Link href="/map" className={styles.locButton}>
+<Link href={`/map?region=${event.regionId}`} className={styles.locButton}>
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 640 640"

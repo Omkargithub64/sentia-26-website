@@ -74,27 +74,14 @@ export default function Modal({
         {title && <h2 id="modal-title">{title}</h2>}
         {text && (
   <div>
-    {text
-      .split(/(?=\d+\.)/) // split before each number
-      .map((item, index) => {
-        const cleaned = item.trim();
-
-        // remove numbering
-        const nameOnly = cleaned.replace(/^\d+\.\s*/, "");
-
-        // convert to Proper Case
-        const formatted = nameOnly
-          .toLowerCase()
-          .split(" ")
-          .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-          .join(" ");
-
-        return (
-          <p key={index}>
-            {index + 1}. {formatted}
-          </p>
-        );
-      })}
+        {text
+  .split("\n")
+  .filter(Boolean)
+  .map((event, index) => (
+    <p key={index}>
+      {index + 1}. {event}
+    </p>
+))}
   </div>
 )}
         <button onClick={onClose}>Close</button>

@@ -39,31 +39,6 @@ export default function Tooltip({
       }}
     >
       {title && <strong>{title}</strong>}
-      {info && (
-  <div>
-    {info
-      .split(/(?=\d+\.)/) // split before each number
-      .map((item, index) => {
-        const cleaned = item.trim();
-
-        // remove numbering
-        const nameOnly = cleaned.replace(/^\d+\.\s*/, "");
-
-        // convert to Proper Case
-        const formatted = nameOnly
-          .toLowerCase()
-          .split(" ")
-          .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-          .join(" ");
-
-        return (
-          <p key={index}>
-            {index + 1}. {formatted}
-          </p>
-        );
-      })}
-  </div>
-)}
     </div>,
     document.body
   );

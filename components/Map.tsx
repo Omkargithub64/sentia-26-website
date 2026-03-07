@@ -14,6 +14,8 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import WaterShader from "./WaterShader";
 import "./Map.css"
+import { getEventsByRegion } from "@/lib/eventsByRegion";
+
 
 gsap.registerPlugin(useGSAP);
 
@@ -349,14 +351,17 @@ const SVGMap = forwardRef<MapHandle, MapProps>(function SVGMap(
             if (!region) return;
 
             const id = region.dataset.region;
-            const title = region.dataset.title;
-            const info = region.dataset.info;
-            if (!id) return;
+const title = region.dataset.title;
 
-            setActiveRegion(id);
-            zoomTo(id);
+if (!id) return;
 
-            onRegionSelect?.(title ?? "", info ?? "");
+const events = getEventsByRegion(id);
+const info = events.map(e => e.name).join("\n");
+
+setActiveRegion(id);
+zoomTo(id);
+
+onRegionSelect?.(title ?? "", info);
         }
     };
 
@@ -432,15 +437,19 @@ const SVGMap = forwardRef<MapHandle, MapProps>(function SVGMap(
                 return;
             }
 
-            const { title, info } = region.dataset;
+            const regionId = region.dataset.region;
+const title = region.dataset.title;
+
+const events = regionId ? getEventsByRegion(regionId) : [];
+const info = events.map(e => e.name).join("\n");
 
             onTooltip?.({
-                visible: true,
-                x: e.clientX,
-                y: e.clientY,
-                title: title ?? "",
-                info: info ?? "",
-            });
+  visible: true,
+  x: e.clientX,
+  y: e.clientY,
+  title: title ?? "",
+  info
+});
         };
 
         const onLeave = () => {
