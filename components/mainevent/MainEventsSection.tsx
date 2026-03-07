@@ -29,9 +29,8 @@ export default function MainEventsSection(){
 
       {mainEvents.map(event => (
           
-          <Link
+          <div
           key={event.id}
-          href={`/events/${event.id}`}
           className={styles.posterCard}
           >
 
@@ -40,11 +39,7 @@ export default function MainEventsSection(){
             alt={event.title}
             />
 
-          <div className={styles.overlay}>
-            <h3>{event.title}</h3>
-          </div>
-
-        </Link>
+        </div>
 
 ))}
 

@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { events } from "@/lib/eventsData"
 import EventCard from "@/components/eventCard/EventCard"
 import { Filter } from "lucide-react"
@@ -9,6 +9,7 @@ export default function AllEventsPage(){
 
   const [search,setSearch] = useState("")
   const [openFilter,setOpenFilter] = useState(false)
+  const [searchTop, setSearchTop] = useState(90) // navbar height
 
   const categories = [
     "Razzle (Dance Events)",
@@ -22,6 +23,28 @@ export default function AllEventsPage(){
     "MBA Events",
     "General"
   ]
+
+  useEffect(() => {
+  let lastScroll = 0;
+
+  const handleScroll = () => {
+    const currentScroll = window.scrollY;
+
+    if (currentScroll > lastScroll && currentScroll > 80) {
+      // scrolling down → navbar hidden
+      setSearchTop(10)
+    } else {
+      // scrolling up → navbar visible
+      setSearchTop(10)
+    }
+
+    lastScroll = currentScroll
+  }
+
+  window.addEventListener("scroll", handleScroll)
+
+  return () => window.removeEventListener("scroll", handleScroll)
+}, [])
 
   const filteredEvents = events.filter(event =>
     event.title.toLowerCase().includes(search.toLowerCase()) ||
@@ -62,7 +85,10 @@ export default function AllEventsPage(){
 
 
         {/* Controls */}
-        <div className="sticky top-12 z-40 py-5">
+        <div
+  className="sticky z-40 py-5 transition-all duration-300"
+  style={{ top: `${searchTop}px` }}
+>
 <div className="max-w-[1400px] mx-auto flex items-center justify-center gap-3 mt-0 md:mt-10">
 
   {/* Search */}

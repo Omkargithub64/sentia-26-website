@@ -60,7 +60,7 @@ The judges’ decision shall be final and binding in all matters related to the 
     Manish - +91 99649 63003
 Ayushi - +91 76761 95703
     `,
-    region:"",
+        regionId: "mitegreens",
     registerLink: "https://forms.gle/v1h1aPJFRPWeCnbS7"
 
   },
@@ -96,7 +96,7 @@ The judges’ decision shall be final and binding in all matters related to the 
     Anushree - +91 82818 06935
 Amulya – +91 74112 76320
     `,
-    region:"",
+    regionId: "mainblock",
     registerLink: "https://forms.gle/LqF2PGZukQeoTQSx9"
 
   },
@@ -134,6 +134,7 @@ The judges’ decision shall be final and binding in all matters related to the 
  Sinchana - 91 72045 76056
 Khushi – +91 77600 12018
     `,
+    regionId: "mitegreens",
     registerLink: "https://forms.gle/8PPoFc9iYzC98jhz7"
   }, {
     id: 4,
@@ -164,6 +165,7 @@ The judges’ decision shall be final and binding in all matters related to the 
     time: "3:30 PM - 3:30 PM",
     date: "26-03-2026",
     venue: "AUDI - 03",
+    regionId: "mainblock",
     type:"Open to All",
 contacts:`
 Shravan - +91 74112 89340
@@ -201,6 +203,7 @@ The judges’ decision shall be final and binding in all matters related to the 
     time: "11:00 AM - 1:30 PM",
     date: "26-03-2026",
     venue: "AUDI - 03",
+    regionId: "mainblock",
     type:"Open to All",
     contacts:`
 Mayank - +91 76766 98766
@@ -233,6 +236,7 @@ The judges’ decision shall be final and binding in all matters related to the 
     time: "11:00 AM - 1:30 PM",
     date: "26-03-2026",
     venue: "TBD",
+    regionId: "mainblock",
     type:"Open to All",
     contacts:`
 Shreesha - +91 79754 80395
@@ -265,6 +269,7 @@ The judges’ decision shall be final and binding in all matters related to the 
     time:"11:00 AM - 1:30 PM",
     date:"26-03-2026",
     venue:"TBD",
+    regionId: "mainblock",
     type:"Open to All",
     contacts:`
 Chintan - +91 74837 13408
@@ -304,6 +309,7 @@ The judges’ decision shall be final and binding in all matters related to the 
     time:"11:00 AM - 1:30 PM",
     date:"26-03-2026",
     venue:"TBD",
+    regionId: "mainblock",
     type:"Open to All",
     contacts:`
 Prathik Shetty - +91 87926 85809
@@ -343,6 +349,7 @@ The judges’ decision shall be final and binding in all matters related to the 
     time:"3:30 PM - 4:45 PM",
     date:"26-03-2026",
     venue:"Main Stage",
+    regionId: "mitegreens",
     type:"Under Graduate",
     contacts:`
 Deepak K - +91 99802 88315
@@ -382,6 +389,7 @@ The judges’ decision shall be final and binding in all matters related to the 
     time:"11:00 AM - 1:30 PM",
     date:"26-03-2026",
     venue:"TBD",
+    regionId: "mainblock",
     type:"Under Graduate",
     contacts:`
 Sejal - +91 80500 26231
@@ -423,6 +431,7 @@ The judges’ decision shall be final and binding in all matters related to the 
     time:"1:45 PM - 4:00 PM",
     date:"26-03-2026",
     venue:"AUDI - 04",
+    regionId: "pgblock",
     type:"Open to All",
     contacts:`
 Abdul Rehaman - +91 96064 96577
@@ -460,6 +469,7 @@ The judges’ decision shall be final and binding in all matters related to the 
     time:"2:00 PM - 3:30 PM",
     date:"26-03-2026",
     venue:"Main Stage",
+    regionId: "mitegreens",
     type:"Open to All",
     contacts:`
 Pourshi V Rai - +91 84949 79944
@@ -502,6 +512,7 @@ The judges’ decision shall be final and binding in all matters related to the 
     time:"11:00 AM - 1:30 PM",
     date:"26-03-2026",
     venue:"TBD",
+    regionId: "mainblock",
     type:"Open to All",
     contacts:`
 Ananya - +91 90366 49956
@@ -543,6 +554,7 @@ The judges’ decision shall be final and binding in all matters related to the 
     time:"11:00 AM - 1:30 PM",
     date:"26-03-2026",
     venue:"TBD",
+    regionId: "mainblock",
     type:"Open to All",
     contacts:`
 Omkar S Bhute - +91 7892 207231
@@ -581,6 +593,7 @@ The judges’ and organizers’ decisions shall be final and binding in all matt
     time:"11:00 AM - 1:30 PM",
     date:"26-03-2026",
     venue:"TBD",
+    regionId: "mainblock",
     type:"Under Graduate",
     contacts:`
 Sujal - +91 88671 44895
@@ -619,6 +632,7 @@ The decision of the organizing committee and judges shall be final and binding i
     time:"11:00 AM - 1:30 PM",
     date:"26-03-2026",
     venue:"TBD",
+    regionId: "mainblock",
     type:"Under Graduate",
     contacts:`
 Preetham U Shetty - +91 93533 96671
@@ -659,6 +673,7 @@ The judges’ decision shall be final and binding in all matters related to the 
     time:"11:00 AM - 1:30 PM",
     date:"26-03-2026",
     venue:"TBD",
+    regionId: "mainblock",
     type:"Under Graduate",
     contacts:`
 C Lakshith - +91 80501 09358
@@ -696,6 +711,7 @@ The judges’ decision shall be final and binding in all matters related to the 
     time:"11:00 AM - 1:30 PM",
     date:"26-03-2026",
     venue:"TBD",
+    regionId: "mainblock",
     type:"Under Graduate",
     contacts:`
 Abdul Khadar Jilani K K - +91 87924 01891
@@ -735,6 +751,7 @@ The judges’ decision shall be final and binding in all matters related to the 
     time:"11:00 AM - 1:30 PM",
     date:"26-03-2026",
     venue:"TBD",
+    regionId: "mainblock",
     type:"Under Graduate",
     contacts:`
 Shravan Kamath M - +91 99723 78107
@@ -776,6 +793,7 @@ The judges’ decision shall be final and binding in all matters related to the 
     time:"11:00 AM - 1:30 PM",
     date:"26-03-2026",
     venue:"TBD",
+    regionId: "mainblock",
     type:"Under Graduate",
     contacts:`
 Manoj Kumar B V - +91 79752 70723
@@ -818,6 +836,7 @@ The judges’ decision shall be final and binding in all matters related to the 
     time:"11:00 AM - 1:30 PM",
     date:"26-03-2026",
     venue:"TBD",
+    regionId: "mainblock",
     type:"Under Graduate",
     contacts:`
 Rakshan R Adapa - +91 90192 35817
@@ -857,6 +876,7 @@ The judges’ decision shall be final and binding in all matters related to the 
     time:"11:00 AM - 1:30 PM",
     date:"26-03-2026",
     venue:"TBD",
+    regionId: "mainblock",
     type:"Under Graduate",
     contacts:`
 Joswin Mendonca - +91 76192 55171
@@ -896,6 +916,7 @@ The judges’ decision shall be final and binding in all matters related to the 
     time:"11:00 AM - 1:30 PM",
     date:"26-03-2026",
     venue:"TBD",
+    regionId: "mainblock",
     type:"Under Graduate",
     contacts:`
 Krishna Prasad - +91 94821 61894
@@ -931,6 +952,7 @@ The judges’ decision shall be final and binding in all matters related to the 
     time:"11:00 AM - 1:30 PM",
     date:"26-03-2026",
     venue:"TBD",
+    regionId: "pgblock",
     type:"MBA",
     contacts:`
 Tushar G - + 91 80883 65972
@@ -969,6 +991,7 @@ The judges’ decision shall be final and binding in all matters related to the 
     date:"26-03-2026",
     venue:"TBD",
     type:"MBA",
+    regionId: "pgblock",
     contacts:`
 Tushar G - +91 80883 65972
     `,
@@ -1003,6 +1026,7 @@ The judges’ decision shall be final and binding in all matters related to the 
     time:"11:00 AM - 1:30 PM",
     date:"26-03-2026",
     venue:"TBD",
+    regionId: "pgblock",
     type:"MBA",
     contacts:`
 Tushar G - +91 80883 65972
@@ -1038,6 +1062,7 @@ The judges’ decision shall be final and binding in all matters related to the 
     time:"11:00 AM - 1:30 PM",
     date:"26-03-2026",
     venue:"TBD",
+    regionId: "pgblock",
     type:"MBA",
     contacts:`
 Tushar G - +91 80883 65972
@@ -1074,6 +1099,7 @@ The judges’ decision shall be final and binding in all matters related to the 
     time:"11:00 AM - 1:30 PM",
     date:"26-03-2026",
     venue:"TBD",
+    regionId: "pgblock",
     type:"MCA",
     contacts:`
 K Vivek Acharya - +91 96865 06530
@@ -1109,6 +1135,7 @@ The judges’ decision shall be final and binding in all matters related to the 
     time:"11:00 AM - 1:30 PM",
     date:"26-03-2026",
     venue:"TBD",
+    regionId: "pgblock",
     type:"MCA",
     contacts:`
 K Vivek Acharya - +91 96865 06530
@@ -1144,6 +1171,7 @@ The coordinators’ decision shall be final and binding in all matters related t
     time:"11:00 AM - 1:30 PM",
     date:"26-03-2026",
     venue:"TBD",
+    regionId: "pgblock",
     type:"MCA",
     contacts:`
 K Vivek Acharya - +91 96865 06530
@@ -1226,6 +1254,7 @@ The judges’/coordinators’ decisions shall be final and binding in all matter
     time:"2:00 PM - 3:15 PM",
     date:"26-03-2026",
     venue:"TBD",
+    regionId: "mainblock",
     type:"Open to All",
     contacts:`
 Anushree - +91 82818 06935
@@ -1263,6 +1292,7 @@ The judges’ decision shall be final and binding in all matters related to the 
     time:"11:00 AM - 1:30 PM",
     date:"26-03-2026",
     venue:"TBD",
+    regionId: "mainblock",
     type:"Open to All",
     contacts:`
 Swasthik Acharya - +91 82963 23159

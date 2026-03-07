@@ -4,11 +4,6 @@
   margin:auto;
 }
 
-.title{
-  font-size:1.875rem;
-  font-weight:700;
-  margin-bottom:40px;
-}
 
 .posterGrid{
   display:grid;
@@ -20,7 +15,6 @@
   position:relative;
   border-radius:20px;
   overflow:hidden;
-  cursor:pointer;
   transition:transform .3s ease;
 }
 
