@@ -39,7 +39,37 @@ export default async function EventPage({
       } as React.CSSProperties}>
       <div className={styles.bgOverlay}></div>
 
+      
+
       <div className={styles.mainLayout}>
+
+                <div className={`${styles.infoFooter} ${styles.desktopTitle}`}>
+
+          <div className={styles.chip}>
+            TIME: {event.time}
+          </div>
+
+          <div className={styles.chip}>
+            DATE: {event.date}
+          </div>
+
+          <div className={styles.chip}>
+            VENUE: {event.venue}
+          </div>
+              <Link
+      href={`/map?region=${event.regionId}`}
+      className={styles.locButton}
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 640 640"
+        className={styles.locIcon}
+        >
+        <path d="M128 252.6C128 148.4 214 64 320 64C426 64 512 148.4 512 252.6C512 371.9 391.8 514.9 341.6 569.4C329.8 582.2 310.1 582.2 298.3 569.4C248.1 514.9 127.9 371.9 127.9 252.6zM320 320C355.3 320 384 291.3 384 256C384 220.7 355.3 192 320 192C284.7 192 256 220.7 256 256C256 291.3 284.7 320 320 320z"/>
+      </svg>
+    </Link>
+
+        </div>
 
         {/* Mobile Title */}
         <h2 className={styles.mobileMainTitle}>
@@ -58,20 +88,37 @@ export default async function EventPage({
             <h3 className={styles.mobileTitle}>
               Event Details
             </h3>
+<div className={`${styles.infoFooter} ${styles.mobileTitle}`}>
+  <div className={styles.chip}>
+    TIME: {event.time}
+  </div>
 
-            <div className={`${styles.infoFooter} ${styles.mobileTitle}`}>
-              <div className={styles.chip}>
-                TIME: {event.time}
-              </div>
+  <div className={styles.chip}>
+    DATE: {event.date}
+  </div>
 
-              <div className={styles.chip}>
-                DATE: {event.date}
-              </div>
+<div className={styles.chip2}>
 
-              <div className={styles.chip}>
-                VENUE: {event.venue}
-              </div>
-            </div>
+  <div className={styles.chip}>
+    VENUE: {event.venue}
+
+
+  </div>
+    <Link
+      href={`/map?region=${event.regionId}`}
+      className={styles.locButton}
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 640 640"
+        className={styles.locIcon}
+        >
+        <path d="M128 252.6C128 148.4 214 64 320 64C426 64 512 148.4 512 252.6C512 371.9 391.8 514.9 341.6 569.4C329.8 582.2 310.1 582.2 298.3 569.4C248.1 514.9 127.9 371.9 127.9 252.6zM320 320C355.3 320 384 291.3 384 256C384 220.7 355.3 192 320 192C284.7 192 256 220.7 256 256C256 291.3 284.7 320 320 320z"/>
+      </svg>
+    </Link>
+</div>
+</div>
+            
 
             <div className={styles.line}></div>
 
@@ -173,15 +220,13 @@ export default async function EventPage({
 
             <div className={styles.line}></div>
 
-            <div className={styles.mobileTitle}>
-              <h3>Coordinators</h3>
+<div>
+  <h3 className="text-lg font-semibold mb-0 text-white">Coordinators</h3>
 
-              <span>{event.eventcoordinator1}</span>
-              <br />
-
-              <span>{event.eventcoordinator2}</span>
-            </div>
-
+  <span className="whitespace-pre-line text-sm text-white">
+    {event.contacts}
+  </span>
+</div>
           </ul>
 
           <Link
@@ -205,31 +250,6 @@ export default async function EventPage({
         </div>
 
         {/* Footer Info Chips */}
-        <div className={`${styles.infoFooter} ${styles.desktopTitle}`}>
-
-          <div className={styles.chip}>
-            TIME: {event.time}
-          </div>
-
-          <div className={styles.chip}>
-            DATE: {event.date}
-          </div>
-
-          <div className={styles.chip}>
-            VENUE: {event.venue}
-          </div>
-
-        </div>
-
-        {/* Organizer Info */}
-        <div className={styles.organizerInfo}>
-          <p>Event Coordinators</p>
-
-          <span>{event.eventcoordinator1}</span>
-          <br />
-
-          <span>{event.eventcoordinator2}</span>
-        </div>
 
       </div>
 
