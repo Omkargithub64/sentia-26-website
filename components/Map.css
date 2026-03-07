@@ -412,7 +412,7 @@
   align-items: center;
   justify-content: center;
 
-  z-index: 99;
+  z-index: 981;
 }
 
 .modal-overlay.show {
