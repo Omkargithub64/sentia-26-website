@@ -109,7 +109,17 @@
   font-size:18px;
   font-weight:500;
   transition: color 0.3s;
+  cursor: pointer;
 }
+
+.one{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-top:8px;
+  gap: 0.8rem;
+}
+
 
 .button:hover{
   color: var(--boxColor);
@@ -134,32 +144,6 @@
 }
 }
 
-/* 
-.tag {
-  position: absolute;
-  top: 12px;
-  left: 12px;
-  padding: 4px 10px;
-  font-size: 12px;
-  font-weight: 600;
-  color: white;
-  border-radius: 999px;
-  z-index: 5;
-}
-
-.location {
-  position: absolute;
-  bottom: 10px;
-  left: 12px;
-  font-size: 12px;
-  font-weight: 500;
-  background: rgba(0,0,0,0.55);
-  color: white;
-  padding: 4px 8px;
-  border-radius: 6px;
-  backdrop-filter: blur(6px);
-  z-index: 4;
-} */
 .metaRow{
   display:flex;
   align-items:center;
@@ -176,15 +160,28 @@
   border-radius:999px;
 }
 
-.location{
-  font-size:11px;
-  color:#6b7280;
-  font-weight:500;
-    font-size: 12px;
-  font-weight: 500;
-  background: rgba(0,0,0,0.55);
-  color: white;
-  padding: 8px 10px;
-  border-radius: 20px;
-  backdrop-filter: blur(6px);
+.locButton{
+  width:48px;
+  height:48px;
+  border-radius:25px;
+  background:#000502;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  transition: all 0.3s;
+}
+
+.locIcon{
+  width:24px;
+  height:24px;
+  fill:white;
+  transition: fill 0.3s;
+}
+
+.locButton:hover .locIcon{
+  fill: var(--boxColor);
+}
+.viewLink{
+  flex:1;
 }

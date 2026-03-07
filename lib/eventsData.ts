@@ -818,7 +818,7 @@ The coordinators decisions are final and binding.
     main: true,
     description: "",
     category: "Main",
-    image: "/events/fashion walk.webp",
+    image: "/events/battlebands.webp",
     iconName: "Music",
     color: "fEBBA9",
     border: "F7BE05",

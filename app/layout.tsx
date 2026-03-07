@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Sentia v3",
+  title: "Sentia 26",
   description: "The Annual Techno-Cultural Fest",
 };
 
