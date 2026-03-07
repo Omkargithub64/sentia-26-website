@@ -5,6 +5,10 @@ import Picture1 from '../public/images/reveal/1.webp'
 import Picture3 from '../public/images/reveal/3.jpg'
 import Picture2 from '../public/images/reveal/2.jpg'
 import Picture4 from '../public/images/reveal/4.jpg'
+import Picture5 from '../public/images/reveal/5.webp'
+import Picture6 from '../public/images/reveal/6.webp'
+import Picture7 from '../public/images/reveal/7.jpeg'
+
 // import Picture4 from '../public/images/4.jpg'
 // import Picture5 from '../public/images/5.jpg'
 // import Picture6 from '../public/images/6.jpg'
@@ -33,9 +37,9 @@ export default function ThemeReveal() {
     { src: Picture2, scale: scale5 },
     { src: Picture3, scale: scale6 },
     { src: Picture1, scale: scale5 },
-    { src: Picture2, scale: scale6 },
-    { src: Picture3, scale: scale8 },
-    { src: Picture3, scale: scale9 },
+    { src: Picture7, scale: scale6 },
+    { src: Picture5, scale: scale8 },
+    { src: Picture6, scale: scale9 },
   ]
 
   return (

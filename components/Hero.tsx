@@ -41,7 +41,7 @@ useEffect(() => {
             {/* Background Layer */}
             <div data-depth="0.0" className="parallax-layer">
               <img
-                src="/images/poseidon2.jpg"
+                src="/images/poseidon2.webp"
                 alt="Background"
                 className=""
               />

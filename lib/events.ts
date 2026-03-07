@@ -5,7 +5,7 @@ export const EVENTS = [
   },
   {
     name: "Rhythm Rumble",
-    regionId: "mitegreens"
+    regionId: "mainblock"
   },
   {
     name: "TALES OF TAAL",
