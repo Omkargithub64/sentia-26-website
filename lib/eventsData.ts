@@ -1127,28 +1127,19 @@ K Vivek Acharya - +91 96865 06530
     color: "BDD9E6",
     rules:
       `
-Event Description: Next Node is a sequential clue-based
-technical challenge where teams must solve interconnected
-problems in a structured progression. The event tests logical
-thinking, technical aptitude, and systematic problem-solving
-skills.
+Event Description:
+Next Node is a sequential clue-based technical challenge where teams must solve interconnected problems in a structured progression. The event tests logical thinking, technical aptitude, and systematic problem-solving skills.
 Type of Event: Open to MCA students only.
 Category: Technical / Problem-Solving.
 Eligibility: Team participation only.
 Team Size: 2 members per team (one Laptop per team).
 Rules and Regulations:
-Teams must consist of exactly two participants and use only
-one Laptop per team.
-Clue-based rounds must be solved in sequence. Revisiting
-previous rounds is not permitted.
-Refreshing pages, manipulating URLs, or attempting to
-bypass rounds will lead to immediate disqualification.
-Any form of malpractice or answer sharing with other teams
-is strictly prohibited.
-Participants must follow the instructions provided by the
-event coordinators throughout the competition.
-The coordinators’ decision shall be final and binding in all
-matters related to the event.
+Teams must consist of exactly two participants and use only one Laptop per team.
+Clue-based rounds must be solved in sequence. Revisiting previous rounds is not permitted.
+Refreshing pages, manipulating URLs, or attempting to bypass rounds will lead to immediate disqualification.
+Any form of malpractice or answer sharing with other teams is strictly prohibited.
+Participants must follow the instructions provided by the event coordinators throughout the competition.
+The coordinators’ decision shall be final and binding in all matters related to the event.
 `,
     time:"11:00 AM - 1:30 PM",
     date:"26-03-2026",
@@ -1212,22 +1203,32 @@ Time: 8:00pm Onwards
     rules:
       `
 Rules:
-Team size: 2 members per team.
-Standard Dumb Charades rules apply , no speaking, lip-syncing, writing or use of electronic devices is allowed - only gestures and body movements are permitted.
-Prelims Round: 1-Minute Showdown for all teams, teams must guess as many words as possible within the allotted time.
-Top 6 teams with the highest scores in prelims will qualify for the Finals.
-Finals will consist of four rounds - Technical Basics Round, Advanced Concepts Round, Software & Tools Round, and Rapid Fire Team Round.
-All three team members must actively participate in the Finals.
-Any form of malpractice, rule violation, or unfair means will lead to disqualification.
-Judges’/Coordinators’ decisions are final and binding.
+Event Description:
+Tech Dumb Charades (TDC) is an engaging technical guessing game where participants use gestures and body movements to convey technical terms, concepts, and tools without speaking. The event tests technical knowledge, quick thinking, and team coordination. 
+Type of Event: Open to B.E., B.Tech, MCA, and MBA students.
+Category: Technical & Interactive
+Challenge Eligibility: Team participation only.
+Team Size: 2 members per team.
+Event Format: Preliminary Round followed by Final Round.
+Event Rounds:
+Preliminary Round : 1-Minute Showdown: Each team must guess as many technical terms as possible within one minute. The top 6 teams with the highest scores will qualify for the Finals.
+Final Round: The Finals will consist of four rounds:
+Technical Basics Round
+Advanced Concepts Round
+Software & Tools Round
+Rapid Fire Team Round
+Rules and Regulations:
+Standard Dumb Charades rules apply. No speaking, lip-syncing, writing, or use of electronic devices is allowed. Only gestures and body movements are permitted.
+Teams must strictly adhere to the allotted time in each round.
+Any form of malpractice, rule violation, or unfair means will lead to immediate disqualification.
+The judges’/coordinators’ decisions shall be final and binding in all matters related to the event.
 `,
     time:"2:00 PM - 3:15 PM",
     date:"26-03-2026",
     venue:"TBD",
     type:"Open to All",
     contacts:`
-Sinchana - 91 72045 76056
-Khushi – +91 77600 12018
+Anushree - +91 82818 06935
     `,
     registerLink: "https://forms.gle/r1kXkcSCXPfMMV2e9"
   }
@@ -1243,17 +1244,28 @@ Khushi – +91 77600 12018
     border: "1C2936",
     rules:
       `
-Rules:
-Make a team of 2.
-Preliminary round followed by final round.
+Event Description:
+General Quiz is a knowledge-based competition designed to test participants’ awareness, analytical thinking, and understanding across diverse academic, technical, and contemporary domains.
+Type of Event: Open to B.E., B.Tech, MCA, and MBA students.
+Category: Academic & Professional Knowledge Challenge Eligibility: Team participation only.
+Team Size: 2 members per team.
+Event Format: Preliminary Round followed by Final Round.
+Event Rounds:
+Preliminary Round: A written or digital round consisting of multiple-choice questions. Top teams will qualify for the Final Round.
+Final Round: Stage round comprising Rapid Fire, Visual/Audio, and Buzzer segments. Teams will be evaluated based on accuracy and speed.
+Rules and Regulations:
+Each team must consist of three participants.
+Teams qualifying in the Preliminary Round will advance to the Final Round.
+Use of mobile phones or external assistance is strictly prohibited.
+Any form of malpractice will lead to disqualification.
+The judges’ decision shall be final and binding in all matters related to the event.
 `,
     time:"11:00 AM - 1:30 PM",
     date:"26-03-2026",
     venue:"TBD",
     type:"Open to All",
     contacts:`
-Sinchana - 91 72045 76056
-Khushi – +91 77600 12018
+Swasthik Acharya - +91 82963 23159
     `,
     registerLink: "https://forms.gle/49biFbF87CArGKvj6"
   }
