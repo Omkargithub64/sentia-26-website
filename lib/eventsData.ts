@@ -363,7 +363,7 @@ Swasthik Acharya - +91 82963 23159
     title: "SPELL",
     description: "Spell Bee Competition",
     category: "Speakers & Literally",
-    image: "/events/",
+    image: "/events/spell.webp",
     iconName: "Music",
     color: "fEBBA9",
     border: "F7BE05",
@@ -938,7 +938,7 @@ Krishna Prasad - +91 94821 61894
 Event Description:
 Navigate high-stakes capital restructuring and liquidity crunches, Teams must execute dynamic hedging and optimize risk-adjusted returns under extreme volatility to maintain fiscal. solvency and achieve peak alpha in this crucible.
 Type of Event: Open to MBA students only.
-Category: Finance / Strategy.
+Category: Finance.
 Eligibility: Team participation only.
 Team Size: 2 members per team.
 Rules and Regulations:
@@ -977,7 +977,7 @@ Team size - 3
 Event Description:
 The challenge tests your team's grit and synchronization in the face of professional pressure. Only the most adaptive leaders will survive the gauntlet and claim the title of Best Management Team.
 Type of Event: Open to MBA students only.
-Category: Finance / Strategy.
+Category: BMT.
 Eligibility: Team participation only.
 Rules and Regulations:
 Each team must consist of three MBA students.
@@ -1013,7 +1013,7 @@ Tushar G - +91 80883 65972
 Event Description:
 An immersive marketing narketing crucible testing strategic acuity, brand resuscitation, persuasion, and marketcraft where insight, ideation, and data- driven positioning converge to showcase contemporary managerial marketing prowess.
 Type of Event: Open to MBA students only.
-Category: Finance / Strategy
+Category: Marketing.
 Eligibility: Team participation only.
 Team Size: 2 members per team.
 Rules and Regulations:
@@ -1050,7 +1050,8 @@ Tushar G - +91 80883 65972
 Event Description:
 An intensive HR huddle evaluating workforce agility, cognitive bandwidth, decision velocity, and situational judgment where talent orchestration, behavioral insight, and people- centric strategy converge under high-pressure conditions
 Type of Event: Open to MBA students only.
-Category: Human Resource Management / Strategy Eligibility:
+Category: Human Resource Management
+Eligibility:
 Team participation only.
 Team Size: 2 members per team.
 Rules and Regulations:
