@@ -932,22 +932,23 @@ Krishna Prasad - +91 94821 61894
     image: "/events/TIDAL-CLASH 123668 B1BEA4.webp",
     iconName: "Music",
     color: "B1BEA4",
-    border: "123668",
+    border: "12366TIDAL8",
     rules:
       `
 Event Description:
-Tidal Clash is a high-intensity financial strategy competition where teams navigate capital restructuring, manage liquidity crises, execute dynamic hedging strategies, and optimize riskadjusted returns under extreme market volatility. The challenge tests analytical thinking, financial acumen, and strategic decision-making to achieve peak performance while maintaining fiscal stability.
+Navigate high-stakes capital restructuring and liquidity crunches, Teams must execute dynamic hedging and optimize risk-adjusted returns under extreme volatility to maintain fiscal. solvency and achieve peak alpha in this crucible.
 Type of Event: Open to MBA students only.
 Category: Finance / Strategy.
 Eligibility: Team participation only.
 Team Size: 2 members per team.
 Rules and Regulations:
-Teams must develop strategies to manage capital restructuring and liquidity challenges within the given scenario.
-Participants are expected to apply financial analysis, risk management, and hedging techniques to optimize outcomes.
-All decisions must be based on the information and data provided during the competition.
-Any form of external assistance or unfair practice will lead to disqualification.
-Teams must adhere strictly to the time limits prescribed for each round or phase.
-The judges’ decision shall be final and binding in all matters related to the event.
+Each team must consist of two MBA students.
+Teams must bring one laptop for analysis and presentation if required.
+Use of mobile phones or internet access is strictly prohibited unless permitted by the organizers.
+Participants must strictly adhere to the instructions given by the coordinators during the event.
+Any malpractice or rule violation will lead to disqualification.
+Round will be revealed on the spot
+Judges’ decision will be final and binding.
 `,
     time:"11:00 AM - 1:30 PM",
     date:"26-03-2026",
@@ -974,18 +975,18 @@ Tushar G - + 91 80883 65972
       `
 Team size - 3
 Event Description:
-The Titans is a high-stakes financial strategy competition where teams navigate capital restructuring, manage liquidity crises, execute dynamic hedging strategies, and optimize riskadjusted returns under extreme market volatility. The event tests strategic thinking, financial expertise, and decision-making under pressure to achieve sustainable fiscal performance and peak alpha.
+The challenge tests your team's grit and synchronization in the face of professional pressure. Only the most adaptive leaders will survive the gauntlet and claim the title of Best Management Team.
 Type of Event: Open to MBA students only.
 Category: Finance / Strategy.
 Eligibility: Team participation only.
-Team Size: 2 members per team.
 Rules and Regulations:
-Teams must analyze the given financial scenario and formulate effective restructuring and liquidity management strategies.
-Participants are expected to apply dynamic hedging and risk management techniques to optimize returns.
-All decisions must be based solely on the data and information provided during the competition.
-External assistance or any form of unfair practice will result in immediate disqualification.
-Teams must strictly adhere to the prescribed time limits for each stage of the event.
-The judges’ decision shall be final and binding in all matters related to the event.
+Each team must consist of three MBA students.
+Teams must bring one laptop for analysis or presentation if required.
+Use of mobile phones is not allowed during the event.
+Participants must strictly follow the instructions and guidelines given by the organizers.
+Any unfair practices will result in immediate disqualification.
+Round will be revealed on the spot
+Judges’ decision will be final and binding.
 `,
     time:"11:00 AM - 1:30 PM",
     date:"26-03-2026",
@@ -1010,18 +1011,19 @@ Tushar G - +91 80883 65972
     rules:
       `
 Event Description:
-Aqua Imperium is an advanced financial strategy competition where teams navigate capital restructuring challenges and liquidity crunches under extreme market volatility. Participants must apply dynamic hedging techniques and optimize risk-adjusted returns to maintain fiscal solvency and achieve peak alpha in a high-pressure environment.
+An immersive marketing narketing crucible testing strategic acuity, brand resuscitation, persuasion, and marketcraft where insight, ideation, and data- driven positioning converge to showcase contemporary managerial marketing prowess.
 Type of Event: Open to MBA students only.
 Category: Finance / Strategy
 Eligibility: Team participation only.
 Team Size: 2 members per team.
 Rules and Regulations:
-Teams must analyze the provided financial scenario and develop effective capital restructuring and liquidity management strategies.
-Participants are expected to implement dynamic hedging and risk optimization techniques within the given constraints.
-All decisions must be based solely on the data and information provided during the competition.
-External assistance or any form of unfair practice will lead to immediate disqualification.
-Teams must adhere strictly to the prescribed time limits for each stage of the event.
-The judges’ decision shall be final and binding in all matters related to the event.
+Each team must consist of two MBA students.
+Teams must bring one laptop for presentation or analysis if required.
+Mobile phones are not allowed during the event unless permitted by the organizers.
+Participants must follow the time limits and instructions provided by the coordinators.
+Any form of plagiarism or unfair means will lead to disqualification.
+Round will be revealed on the spot
+Judges’ decision will be final and binding.
 `,
     time:"11:00 AM - 1:30 PM",
     date:"26-03-2026",
@@ -1046,18 +1048,19 @@ Tushar G - +91 80883 65972
     rules:
       `
 Event Description:
-Tide of Talents is an intensive HR-focused competition designed to evaluate workforce agility, cognitive bandwidth, decision-making speed, and situational judgment. The event emphasizes talent orchestration, behavioral insight, and people-centric strategy under high-pressure business scenarios.
+An intensive HR huddle evaluating workforce agility, cognitive bandwidth, decision velocity, and situational judgment where talent orchestration, behavioral insight, and people- centric strategy converge under high-pressure conditions
 Type of Event: Open to MBA students only.
 Category: Human Resource Management / Strategy Eligibility:
 Team participation only.
 Team Size: 2 members per team.
 Rules and Regulations:
-Teams must analyze the given HR scenarios and propose effective people-centric strategies.
-Participants are expected to demonstrate strong decision-making skills, behavioral insight, and strategic thinking.
-All responses must be based solely on the information provided during the competition.
-External assistance or any form of unfair practice will result in immediate disqualification.
-Teams must strictly adhere to the prescribed time limits for each stage of the event.
-The judges’ decision shall be final and binding in all matters related to the event.
+Each team must consist of two MBA students.
+Mobile phones are strictly prohibited during the event.
+Participants must follow the instructions and time limits set by the organizers.
+Teams must bring one laptop if required for the event.
+Any misconduct or violation of rules will lead to disqualification.
+Round will be revealed on the spot
+Judges’ decision will be final and binding.
 `,
     time:"11:00 AM - 1:30 PM",
     date:"26-03-2026",
@@ -1086,7 +1089,7 @@ IT Manager Challenge is a managerial simulation event designed to assess leaders
 Type of Event: Open to MCA students only.
 Category: Technical / Management
 Eligibility: Team participation only.
-Team Size: Exactly 4 members per team.
+Team Size: Minimum 3 members per team, Maximum of 4 Members per team.
 Rules and Regulations:
 Each team must consist of exactly four members.
 All participants must carry at least one copy of their resume.
